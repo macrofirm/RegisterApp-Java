@@ -1,19 +1,18 @@
 <html xmlns:th="https://www.thymeleaf.org">
 
 <head>
-	<title>Register - Products</title>
+	<title>Sign In</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 
 	<link rel="stylesheet" type="text/css" href="../static/styles/master.css">
-	<link rel="stylesheet" type="text/css" href="../static/styles/productListing.css">
+	<link rel="stylesheet" type="text/css" href="../static/styles/signIn.css">
 
 	<script type="text/javascript" src="/scripts/master.js" defer></script>
-	<script type="text/javascript" src="/scripts/productListing.js" defer></script>
 </head>
 
 <body>
 	<div class="header">
-		<h1 class="primary-message">Products Listing</h1>
+		<h1 class="primary-message">Sign In</h1>
 	</div>
 
 	<div id="main" class="main">
@@ -21,38 +20,33 @@
 			<h4 id="errorMessage" class="error-message" th:text="${errorMessage}"></h4>
 		</div>
 
-		<div class="productsWrapper">
-			<div>
-				<a href="/productDetail/" class="button">Create New</a>
-			</div>
+		<div class="signInCredentialsWrapper">
+			<table id="signInCredentials">
+				<tbody>
+					<tr>
+						<td class="label">Employee ID:</td>
+						<td>
+							<input id="employeeID" type="text" class="update" />
+						</td>
+					</tr>
 
-			<br /><br />
-
-			<ul id="productsListing" class="products">
-				<li th:each="product : ${products}">
-					<input type="hidden" name="productId" th:value="${product.id}" />
-					<span class="productLookupCodeDisplay" th:text="${product.lookupCode}">lookupCode</span>
-					<br />&nbsp;&nbsp;<span class="productCountDisplay" th:text="${product.count}">0</span>
-					<br />&nbsp;&nbsp;<span class="productCreatedOnDisplay" th:text="${product.createdOn}">12/31/1999</span>
-				</li>
-			</ul>
+					<tr>
+						<td class="label">Password:</td>
+						<td>
+							<input id="password" type="text" class="update" />
+						</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 
-		<div class="hidden">
-			<input type="checkbox" id="isRefreshed" class="hidden">
-			<script type="text/javascript">
-				window.onunload = function() {
-					const isRefreshedElement = document.getElementById("isRefreshed");
+		
 
-					if(!isRefreshedElement.checked) {
-						isRefreshedElement.checked = true;
-					} else {
-						isRefreshedElement.checked = false;
-						location.reload();
-					}
-				}
-			</script>
+		<div>
+			<br />
+			<button id="signInButton" type="button" class="action">Sign In</button>
 		</div>
+
 	</div>
 		
 </body>
