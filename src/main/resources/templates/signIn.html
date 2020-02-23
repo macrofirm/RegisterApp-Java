@@ -7,11 +7,12 @@
 	<link rel="stylesheet" type="text/css" href="../static/styles/master.css">
 	<link rel="stylesheet" type="text/css" href="../static/styles/signIn.css">
 
-	<script type="text/javascript" src="/scripts/master.js" defer></script>
-	<script type="text/javascript" src="/scripts/signIn.js" defer></script>
+	<script type="text/javascript" src="../static/scripts/master.js" defer></script>
+	<script type="text/javascript" src="../static/scripts/signIn.js" defer></script>
 </head>
 
 <body>
+
 	<div class="header">
 		<h1 class="primary-message">Sign In</h1>
 	</div>
@@ -21,21 +22,20 @@
 			<h4 id="errorMessage" class="error-message" th:text="${errorMessage}"></h4>
 		</div>
 
-		<form action="/" method="POST" onsubmit="return validateForm();" class="inputContent"></form>
+		<form action="/" method="POST" onsubmit="return validateSignIn();" class="inputContent"></form>
 			<div class="signInCredentialsWrapper">
 				<table id="signInCredentials">
 					<tbody>
 						<tr>
 							<td class="label">Employee ID:</td>
 							<td>
-								<input id="employeeID" type="text" class="update" />
+								<input id="employeeID" type="number" class="update" />
 							</td>
 						</tr>
-		
 						<tr>
 							<td class="label">Password:</td>
 							<td>
-								<input id="password" type="text" class="update" />
+								<input id="password" type="password" class="update" />
 							</td>
 						</tr>
 					</tbody>
@@ -43,7 +43,7 @@
 			</div>
 			<div>
 				<br />
-				<a href="/productDetail/" id="signInButton" type="submit" class="button">Sign In</a>
+				<input id="signInButton" type="submit" class="submit" value="Sign In" onclick=validateSignIn();></input>
 			</div>
 		</form>
 
