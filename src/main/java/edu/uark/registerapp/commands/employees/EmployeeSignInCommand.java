@@ -23,8 +23,6 @@ public class EmployeeSignInCommand implements ResultCommandInterface<EmployeeSig
         this.verifyEmployeeExists(employee);
         this.verifyCorrectPassword(employee, password.getBytes());
 
-        
-
         return this.apiEmployeeSignIn;
     }
 
