@@ -95,9 +95,14 @@ public class EmployeeSignInCommand implements ResultCommandInterface<EmployeeSig
     }
 
     private String sessionKey;
+    public EmployeeSignInCommand setSessionKey(final String sessionKey) {
+        this.sessionKey = sessionKey;
+        return this;
+    }
 
     @Autowired
     private EmployeeRepository employeeRepository;
+
     @Autowired
     private ActiveUserRepository activeUserRepository;
 }

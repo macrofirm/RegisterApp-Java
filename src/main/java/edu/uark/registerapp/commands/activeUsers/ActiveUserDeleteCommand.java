@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import edu.uark.registerapp.commands.VoidCommandInterface;
-import edu.uark.registerapp.commands.exceptions.NotFoundException;
 import edu.uark.registerapp.models.entities.ActiveUserEntity;
 import edu.uark.registerapp.models.repositories.ActiveUserRepository;
 
@@ -21,8 +20,6 @@ public class ActiveUserDeleteCommand implements VoidCommandInterface{
             activeUserRepository.findBySessionKey(sessionKey);
         if(activeUserEntity.isPresent()) {
             activeUserRepository.delete(activeUserEntity.get());
-        } else {
-            throw new NotFoundException("Session Key");
         }
     }
 
@@ -33,6 +30,10 @@ public class ActiveUserDeleteCommand implements VoidCommandInterface{
 
     // Properties
     private String sessionKey;
+    public ActiveUserDeleteCommand setSessionKey(final String sessionKey) {
+        this.sessionKey = sessionKey;
+        return this;
+    }
 
 
     @Autowired
