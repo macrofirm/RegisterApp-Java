@@ -71,12 +71,12 @@ public class EmployeeSignInCommand implements ResultCommandInterface<EmployeeSig
             this.activeUserRepository
                 .findByEmployeeId(UUID.fromString(this.apiEmployeeSignIn.getEmployeeID()));
         if (queriedActiveUserEntity.isPresent()) {
-            queriedActiveUserEntity.get().setSessionKey(SessionKey);
+            queriedActiveUserEntity.get().setSessionKey(this.sessionKey);
             activeUserRepository.save(queriedActiveUserEntity.get());
             return queriedActiveUserEntity.get();
         } else {
             ActiveUserEntity newActiveUserEntity = new ActiveUserEntity();
-            newActiveUserEntity.setSessionKey(SessionKey);
+            newActiveUserEntity.setSessionKey(this.sessionKey);
             newActiveUserEntity.setEmployeeId(
                 UUID.fromString(this.apiEmployeeSignIn.getEmployeeID()));
             newActiveUserEntity.setClassification(employee.get().getClassification());
@@ -94,9 +94,10 @@ public class EmployeeSignInCommand implements ResultCommandInterface<EmployeeSig
         return this;
     }
 
-    private String SessionKey;
+    private String sessionKey;
 
     @Autowired
     private EmployeeRepository employeeRepository;
+    @Autowired
     private ActiveUserRepository activeUserRepository;
 }
