@@ -22,43 +22,43 @@ public class ProductEntity {
     @Id
     @Column(name="id", updatable = false)
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private final UUID id;
+    	private final UUID id;
 
-	public UUID getId() {
-		return this.id;
-	}
+			public UUID getId() {
+				return this.id;
+			}
 
 	@Column(name = "lookupcode")
-	private String lookupCode;
+		private String lookupCode;
 
-	public String getLookupCode() {
-		return this.lookupCode;
-	}
-
-	public ProductEntity setLookupCode(final String lookupCode) {
-		this.lookupCode = lookupCode;
-		return this;
-	}
+			public String getLookupCode() {
+				return this.lookupCode;
+			}
+		
+			public ProductEntity setLookupCode(final String lookupCode) {
+				this.lookupCode = lookupCode;
+				return this;
+			}
 
 	@Column(name = "count")
-	private int count;
-
-	public int getCount() {
-		return this.count;
-	}
-
-	public ProductEntity setCount(final int count) {
-		this.count = count;
-		return this;
-	}
+		private int count;
+	
+			public int getCount() {
+				return this.count;
+			}
+		
+			public ProductEntity setCount(final int count) {
+				this.count = count;
+				return this;
+			}
 
 	@Column(name = "createdon", insertable = false, updatable = false)
 	@Generated(GenerationTime.INSERT)
-	private LocalDateTime createdOn;
-
-	public LocalDateTime getCreatedOn() {
-		return this.createdOn;
-	}
+		private LocalDateTime createdOn;
+	
+			public LocalDateTime getCreatedOn() {
+				return this.createdOn;
+			}
 
 	public Product synchronize(final Product apiProduct) {
 		this.setCount(apiProduct.getCount());
