@@ -71,7 +71,7 @@ public class ActiveUser extends ApiResponse{
 		super();
 		
 		this.id = new UUID(0, 0);
-		this.employeeId = 0;
+		this.employeeId = -1;
 		this.name = StringUtils.EMPTY;
 		this.classification = 0;
 		this.sessionKey = StringUtils.EMPTY;

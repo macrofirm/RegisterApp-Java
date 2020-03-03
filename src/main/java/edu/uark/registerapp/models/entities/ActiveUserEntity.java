@@ -101,7 +101,7 @@ public class ActiveUserEntity {
 		this.id = new UUID(0, 0);
 		this.employeeId = 0;
 		this.name = StringUtils.EMPTY;
-		this.classification = 0;
+		this.classification = -1;
 		this.sessionKey = StringUtils.EMPTY;
 	}
 		

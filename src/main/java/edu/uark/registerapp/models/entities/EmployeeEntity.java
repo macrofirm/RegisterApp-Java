@@ -137,13 +137,13 @@ public class EmployeeEntity {
 			
 	public EmployeeEntity() {
 		this.id = new UUID(0, 0);
-		this.employeeId = 0;
+		this.employeeId = -1;
 		this.firstName = StringUtils.EMPTY;
 		this.lastName = StringUtils.EMPTY;
-		this.password = new byte[30];
+		this.password = new byte[0];
 		this.active = false;
 		this.classification = 0;
-		this.managerId = UUID.fromString("00000000-0000-0000-0000-000000000000");
+		this.managerId = new UUID(0, 0);
 	}
 			
 	public EmployeeEntity(int employeeId, String firstName, String lastName, byte[] password, boolean active, int classification, UUID managerId) {

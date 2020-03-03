@@ -103,8 +103,8 @@ public class Employee extends ApiResponse {
 		this.lastName = StringUtils.EMPTY;
 		this.password = new byte[30];
 		this.active = false;
-		this.classification = 0;
-		this.managerId = UUID.fromString("00000000-0000-0000-0000-000000000000");
+		this.classification = -1;
+		this.managerId = new UUID(0, 0);
 		this.setCreatedOn(LocalDateTime.now());	
 	}
 	
