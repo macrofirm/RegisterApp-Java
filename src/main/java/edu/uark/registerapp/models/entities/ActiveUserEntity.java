@@ -29,13 +29,13 @@ public class ActiveUserEntity {
 			}
 
 	@Column(name = "employeeid")
-		private int employeeId;
+		private UUID employeeId;
 		
-			public int getEmployeeId() {
+			public UUID getEmployeeId() {
 				return this.employeeId;
 			}
 		
-			public ActiveUserEntity setEmployeeId(final int employeeId) {
+			public ActiveUserEntity setEmployeeId(final UUID employeeId) {
 				this.employeeId = employeeId;
 				return this;
 			}
@@ -99,13 +99,13 @@ public class ActiveUserEntity {
 			
 	public ActiveUserEntity() {
 		this.id = new UUID(0, 0);
-		this.employeeId = 0;
+		this.employeeId = new UUID(0, 0);
 		this.name = StringUtils.EMPTY;
 		this.classification = -1;
 		this.sessionKey = StringUtils.EMPTY;
 	}
 		
-	public ActiveUserEntity(int employeeId, String name, int classification, String sessionKey) {
+	public ActiveUserEntity(UUID employeeId, String name, int classification, String sessionKey) {
 		this.id = new UUID(0, 0);
 		this.employeeId = employeeId;
 		this.name = name;

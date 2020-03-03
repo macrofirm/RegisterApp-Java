@@ -14,6 +14,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.GenerationTime;
 
+import edu.uark.registerapp.commands.employees.helpers.EmployeeHelper;
 import edu.uark.registerapp.models.api.Employee;
 
 @Entity
@@ -121,15 +122,22 @@ public class EmployeeEntity {
 			}
 			
 	public Employee synchronize(final Employee apiEmployee) {
-		this.setEmployeeId(apiEmployee.getEmployeeId());
 		this.setFirstName(apiEmployee.getFirstName());
 		this.setLastName(apiEmployee.getLastName());
-		this.setPassword(apiEmployee.getPassword());
 		this.setActive(apiEmployee.isActive());
 		this.setClassification(apiEmployee.getClassification());
-		this.setManagerId(apiEmployee.getManagerId());
+		
+		if (apiEmployee.getManagerId() != null) {
+			this.setManagerId(apiEmployee.getManagerId());
+		}
+		if (!StringUtils.isBlank(new String(apiEmployee.getPassword()))) {
+			this.setPassword(
+				EmployeeHelper.hashPassword(
+					new String(apiEmployee.getPassword())));
+		}
 		
 		apiEmployee.setId(this.getId());
+		apiEmployee.setEmployeeId(this.getEmployeeId());
 		apiEmployee.setCreatedOn(this.getCreatedOn());
 		
 		return apiEmployee;
@@ -142,7 +150,7 @@ public class EmployeeEntity {
 		this.lastName = StringUtils.EMPTY;
 		this.password = new byte[0];
 		this.active = false;
-		this.classification = 0;
+		this.classification = -1;
 		this.managerId = new UUID(0, 0);
 	}
 			
@@ -162,9 +170,12 @@ public class EmployeeEntity {
 		this.employeeId = apiEmployee.getEmployeeId();
 		this.firstName = apiEmployee.getFirstName();
 		this.lastName = apiEmployee.getLastName();
-		this.password = apiEmployee.getPassword();
+		this.password = EmployeeHelper.hashPassword(new String(apiEmployee.getPassword()));
 		this.active = apiEmployee.isActive();
 		this.classification = apiEmployee.getClassification();
-		this.managerId = apiEmployee.getManagerId();
+		this.managerId = (
+				(apiEmployee.getManagerId() != null)
+					? apiEmployee.getManagerId()
+							: new UUID(0, 0));
 	}
 }

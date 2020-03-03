@@ -18,11 +18,11 @@ public class ActiveUser extends ApiResponse{
 		return this;
 	}
 	
-	private int employeeId;
-	public int getEmployeeId() {
+	private UUID employeeId;
+	public UUID getEmployeeId() {
 		return this.employeeId;
 	}
-	public ActiveUser setEmployeeId(final int employeeId) {
+	public ActiveUser setEmployeeId(final UUID employeeId) {
 		this.employeeId = employeeId;
 		return this;
 	}
@@ -71,7 +71,7 @@ public class ActiveUser extends ApiResponse{
 		super();
 		
 		this.id = new UUID(0, 0);
-		this.employeeId = -1;
+		this.employeeId = new UUID(0, 0);
 		this.name = StringUtils.EMPTY;
 		this.classification = 0;
 		this.sessionKey = StringUtils.EMPTY;
