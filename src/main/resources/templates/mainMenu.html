@@ -21,7 +21,16 @@
 			<h4 id="errorMessage" class="error-message" th:text="${errorMessage}"></h4>
 		</div>
 
-		<!-- TODO: Add the various action button elements -->
+		<button id="startTransactionButton" type="button" class="action">Start Transaction</button>
+		<br />
+		<button id="viewProductsButton" type="button" class="action">View Products</button>
+		<br />
+		<button id="createEmployeeButton" type="button" class="${isElevatedUser} ? action : hidden">Create Employee</button>
+		<br />
+		<button id="salesReportButton" type="button" class="${isElevatedUser} ? action : hidden">Sales Report</button>
+		<br />
+		<button id="cashierReportButton" type="button" class="${isElevatedUser} ? action : hidden">Cashier Report</button>
+
 	</div>
 
 	<div class="hidden">
