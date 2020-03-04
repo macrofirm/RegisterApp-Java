@@ -4,11 +4,11 @@
 	<title>Register - Employee View</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 
-    <link rel="stylesheet" type="text/css" href="/styles/master.css">
-    <link rel="stylesheet" type="text/css" href="/styles/employeeView.css">
+    <link rel="stylesheet" type="text/css" href="../static/styles/master.css">
+    <link rel="stylesheet" type="text/css" href="../static/styles/employeeView.css">
 
-    <script type="text/javascript" src="/scripts/master.js" defer></script>
-    <script type="text/javascript" src="/scripts/employeeView.js" defer></script>
+    <script type="text/javascript" src="../static/scripts/master.js" defer></script>
+    <script type="text/javascript" src="../static/scripts/employeeView.js" defer></script>
 </head>
 
 <body>
@@ -18,49 +18,66 @@
     </div>
     
 	<div id="main" class="main">
-        <div class="employeeDetailWrapper">
-			<table id="employeeDetails">
+        <div id="error" th:class="${#strings.isEmpty(errorMessage)} ? hidden : ''">
+			<h4 id="errorMessage" class="error-message" th:text="${errorMessage}"></h4>
+		</div>
+        <form action="/" method="PUT" onsubmit="return validateSave();" class="inputContent">
+            <div id="employeeDetailWapper">
+                <table id="employeeDetails">
 				<tbody>
 					<tr class="hidden">
 						<td>ID:</td>
 						<td>
-							<input id="employeeRecordId" type="hidden" th:value="employeeRecordId" />
+							<input id="employeeRecordId" type="hidden" th:value="${!employee.isEmpty} ? ${employee.recordId} : ''" />
 						</td>
 					</tr>
-					<tr>
+					<tr th:class="${!employee.exists} ? hidden : ''">
 						<td class="label">Employee ID</td>
 						<td>
-							<input id="employeeId" type="text" disabled/>
+							<input id="employeeId" type="text" th:value="${!employee.isEmpty} ? ${employee.id} : ''" disabled/>
 						</td>
 					</tr>
 					<tr>
 						<td class="label">First Name:</td>
 						<td>
-							<input id="firstName" type="text" />
+							<input id="firstName" type="text" th:value="${!employee.isEmpty} ? ${employee.firstName} : ''"/>
 						</td>
                     </tr>
                     <tr>
                         <td class="label">Last Name:</td>
                         <td>
-                            <input id="lastName" type="text"/>
+                            <input id="lastName" type="text" th:value="${!employee.isEmpty} ? ${employee.lastName} : ''"/>
                         </td>
                     </tr>
                     <tr>
                         <td class="label">Password:</td>
                         <td>
-                            <input id="password" type="text"/>
+                            <input id="password" type="text" th:value="${!employee.isEmpty} ? ${employee.password} : ''"/>
                         </td>
                     </tr>
                     <tr>
                         <td class="label">Confirm Password:</td>
+                        <td>
+                            <input id="confirm" type="text" th:value="${!employee.isEmpty} ? ${employee.password} : ''"/>
+                        </td>
                     </tr>
-				</tbody>
-			</table>
-        </div>
+                    <select id = "EmployeeType">
+                        <option value = "Cashier">Cashier</option>
+                        <option value = "Shift Manager">Shift Manager</option>
+                        <option value = "General Manager">General Manager</option>
+                    </select>
+                </tbody>
+                </table>
+            </div>
+        </form>
         
         <div>
-            <button id="saveButton" type="button" class="action">Save</button>
+            <button id="saveButton" type="submit" class="submit" onclick=validateSave();>Save</button>
         </div>
-        
+        <!--
+        <div id="signOutWrapper">
+            <img id="signOutImage" src="/images/Sign-Out.png" alt="Sign Out"/>
+        </div>
+        -->
     </div>
 </body>
