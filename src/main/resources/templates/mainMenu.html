@@ -4,10 +4,10 @@
 	<title>Register - Main Menu</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 
-	<link rel="stylesheet" type="text/css" href="/styles/master.css">
+	<link rel="stylesheet" type="text/css" href="../static/styles/master.css">
 
-	<script type="text/javascript" src="/scripts/master.js" defer></script>
-	<script type="text/javascript" src="/scripts/mainMenu.js" defer></script>
+	<script type="text/javascript" src="../static/scripts/master.js" defer></script>
+	<script type="text/javascript" src="../static/scripts/mainMenu.js" defer></script>
 </head>
 
 <body>
@@ -22,15 +22,15 @@
 		</div>
 
 		<button id="startTransactionButton" type="button" class="action">Start Transaction</button>
-		<br />
+		<br /> <br />
 		<button id="viewProductsButton" type="button" class="action">View Products</button>
-		<br />
+		<br /> <br />
 		<button id="createEmployeeButton" type="button" class="${isElevatedUser} ? action : hidden">Create Employee</button>
-		<br />
+		<br /> <br />
 		<button id="salesReportButton" type="button" class="${isElevatedUser} ? action : hidden">Sales Report</button>
-		<br />
+		<br /> <br />
 		<button id="cashierReportButton" type="button" class="${isElevatedUser} ? action : hidden">Cashier Report</button>
-
+		<br /> <br />
 	</div>
 
 	<div class="hidden">
@@ -50,7 +50,7 @@
 	</div>
 
 	<div class="footer">
-		<img id="signOutImage" src="/images/Sign-Out.png" alt="Sign Out" class="footer" />
+		<img id="signOutImage" src="../static/images/Sign-Out.png" alt="Sign Out" class="footer" />
 	</div>
 		
 </body>
