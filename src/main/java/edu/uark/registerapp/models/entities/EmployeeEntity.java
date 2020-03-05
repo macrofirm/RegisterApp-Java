@@ -78,14 +78,14 @@ public class EmployeeEntity {
 			}
 
 	@Column(name = "active")
-		private boolean active;
+		private boolean isActive;
 	
 			public boolean isActive() {
-				return this.active;
+				return this.isActive;
 			}
 			
 			public EmployeeEntity setActive(final boolean active) {
-				this.active = active;
+				this.isActive = active;
 				return this;
 			}
 
@@ -149,7 +149,7 @@ public class EmployeeEntity {
 		this.firstName = StringUtils.EMPTY;
 		this.lastName = StringUtils.EMPTY;
 		this.password = new byte[0];
-		this.active = false;
+		this.isActive = false;
 		this.classification = -1;
 		this.managerId = new UUID(0, 0);
 	}
@@ -160,7 +160,7 @@ public class EmployeeEntity {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.password = password;
-		this.active = active;
+		this.isActive = active;
 		this.classification = classification;
 		this.managerId = managerId;
 	}
@@ -171,7 +171,7 @@ public class EmployeeEntity {
 		this.firstName = apiEmployee.getFirstName();
 		this.lastName = apiEmployee.getLastName();
 		this.password = EmployeeHelper.hashPassword(new String(apiEmployee.getPassword()));
-		this.active = apiEmployee.isActive();
+		this.isActive = apiEmployee.isActive();
 		this.classification = apiEmployee.getClassification();
 		this.managerId = (
 				(apiEmployee.getManagerId() != null)

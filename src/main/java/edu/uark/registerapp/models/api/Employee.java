@@ -54,12 +54,12 @@ public class Employee extends ApiResponse {
 		return this;
 	}
 	
-	private boolean active;
+	private boolean isActive;
 	public boolean isActive() {
-		return this.active;
+		return this.isActive;
 	}
 	public Employee setActive(final boolean active) {
-		this.active = active;
+		this.isActive = active;
 		return this;
 	}
 	
@@ -98,11 +98,11 @@ public class Employee extends ApiResponse {
 		super();
 		
 		this.id = new UUID(0, 0);
-		this.employeeId = 0;
+		this.employeeId = -1;
 		this.firstName = StringUtils.EMPTY;
 		this.lastName = StringUtils.EMPTY;
 		this.password = new byte[30];
-		this.active = false;
+		this.isActive = false;
 		this.classification = -1;
 		this.managerId = new UUID(0, 0);
 		this.setCreatedOn(LocalDateTime.now());	
@@ -116,7 +116,7 @@ public class Employee extends ApiResponse {
 		this.firstName = employeeEntity.getFirstName();
 		this.lastName = employeeEntity.getLastName();
 		this.password = employeeEntity.getPassword();
-		this.active = employeeEntity.isActive();
+		this.isActive = employeeEntity.isActive();
 		this.classification = employeeEntity.getClassification();
 		this.managerId = employeeEntity.getManagerId();
 		this.setCreatedOn(employeeEntity.getCreatedOn());
