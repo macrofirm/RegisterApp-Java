@@ -36,6 +36,7 @@ function productCountKeypress(event) {
 // Save
 function saveActionClick(event) {
 	if (!validateSave()) {
+		location.assign("/productListing/");
 		return;
 	}
 
@@ -81,6 +82,10 @@ function saveActionClick(event) {
 };
 
 function validateSave() {
+	if(document.getElementById("saveButton").getAttribute('style') == 'none'){
+		return false;
+	}
+	
 	const lookupCode = getProductLookupCode();
 	if ((lookupCode == null) || (lookupCode.trim() === "")) {
 		displayError("Please provide a valid product lookup code.");
@@ -121,19 +126,33 @@ function hideProductSavedAlertModal() {
 // End save
 
 // Delete
+function validateDelete(){
+	if (document.getElementById("deleteButton").getAttribute('style') == "none"){
+		return false;
+	}
+	else{
+		return true;
+	}
+}
+
 function deleteActionClick(event) {
-	const deleteActionElement = event.target;
-	const deleteActionUrl = ("/api/product/" + getProductId());
+	if(validateDelete){
+		const deleteActionElement = event.target;
+		const deleteActionUrl = ("/api/product/" + getProductId());
 
-	deleteActionElement.disabled = true;
+		deleteActionElement.disabled = true;
 
-	ajaxDelete(deleteActionUrl, (callbackResponse) => {
-		deleteActionElement.disabled = false;
+		ajaxDelete(deleteActionUrl, (callbackResponse) => {
+			deleteActionElement.disabled = false;
 
-		if (isSuccessResponse(callbackResponse)) {
-			window.location.replace("/");
-		}
-	});
+			if (isSuccessResponse(callbackResponse)) {
+				window.location.replace("/");
+			}
+		});
+	}
+	else{
+		location.assign("/productListing/");
+	}
 };
 // End delete
 
