@@ -28,40 +28,40 @@
 					<tr class="hidden">
 						<td>ID:</td>
 						<td>
-							<input id="employeeRecordId" type="hidden" th:value="${!employee.isEmpty} ? ${employee.recordId} : ''" />
+							<input id="employeeRecordId" type="hidden" th:text="${employee.recordId}" />
 						</td>
 					</tr>
-					<tr th:class="${!employee.exists} ? hidden : ''">
+					<tr id="employeeIdRow" class="hidden">
 						<td class="label">Employee ID</td>
 						<td>
-							<input id="employeeId" type="text" th:value="${!employee.isEmpty} ? ${employee.id} : ''" disabled/>
+							<input id="employeeId" type="text" th:value="${employeeId}" disabled/>
 						</td>
 					</tr>
 					<tr>
 						<td class="label">First Name:</td>
 						<td>
-							<input id="firstName" type="text" th:value="${!employee.isEmpty} ? ${employee.firstName} : ''"/>
+							<input id="firstName" type="text" th:text="${employee.firstName}"/>
 						</td>
                     </tr>
                     <tr>
                         <td class="label">Last Name:</td>
                         <td>
-                            <input id="lastName" type="text" th:value="${!employee.isEmpty} ? ${employee.lastName} : ''"/>
+                            <input id="lastName" type="text" th:text="${employee.lastName}"/>
                         </td>
                     </tr>
                     <tr>
                         <td class="label">Password:</td>
                         <td>
-                            <input id="password" type="text" th:value="${!employee.isEmpty} ? ${employee.password} : ''"/>
+                            <input id="password" type="text" th:text="${employee.password}"/>
                         </td>
                     </tr>
                     <tr>
                         <td class="label">Confirm Password:</td>
                         <td>
-                            <input id="confirm" type="text" th:value="${!employee.isEmpty} ? ${employee.password} : ''"/>
+                            <input id="confirm" type="text" th:text="${employee.password}"/>
                         </td>
                     </tr>
-                    <select id = "EmployeeType">
+                    <select id = "employeeType">
                         <option value = "Cashier">Cashier</option>
                         <option value = "Shift Manager">Shift Manager</option>
                         <option value = "General Manager">General Manager</option>
@@ -72,12 +72,22 @@
         </form>
         
         <div>
-            <button id="saveButton" type="submit" class="submit" onclick=validateSave();>Save</button>
+            <button id="saveButton" type="submit" class="submit" onclick=saveActionClick();>Save</button>
         </div>
         <!--
         <div id="signOutWrapper">
             <img id="signOutImage" src="/images/Sign-Out.png" alt="Sign Out"/>
         </div>
         -->
+        <div id="employeeSavedAlertModal" class="modal animate-opacity-show">
+            <div class="modal-content">
+                <div class="container gray-blue">
+                    <h1>
+                        <span>Employee</span><br />
+                        <span>Saved</span>
+                    </h1>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
