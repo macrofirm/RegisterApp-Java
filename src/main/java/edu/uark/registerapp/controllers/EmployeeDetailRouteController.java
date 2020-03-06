@@ -15,10 +15,10 @@ import edu.uark.registerapp.controllers.enums.ViewModelNames;
 import edu.uark.registerapp.controllers.enums.ViewNames;
 import edu.uark.registerapp.models.api.Employee;
 
-@controllers
+@Controller
 @RequestMapping(value = "/employeeDetail")
 public class EmployeeDetailRouteController {
-	@RequestMapping(method = RequesetMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView start(){
 		return (new ModelAndView(ViewNames.EMPLOYEE_DETAIL.getViewName()))
 			.addObject(

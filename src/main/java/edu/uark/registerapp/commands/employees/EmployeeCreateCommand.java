@@ -38,7 +38,7 @@ public class EmployeeCreateCommand implements ResultCommandInterface<Employee> {
         else if(StringUtils.isBlank(this.apiEmployee.getLastName())){
             throw new UnprocessableEntityException("lastName");
         }
-        else if(StringUtils.isBlanks(this.apiEmployee.getPassword())){
+        else if(StringUtils.isBlank(this.apiEmployee.getPassword())){
             throw new UnprocessableEntityException("password");
         }
     }
