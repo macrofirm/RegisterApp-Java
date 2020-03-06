@@ -15,41 +15,36 @@ import edu.uark.registerapp.controllers.enums.ViewModelNames;
 import edu.uark.registerapp.controllers.enums.ViewNames;
 import edu.uark.registerapp.models.api.Employee;
 
-@Controller
+@controllers
 @RequestMapping(value = "/employeeDetail")
 public class EmployeeDetailRouteController {
-	@RequestMapping(method = RequestMethod.GET) //THIS IS WHERE I AM. AFTER THE GET REQUEST WITH ... 
-	public ModelAndView start() {
-		return (new ModelAndView(ViewNames.PRODUCT_DETAIL.getViewName()))
+	@RequestMapping(method = RequesetMethod.GET)
+	public ModelAndView start(){
+		return (new ModelAndView(ViewNames.EMPLOYEE_DETAIL.getViewName()))
 			.addObject(
-				ViewModelNames.PRODUCT.getValue(),
-				(new Product()).setLookupCode(StringUtils.EMPTY).setCount(0));
+				ViewModelNames.EMPLOYEE.getValue(),
+				(new Employee()));
 	}
 
-	@RequestMapping(value = "/{employeeId}", method = RequestMethod.GET)
-	public ModelAndView startWithProduct(@PathVariable final UUID productId) {
+	@RequestMapping(value="/{employeeId}", method = RequestMethod.GET)
+	public ModelAndView startWithEmployee(@PathVariable final UUID id) {
 		final ModelAndView modelAndView =
-			new ModelAndView(ViewNames.PRODUCT_DETAIL.getViewName());
+			new ModelAndView(ViewNames.EMPLOYEE_DETAIL.getViewName());
 
-		try {
-			modelAndView.addObject(
-				ViewModelNames.PRODUCT.getValue(),
-				this.productQuery.setProductId(productId).execute());
+		try{
+			modelAndView(
+					ViewModelNames.EMPLOYEE.getValue(),
+					this.empoyeeQuery.setId(id).execute());
 		} catch (final Exception e) {
 			modelAndView.addObject(
 				ViewModelNames.ERROR_MESSAGE.getValue(),
 				e.getMessage());
 			modelAndView.addObject(
-				ViewModelNames.PRODUCT.getValue(),
-				(new Product())
-					.setCount(0)
-					.setLookupCode(StringUtils.EMPTY));
+				ViewModelNames.EMPLOYEE.getValue(),
+				(new Employee()));
 		}
-
 		return modelAndView;
 	}
-
-	// Properties
 	@Autowired
-	private ProductQuery productQuery;
+	private EmployeeQuery employeeQuery;
 }
