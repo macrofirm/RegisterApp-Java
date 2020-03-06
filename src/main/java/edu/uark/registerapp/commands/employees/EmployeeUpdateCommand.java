@@ -27,13 +27,12 @@ public class EmployeeUpdateCommand implements ResultCommandInterface<Employee> {
             this.employeeRepository.findById(this.recordId);
         if(!employeeEntity.isPresent()){
             throw new NotFoundException("Employee");
-
+        }
             this.apiEmployee = employeeEntity.get().synchronize(this.apiEmployee);
 
             this.employeeRepository.save(employeeEntity.get());
             
             return this.apiEmployee;
-        }
     }
 
 	// Helper methods
@@ -54,6 +53,7 @@ public class EmployeeUpdateCommand implements ResultCommandInterface<Employee> {
     }
     public EmployeeUpdateCommand setEmployeeRecordId(final UUID employeeRecordId){
         this.recordId = employeeRecordId;
+        return this;
     }
     public Employee getApiEmployee(){
         return this.apiEmployee;
