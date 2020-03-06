@@ -50,9 +50,9 @@ public class EmployeeUpdateCommand implements ResultCommandInterface<Employee> {
     private UUID recordId;
     private Employee apiEmployee;
     public UUID getRecordId(){
-        return this.Id;
+        return this.recordId;
     }
-    public EmployeeUpdateCommand setEmployeeRecordId(final UUID employeeRedordId){
+    public EmployeeUpdateCommand setEmployeeRecordId(final UUID employeeRecordId){
         this.recordId = employeeRecordId;
     }
     public Employee getApiEmployee(){
