@@ -121,5 +121,4 @@ public class Employee extends ApiResponse {
 		this.managerId = employeeEntity.getManagerId();
 		this.setCreatedOn(employeeEntity.getCreatedOn());
 	}
-	
 }

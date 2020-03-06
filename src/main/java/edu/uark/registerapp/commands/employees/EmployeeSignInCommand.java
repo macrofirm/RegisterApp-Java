@@ -58,7 +58,7 @@ public class EmployeeSignInCommand implements ResultCommandInterface<EmployeeSig
 
     private void verifyCorrectPassword(
         Optional<EmployeeEntity> employee, byte[] password) {
-        if (Arrays.equals(employee.get().getPassword(), password))
+        if (!(Arrays.equals(employee.get().getPassword(), password)))
         {
             throw new UnprocessableEntityException("Password");
         }

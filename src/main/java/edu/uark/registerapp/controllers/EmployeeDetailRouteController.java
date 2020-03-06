@@ -1,4 +1,5 @@
 package edu.uark.registerapp.controllers;
+package edu.uark.registerapp.controllers.enums;
 
 import java.util.UUID;
 
@@ -10,40 +11,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import edu.uark.registerapp.commands.products.ProductQuery;
+import edu.uark.registerapp.commands.employees.EmployeeQuery;
 import edu.uark.registerapp.controllers.enums.ViewModelNames;
 import edu.uark.registerapp.controllers.enums.ViewNames;
-import edu.uark.registerapp.models.api.Product; //import edu.uark.registerapp.models.api.Employee;?
+import edu.uark.registerapp.models.api.Employee; 
 
 @Controller
-@RequestMapping(value = "/employeeDetail")
-public class ProductDetailRouteController {
-	@RequestMapping(method = RequestMethod.GET) //THIS IS WHERE I AM. AFTER THE GET REQUEST WITH ... 
-	public ModelAndView start() {
-		return (new ModelAndView(ViewNames.PRODUCT_DETAIL.getViewName()))
-			.addObject(
-				ViewModelNames.PRODUCT.getValue(),
-				(new Product()).setLookupCode(StringUtils.EMPTY).setCount(0));
+public class EmployeeDetailRouteController{
+	@RequestMapping(value = "/employeeDetail", method = RequestMethod.GET)  
+	public ModelAndView start(@RequestParam final Map<String, String> queryParameters, HttpServletRequest request){
+		return (new ModelAndView(ViewNames.EMPLOYEE_DETAIL.getViewName()))
 	}
-
-	@RequestMapping(value = "/{employeeId}", method = RequestMethod.GET)
-	public ModelAndView startWithProduct(@PathVariable final UUID productId) {
-		final ModelAndView modelAndView =
-			new ModelAndView(ViewNames.PRODUCT_DETAIL.getViewName());
-
+	
+	@RequestMapping(value = "/employeeDetail{employeeId}", method = RequestMethod.GET)
+	public ModelAndView startWithProduct(@PathVariable final UUID employeeId, Map<String, String> Parameters) {
+		final ModelAndView modelAndView;
+			new ModelAndView(ViewNames.EMPLOYEE_DETAIL.getViewName());
+			ActiveEmployeeExistsQuery activeEmployeeExistsQuery;
 		try {
-			modelAndView.addObject(
-				ViewModelNames.PRODUCT.getValue(),
-				this.productQuery.setProductId(productId).execute());
+				activeEmployeeExistsQuery.execute();
+
 		} catch (final Exception e) {
-			modelAndView.addObject(
-				ViewModelNames.ERROR_MESSAGE.getValue(),
-				e.getMessage());
-			modelAndView.addObject(
-				ViewModelNames.PRODUCT.getValue(),
-				(new Product())
-					.setCount(0)
-					.setLookupCode(StringUtils.EMPTY));
+			
 		}
 
 		return modelAndView;
@@ -51,5 +40,6 @@ public class ProductDetailRouteController {
 
 	// Properties
 	@Autowired
-	private ProductQuery productQuery;
+	private ActiveEmployeeExistsQuery activeEmployeeExistsQuery;
+
 }
