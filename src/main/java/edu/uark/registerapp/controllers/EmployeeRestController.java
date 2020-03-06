@@ -16,29 +16,26 @@ import edu.uark.registerapp.commands.products.ProductUpdateCommand; //edu.uark.r
 import edu.uark.registerapp.commands.employees.helpers.EmployeeHelper;
 import edu.uark.registerapp.models.entities.EmployeeEntity;
 import edu.uark.registerapp.models.api.ApiResponse;
-import edu.uark.registerapp.models.api.Product; //edu.uark.registerapp.models.api.Employee?
+import edu.uark.registerapp.models.api.Employee;
 
 @RestController
 @RequestMapping(value = "/api/employee")
 public class EmployeeRestController {
-		@RequestMapping(value = "/", method = RequestMethod.POST)
-		public @ResponseBody ApiResponse createEmployee(
-			@RequestBody final Employee employee
-			){
-				return this.productCreateCommand  //HttpServletRequest?
-					.setApiProduct(product)		  //HttpServletResponse?
-					.execute();
-			}
-			
-			@RequestMapping(value = "/{employeeId}", method = RequestMethod.PUT)
-			public @ResponseBody ApiReponse updateProduct(
-					@PathVariable final UUID productId,
-		@RequestBody final Product product
-	) {
+	@RequestMapping(value = "/", method = RequestMethod.POST)
+	public @ResponseBody ApiResponse createEmployee(
+		@RequestBody final Employee employee
+	){
+		return this.employeeCreateCommand
+			.setApiEmployee(employee)
+			.execute();
+	}
 
-		return this.productUpdateCommand
-			.setProductId(productId)
-			.setApiProduct(product)
+	/*@RequestMapping(value = "/{employeeId}", method = RequestMethod.PUT)
+	public @ResponseBody ApiResponse updateEmployee(
+		@PathVariable final UUID employeeId,
+	@RequestBody final Employee employee
+	) {
+		return this.employeeUpdateCommand
 			.execute();
 	}
 
@@ -52,7 +49,7 @@ public class EmployeeRestController {
 			.execute();
 
 		return new ApiResponse();
-	}
+	}*/
 
 	// Properties
 	@Autowired
@@ -63,4 +60,10 @@ public class EmployeeRestController {
 	
 	@Autowired
 	private ProductUpdateCommand productUpdateCommand;
+
+	@Autowired
+	private EmployeeCreateCommand employeeCreateCommand;
+
+	@Autowired
+	private EmployeeUpdateCommand employeeUpdateCommand;
 }

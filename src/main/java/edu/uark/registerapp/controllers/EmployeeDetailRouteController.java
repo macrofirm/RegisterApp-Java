@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import edu.uark.registerapp.commands.products.ProductQuery;
+import java.main.edu.uark.registerapp.commands.employees.EmployeeQuery;
 import edu.uark.registerapp.controllers.enums.ViewModelNames;
 import edu.uark.registerapp.controllers.enums.ViewNames;
-import edu.uark.registerapp.models.api.Product; //import edu.uark.registerapp.models.api.Employee;?
+import java.main.edu.uark.registerapp.models.api.Employee;
 
 @Controller
 @RequestMapping(value = "/employeeDetail")
-public class ProductDetailRouteController {
+public class EmployeeDetailRouteController {
 	@RequestMapping(method = RequestMethod.GET) //THIS IS WHERE I AM. AFTER THE GET REQUEST WITH ... 
 	public ModelAndView start() {
 		return (new ModelAndView(ViewNames.PRODUCT_DETAIL.getViewName()))

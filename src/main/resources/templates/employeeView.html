@@ -34,7 +34,7 @@
 					<tr id="employeeIdRow" class="hidden">
 						<td class="label">Employee ID</td>
 						<td>
-							<input id="employeeId" type="text" th:value="${employeeId}" disabled/>
+							<input id="employeeId" type="text" th:value="${employee.id}" disabled/>
 						</td>
 					</tr>
 					<tr>
@@ -72,13 +72,11 @@
         </form>
         
         <div>
-            <button id="saveButton" type="submit" class="submit" onclick=saveActionClick();>Save</button>
+            <button id="saveButton" type="submit" class="submit">Save</button>
         </div>
-        <!--
         <div id="signOutWrapper">
-            <img id="signOutImage" src="/images/Sign-Out.png" alt="Sign Out"/>
+            <img id="signOutImage" src="../static/images/Sign-Out.png" alt="Sign Out" height=30px width=50px/>
         </div>
-        -->
         <div id="employeeSavedAlertModal" class="modal animate-opacity-show">
             <div class="modal-content">
                 <div class="container gray-blue">
