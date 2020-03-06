@@ -34,7 +34,7 @@ public class EmployeeDetailRouteController {
 		try{
 			modelAndView(
 					ViewModelNames.EMPLOYEE.getValue(),
-					this.empoyeeQuery.setId(id).execute());
+					this.employeeQuery.setId(id).execute());
 		} catch (final Exception e) {
 			modelAndView.addObject(
 				ViewModelNames.ERROR_MESSAGE.getValue(),
