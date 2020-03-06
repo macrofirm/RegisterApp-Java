@@ -26,7 +26,7 @@ public class EmployeeQuery implements ResultCommandInterface<Employee> {
 	}
 
     // Properties
-    /*
+    
 	private UUID employeeId;
 	public UUID getEmployeeId() {
 		return this.employeeId;
@@ -34,8 +34,8 @@ public class EmployeeQuery implements ResultCommandInterface<Employee> {
 	public EmployeeQuery setEmployeeId(final UUID employeeId) {
 		this.employeeId = employeeId;
 		return this;
-	}
-*/
+    }
+    
 	@Autowired
 	private EmployeeRepository employeeRepository;
 }
