@@ -24,7 +24,7 @@ public class EmployeeUpdateCommand implements ResultCommandInterface<Employee> {
         this.validateProperties();
 
         final Optional<EmployeeEntity> employeeEntity =
-            this.employeeRepository.findById(this.id);
+            this.employeeRepository.findById(this.recordId);
         if(!employeeEntity.isPresent()){
             throw new NotFoundException("Employee");
 
@@ -51,6 +51,16 @@ public class EmployeeUpdateCommand implements ResultCommandInterface<Employee> {
     private Employee apiEmployee;
     public UUID getRecordId(){
         return this.Id;
+    }
+    public EmployeeUpdateCommand setEmployeeRecordId(final UUID employeeRedordId){
+        this.recordId = employeeRecordId;
+    }
+    public Employee getApiEmployee(){
+        return this.apiEmployee;
+    }
+    public EmployeeUpdateCommand setApiEmployee(final Employee apiEmployee) {
+        this.apiEmployee = apiEmployee;
+        return this;
     }
 	
 	@Autowired
