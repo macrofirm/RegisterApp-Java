@@ -32,7 +32,7 @@ public class EmployeeDetailRouteController {
 			new ModelAndView(ViewNames.EMPLOYEE_DETAIL.getViewName());
 
 		try{
-			modelAndView(
+			ModelAndView(
 					ViewModelNames.EMPLOYEE.getValue(),
 					this.employeeQuery.execute());
 		} catch (final Exception e) {
