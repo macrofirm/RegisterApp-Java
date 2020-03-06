@@ -10,9 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.uark.registerapp.commands.products.ProductCreateCommand; //edu.uark.registerapp.commands.employees.EmployeeCreateCommand?
-import edu.uark.registerapp.commands.products.ProductDeleteCommand; //edu.uark.registerapp.commands.employees.EmployeeProductCommand?
-import edu.uark.registerapp.commands.products.ProductUpdateCommand; //edu.uark.registerapp.commands.employees.EmployeeDeleteCommand?
+import edu.uark.registerapp.commands.employees.EmployeeCreateCommand;
+import edu.uark.registerapp.commands.employees.EmployeeUpdateCommand;
 import edu.uark.registerapp.commands.employees.helpers.EmployeeHelper;
 import edu.uark.registerapp.models.entities.EmployeeEntity;
 import edu.uark.registerapp.models.api.ApiResponse;
@@ -52,15 +51,6 @@ public class EmployeeRestController {
 	}*/
 
 	// Properties
-	@Autowired
-	private ProductCreateCommand productCreateCommand;
-	
-	@Autowired
-	private ProductDeleteCommand productDeleteCommand;
-	
-	@Autowired
-	private ProductUpdateCommand productUpdateCommand;
-
 	@Autowired
 	private EmployeeCreateCommand employeeCreateCommand;
 
