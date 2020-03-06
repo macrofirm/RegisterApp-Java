@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.main.edu.uark.registerapp.commands.employees.EmployeeQuery;
+import edu.uark.registerapp.commands.employees.EmployeeQuery;
 import edu.uark.registerapp.controllers.enums.ViewModelNames;
 import edu.uark.registerapp.controllers.enums.ViewNames;
-import java.main.edu.uark.registerapp.models.api.Employee;
+import edu.uark.registerapp.models.api.Employee;
 
 @Controller
 @RequestMapping(value = "/employeeDetail")
