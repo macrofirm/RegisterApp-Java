@@ -10,13 +10,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.uark.registerapp.commands.products.ProductCreateCommand; //edu.uark.registerapp.commands.employees.EmployeeCreateCommand?
-import edu.uark.registerapp.commands.products.ProductDeleteCommand; //edu.uark.registerapp.commands.employees.EmployeeProductCommand?
-import edu.uark.registerapp.commands.products.ProductUpdateCommand; //edu.uark.registerapp.commands.employees.EmployeeDeleteCommand?
+import edu.uark.registerapp.commands.products.ProductCreateCommand;
+import edu.uark.registerapp.commands.products.ProductUpdateCommand;
+import edu.uark.registerapp.commands.employees.EmployeeCreateCommand;
+import edu.uark.registerapp.commands.employees.EmployeeUpdateCommand;
 import edu.uark.registerapp.commands.employees.helpers.EmployeeHelper;
 import edu.uark.registerapp.models.entities.EmployeeEntity;
 import edu.uark.registerapp.models.api.ApiResponse;
-import edu.uark.registerapp.models.api.Product; //edu.uark.registerapp.models.api.Employee?
+import edu.uark.registerapp.models.api.Employee;
+import edu.uark.registerapp.models.api.Product;
 
 @RestController
 @RequestMapping(value = "/api/employee")
@@ -26,7 +28,7 @@ public class EmployeeRestController {
 			@RequestBody final Employee employee
 			){
 				return this.productCreateCommand  //HttpServletRequest?
-					.setApiProduct(product)		  //HttpServletResponse?
+					.setEmployee(employee)		  //HttpServletResponse?
 					.execute();
 			}
 			
@@ -36,7 +38,7 @@ public class EmployeeRestController {
 		@RequestBody final Product product
 	) {
 
-		return this.productUpdateCommand
+		return this.EmployeeUpdateCommand
 			.setProductId(productId)
 			.setApiProduct(product)
 			.execute();
@@ -47,20 +49,14 @@ public class EmployeeRestController {
 		@PathVariable final UUID productId
 	) {
 
-		this.productDeleteCommand
-			.setProductId(productId)
-			.execute();
-
 		return new ApiResponse();
 	}
 
 	// Properties
 	@Autowired
-	private ProductCreateCommand productCreateCommand;
+	private EmployeeCreateCommand productCreateCommand;
+
 	
 	@Autowired
-	private ProductDeleteCommand productDeleteCommand;
-	
-	@Autowired
-	private ProductUpdateCommand productUpdateCommand;
+	private EmployeeUpdateCommand productUpdateCommand;
 }

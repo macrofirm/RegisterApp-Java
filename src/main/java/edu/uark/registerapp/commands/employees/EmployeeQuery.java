@@ -10,7 +10,7 @@ import edu.uark.registerapp.models.repositories.EmployeeRepository;
 public class EmployeeQuery implements VoidCommandInterface{
     
     @Override
-    public void execute(Map<) {
+    public void execute() {
         if (!(employeeRepository.findById(true))){
             throw new NotFoundException("Active User");
         }
