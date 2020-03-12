@@ -3,8 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     getSaveButtonElement().addEventListener("click", saveActionClick);
     //detect if there is an active user or not
     /*
-    val exists = Packages.edu.uark.registerapp.commands.employees.ActiveEmployeeExistsQuery.execute();
-    val activeUser = Packages.edu.uark.registerapp.commands.activeUsers.ValidateActiveUserCommand.execute();
+    const getUserUrl = ("../../../java/edu/uark/registerapp/commands/employees")
     if(user is active){
         get data of active user
         activeUser = true;
@@ -21,28 +20,34 @@ function saveActionClick(event){
         return;
     }
 
-    const saveActionElement = event.target;
+    const saveActionElement = getSaveButtonElement();
     saveActionElement.disabled = true;
-    console.log("Save function called.");
+    console.log("Save function called. ");
 
     firstName = getFirstNameElement();
     lastName = getLastNameElement();
     password = getPasswordElement();
     employeeType = getEmployeeTypeElement();
+    //Testing the set methods
     displayEmployeeIdRecord(69);
     setFirstNameElement("Steve");
     setLastNameElement("Johnson");
+    setPasswordElement("password");
+    setConfirmElement("password");
+    setEmployeeTypeElement("Shift Manager");
     //ToDo: finish code for saving here
     //Use Ajax methods to save the values
     //POST method if employee is new, ie no active user
     /*
     if(activeUser){
-        const saveActionUrl = ("api/Employee/"
-            + ());
+        const saveActionUrl = ("api/Employee/");
         const saveEmployeeRequest = {
-            firstName: getFirstNameElement(),
-            lastName: getLastNameElement(),
-            password: getPasswordElement(),
+            id: 0,
+            firstName: getFirstNameElement().value,
+            lastName: getLastNameElement().value,
+            password: getPasswordElement().value,
+            active: true,
+            classification: getEmployeeTypeElement().value,
         }
         ajaxPost(saveActionUrl, saveEmployeeRequest, (callbackResponse) => {
             saveActionElement.disabled = false;
@@ -50,10 +55,19 @@ function saveActionClick(event){
                 displayEmployeeSavedAlertModal();
             }
         });
-    }
+    //}
     */
     //PATCH method if employee exists in database, ie is active user
     /*
+    saveActionUrl = ("api/Employee/" + getEmployeeIdElement().value);
+    const saveEmployeeRequest = {
+        id: getEmployeeIdElement().value,
+        firstName: getFirstNameElement().value,
+        lastName: getLastNameElement().value,
+        password: getPasswordElement().value,
+        active: true,
+        classification: getEmployeeTypeElement().value,
+    }
     else{
         ajaxPatch(saveActionUrl, saveEmployeeRequest, (callbackResponse) => {
             saveActionElement.disabled = false;
@@ -61,7 +75,7 @@ function saveActionClick(event){
                 displayEmployeeSavedAlertModal();
             }
         });
-    }
+    //}
 
     */
 }

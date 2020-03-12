@@ -14,31 +14,76 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import edu.uark.registerapp.commands.employees.ActiveEmployeeExistsQuery;
+import edu.uark.registerapp.commands.employees.EmployeeQuery;
+import edu.uark.registerapp.controllers.enums.ViewModelNames;
 import edu.uark.registerapp.controllers.enums.ViewNames;
+import edu.uark.registerapp.models.api.Employee;
+import edu.uark.registerapp.commands.exceptions.UnprocessableEntityException;
+import edu.uark.registerapp.commands.exceptions.NotFoundException;
+import edu.uark.registerapp.models.repositories.EmployeeRepository;
+import edu.uark.registerapp.controllers.MainMenuRouteController;
 
 @Controller
-public class EmployeeDetailRouteController{
-	@RequestMapping(value = "/employeeDetail", method = RequestMethod.GET)  
-	public ModelAndView start(@RequestParam final Map<String, String> queryParameters, HttpServletRequest request){
-		return (new ModelAndView(ViewNames.EMPLOYEE_DETAIL.getViewName()));
-	}
-	
-	@RequestMapping(value = "/employeeDetail{employeeId}", method = RequestMethod.GET)
-	public ModelAndView startWithProduct(@PathVariable final UUID employeeId, Map<String, String> Parameters) {
-		final ModelAndView modelAndView;
-			new ModelAndView(ViewNames.EMPLOYEE_DETAIL.getViewName());
-			ActiveEmployeeExistsQuery activeEmployeeExistsQuery;
+@RequestMapping(value = "/employeeDetail")
+public class EmployeeDetailRouteController {
+	@RequestMapping(method = RequestMethod.GET)
+	public ModelAndView start(@RequestParam Map<String, String> object, HttpServletRequest request){
+		ModelAndView modelAndView;
 		try {
-				activeEmployeeExistsQuery.execute();
-
-		} catch (final Exception e) {
+			activeEmployeeExistsQuery.execute();
+			modelAndView = new ModelAndView(ViewModelNames.IS_ELEVATED_USER.getValue());
+			modelAndView = new ModelAndView(ViewNames.SIGN_IN.getViewName());
 			
+		}catch(NotFoundException e) {
+			modelAndView = new ModelAndView(ViewNames.EMPLOYEE_DETAIL.getViewName());
+
+		}
+		return modelAndView;
+		/*
+		try{
+			activeEmployeeExistsQuery.execute();
+			modelAndView = new ModelAndView(ViewNames.SIGN_IN.getViewName());
+		}catch(NotFoundException e){
+			if(ViewModelNames.IS_ELEVATED_USER.getValue(true))
+			{
+				modelAndView = new ModelAndView(ViewNames.SIGN_IN.getViewName());
+			}else{
+				modelAndView = new ModelAndView(ViewNames.EMPLOYEE_DETAIL.getViewName());
+				modelAndView = new ModelAndView(ViewNames.MAIN_MENU.getviewName());
+			}
+
 		}
 
-		return modelAndView;
+
+		*/
+		/*
+			activeEmployeeExistsQuery.execute();
+			modelAndView = new ModelAndView(ViewNames.EMPLOYEE_DETAIL.getViewName());
+		} else{
+			modelAndView = new ModelAndView(ViewNames.MAIN_MENU.getViewName());
+		}*/
+		return modelAndView;*/
 	}
 
-	// Properties
+	@RequestMapping(value="/{employeeId}", method = RequestMethod.GET)
+	public ModelAndView startWithEmployee(@PathVariable final UUID id, @RequestParam Map<String, String> object, HttpServletRequest request) {
+		final ModelAndView modelAndView = new ModelAndView(ViewNames.EMPLOYEE_DETAIL.getViewName());
+
+		try{
+			ModelAndView(
+					ViewModelNames.EMPLOYEE.getValue(),
+					this.employeeQuery.execute());
+		} catch (final Exception e) {
+			modelAndView.addObject(
+				ViewModelNames.ERROR_MESSAGE.getValue(),
+				e.getMessage());
+			modelAndView.addObject(
+				ViewModelNames.EMPLOYEE.getValue(),
+				(new Employee()));
+
+		}
+		return modelAndView;
+	}
 	@Autowired
 	private ActiveEmployeeExistsQuery activeEmployeeExistsQuery;
 

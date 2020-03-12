@@ -4,11 +4,19 @@
 	<title>Register - Employee View</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 
+<<<<<<< HEAD
     <link rel="stylesheet" type="text/css" href="../static/styles/master.css">
     <link rel="stylesheet" type="text/css" href="../static/styles/employeeView.css">
 
     <script type="text/javascript" src="../static/scripts/master.js" defer></script>
     <script type="text/javascript" src="../static/scripts/employeeView.js" defer></script>
+=======
+    <link rel="stylesheet" type="text/css" href="/styles/master.css">
+    <link rel="stylesheet" type="text/css" href="/styles/employeeView.css">
+
+    <script type="text/javascript" src="/scripts/master.js" defer></script>
+    <script type="text/javascript" src="/scripts/employeeView.js" defer></script>
+>>>>>>> 5a606e14169a602d2e865afd7b3764dadafe6c7c
 </head>
 
 <body>
@@ -18,45 +26,73 @@
     </div>
     
 	<div id="main" class="main">
+<<<<<<< HEAD
         <div id="error" th:class="${#strings.isEmpty(errorMessage)} ? hidden : ''">
 			<h4 id="errorMessage" class="error-message" th:text="${errorMessage}"></h4>
 		</div>
         <form action="/" method="PUT" onsubmit="return validateSave();" class="inputContent">
             <div id="employeeDetailWapper">
                 <table id="employeeDetails">
+=======
+        <div class="employeeDetailWrapper">
+			<table id="employeeDetails">
+>>>>>>> 5a606e14169a602d2e865afd7b3764dadafe6c7c
 				<tbody>
 					<tr class="hidden">
 						<td>ID:</td>
 						<td>
+<<<<<<< HEAD
 							<input id="employeeRecordId" type="hidden" th:text="${employee.recordId}" />
 						</td>
 					</tr>
 					<tr id="employeeIdRow" class="hidden">
 						<td class="label">Employee ID</td>
 						<td>
-							<input id="employeeId" type="text" th:value="${employeeId}" disabled/>
+							<input id="employeeId" type="text" th:value="${employee.id}" disabled/>
+=======
+							<input id="employeeRecordId" type="hidden" th:value="employeeRecordId" />
+						</td>
+					</tr>
+					<tr>
+						<td class="label">Employee ID</td>
+						<td>
+							<input id="employeeId" type="text" disabled/>
+>>>>>>> 5a606e14169a602d2e865afd7b3764dadafe6c7c
 						</td>
 					</tr>
 					<tr>
 						<td class="label">First Name:</td>
 						<td>
+<<<<<<< HEAD
 							<input id="firstName" type="text" th:text="${employee.firstName}"/>
+=======
+							<input id="firstName" type="text" />
+>>>>>>> 5a606e14169a602d2e865afd7b3764dadafe6c7c
 						</td>
                     </tr>
                     <tr>
                         <td class="label">Last Name:</td>
                         <td>
+<<<<<<< HEAD
                             <input id="lastName" type="text" th:text="${employee.lastName}"/>
+=======
+                            <input id="lastName" type="text"/>
+>>>>>>> 5a606e14169a602d2e865afd7b3764dadafe6c7c
                         </td>
                     </tr>
                     <tr>
                         <td class="label">Password:</td>
                         <td>
+<<<<<<< HEAD
                             <input id="password" type="text" th:text="${employee.password}"/>
+=======
+                            <input id="password" type="text"/>
+>>>>>>> 5a606e14169a602d2e865afd7b3764dadafe6c7c
                         </td>
                     </tr>
                     <tr>
                         <td class="label">Confirm Password:</td>
+<<<<<<< HEAD
                         <td>
                             <input id="confirm" type="text" th:text="${employee.password}"/>
                         </td>
@@ -72,13 +108,11 @@
         </form>
         
         <div>
-            <button id="saveButton" type="submit" class="submit" onclick=saveActionClick();>Save</button>
+            <button id="saveButton" type="submit" class="submit">Save</button>
         </div>
-        <!--
         <div id="signOutWrapper">
-            <img id="signOutImage" src="/images/Sign-Out.png" alt="Sign Out"/>
+            <img id="signOutImage" src="../static/images/Sign-Out.png" alt="Sign Out" height=30px width=50px/>
         </div>
-        -->
         <div id="employeeSavedAlertModal" class="modal animate-opacity-show">
             <div class="modal-content">
                 <div class="container gray-blue">
@@ -88,6 +122,15 @@
                     </h1>
                 </div>
             </div>
+=======
+                    </tr>
+				</tbody>
+			</table>
+        </div>
+        
+        <div>
+            <button id="saveButton" type="button" class="action">Save</button>
+>>>>>>> 5a606e14169a602d2e865afd7b3764dadafe6c7c
         </div>
     </div>
 </body>

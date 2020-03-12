@@ -1,22 +1,69 @@
 package edu.uark.registerapp.commands.employees;
 
+import java.util.Optional;
+import java.util.UUID;
+
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import edu.uark.registerapp.commands.ResultCommandInterface;
+import edu.uark.registerapp.commands.exceptions.NotFoundException;
+import edu.uark.registerapp.commands.exceptions.UnprocessableEntityException;
+import edu.uark.registerapp.models.api.Employee;
+import edu.uark.registerapp.models.entities.EmployeeEntity;
+import edu.uark.registerapp.models.repositories.EmployeeRepository;
 
 
+@Service
+public class EmployeeUpdateCommand implements ResultCommandInterface<Employee> {
+	@Transactional
+	@Override
+    public Employee execute() {
+        this.validateProperties();
 
-public class EmployeeUpdateCommand{
-	
-	public void execute(){
+        final Optional<EmployeeEntity> employeeEntity =
+            this.employeeRepository.findById(this.recordId);
+        if(!employeeEntity.isPresent()){
+            throw new NotFoundException("Employee");
+        }
+            this.apiEmployee = employeeEntity.get().synchronize(this.apiEmployee);
 
-        
+            this.employeeRepository.save(employeeEntity.get());
+            
+            return this.apiEmployee;
     }
-	
-    
-    //Properties
-    private int recordId;
-    public EmployeeUpdateCommand EmployeeUpdateCommand(int recordId) {
-        this.recordId = recordId;
+
+	// Helper methods
+	private void validateProperties(){
+        if(StringUtils.isBlank(this.apiEmployee.getFirstName())){
+            throw new UnprocessableEntityException("firstName");
+        }
+        else if(StringUtils.isBlank(this.apiEmployee.getLastName())){
+            throw new UnprocessableEntityException("lastName");
+        }
+    }
+
+    // Properties
+    private UUID recordId;
+    private Employee apiEmployee;
+    public UUID getRecordId(){
+        return this.recordId;
+    }
+    public EmployeeUpdateCommand setEmployeeRecordId(final UUID employeeRecordId){
+        this.recordId = employeeRecordId;
+        return this;
+    }
+    public Employee getApiEmployee(){
+        return this.apiEmployee;
+    }
+    public EmployeeUpdateCommand setApiEmployee(final Employee apiEmployee) {
+        this.apiEmployee = apiEmployee;
         return this;
     }
 	
-	
+	@Autowired
+	private EmployeeRepository employeeRepository;
 }
+
