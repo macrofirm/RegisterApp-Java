@@ -15,6 +15,7 @@ import edu.uark.registerapp.controllers.enums.ViewModelNames;
 import edu.uark.registerapp.controllers.enums.ViewNames;
 import edu.uark.registerapp.models.entities.ActiveUserEntity;
 
+
 @Controller
 @RequestMapping(value = "/mainMenu")
 public class MainMenuRouteController extends BaseRouteController {
@@ -35,10 +36,9 @@ public class MainMenuRouteController extends BaseRouteController {
 				new ModelAndView(ViewNames.MAIN_MENU.getViewName()),
 				queryParameters);
 
-		// TODO: Examine the ActiveUser classification if you want this information
 		modelAndView.addObject(
 			ViewModelNames.IS_ELEVATED_USER.getValue(),
-			true);
+			this.isElevatedUser(activeUserEntity.get()));
 		
 		return modelAndView;
 	}
