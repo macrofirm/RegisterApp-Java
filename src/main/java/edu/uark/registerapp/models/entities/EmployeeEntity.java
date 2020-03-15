@@ -124,7 +124,7 @@ public class EmployeeEntity {
 	public Employee synchronize(final Employee apiEmployee) {
 		this.setFirstName(apiEmployee.getFirstName());
 		this.setLastName(apiEmployee.getLastName());
-		this.setActive(apiEmployee.isActive());
+		this.setActive(apiEmployee.getIsActive());
 		this.setClassification(apiEmployee.getClassification());
 		
 		if (apiEmployee.getManagerId() != null) {
@@ -167,11 +167,11 @@ public class EmployeeEntity {
 			
 	public EmployeeEntity(final Employee apiEmployee) {
 		this.id = new UUID(0, 0);
-		this.employeeId = apiEmployee.getEmployeeId();
+		this.employeeId = Integer.parseInt(apiEmployee.getEmployeeId());
 		this.firstName = apiEmployee.getFirstName();
 		this.lastName = apiEmployee.getLastName();
 		this.password = EmployeeHelper.hashPassword(new String(apiEmployee.getPassword()));
-		this.isActive = apiEmployee.isActive();
+		this.isActive = apiEmployee.getIsActive();
 		this.classification = apiEmployee.getClassification();
 		this.managerId = (
 				(apiEmployee.getManagerId() != null)
