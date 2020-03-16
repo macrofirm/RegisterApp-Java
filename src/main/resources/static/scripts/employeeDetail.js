@@ -35,56 +35,56 @@ function saveActionClick(event){
     setPasswordElement("password");
     setConfirmElement("password");
     setEmployeeTypeElement("Shift Manager");
-    //ToDo: finish code for saving here
+    //TODO: finish code for saving here
     //Use Ajax methods to save the values
     //POST method if employee is new, ie no active user
-    /*
-    if(activeUser){
+    
+    if(employeeIdElement.trim() !== ""){
         const saveActionUrl = ("api/Employee/");
         const saveEmployeeRequest = {
-            id: 0,
+            id: "",
             firstName: getFirstNameElement().value,
             lastName: getLastNameElement().value,
             password: getPasswordElement().value,
             active: true,
             classification: getEmployeeTypeElement().value,
         }
-        ajaxPost(saveActionUrl, saveEmployeeRequest, (callbackResponse) => {
+        ajaxPatch(saveActionUrl, saveEmployeeRequest, (callbackResponse) => {
             saveActionElement.disabled = false;
             if(isSuccessResponses(callbackResponse)) {
                 displayEmployeeSavedAlertModal();
             }
         });
-    //}
-    */
-    //PATCH method if employee exists in database, ie is active user
-    /*
-    saveActionUrl = ("api/Employee/" + getEmployeeIdElement().value);
-    const saveEmployeeRequest = {
-        id: getEmployeeIdElement().value,
-        firstName: getFirstNameElement().value,
-        lastName: getLastNameElement().value,
-        password: getPasswordElement().value,
-        active: true,
-        classification: getEmployeeTypeElement().value,
     }
+    
+    //PATCH method if employee exists in database, ie is active user
+    
     else{
-        ajaxPatch(saveActionUrl, saveEmployeeRequest, (callbackResponse) => {
+        saveActionUrl = ("api/Employee/" + getEmployeeIdElement().value);
+        const saveEmployeeRequest = {
+            id: getEmployeeIdElement().value,
+            firstName: getFirstNameElement().value,
+            lastName: getLastNameElement().value,
+            password: getPasswordElement().value,
+            active: true,
+            classification: getEmployeeTypeElement().value,
+    }
+        ajaxPost(saveActionUrl, saveEmployeeRequest, (callbackResponse) => {
             saveActionElement.disabled = false;
             if(isSuccessResponses(callbackResponse)){
                 displayEmployeeSavedAlertModal();
             }
         });
-    //}
+    }
 
-    */
+    
 }
 
 function validateSave(){
     firstName = getFirstNameElement();
     lastName = getLastNameElement();
     password = getPasswordElement();
-    confirm = getConfirmElement();
+    confirmation = getConfirmElement();
     employeeType = getEmployeeTypeElement();
     valid = true;
     if(firstName.value == ""){
@@ -99,11 +99,11 @@ function validateSave(){
         displayError("Password field is blank.");
         valid = false;
     }
-    else if(confirm.value == ""){
+    else if(confirmation.value == ""){
         displayError("Confirm Password field is blank.");
         valid = false;
     }
-    else if(password.value != confirm.value){
+    else if(password.value != confirmation.value){
         displayError("Passwords must match.");
         valid = false;
     }
