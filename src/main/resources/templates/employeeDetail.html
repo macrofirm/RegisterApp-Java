@@ -24,49 +24,49 @@
         <form action="/" method="PUT" onsubmit="return validateSave();" class="inputContent">
             <div id="employeeDetailWapper">
                 <table id="employeeDetails">
-				<tbody>
-					<tr class="hidden">
-						<td>ID:</td>
-						<td>
-							<input id="employeeRecordId" type="hidden" th:text="${employee.managerId}" />
-						</td>
-					</tr>
-					<tr id="employeeIdRow" class="hidden">
-						<td class="label">Employee ID</td>
-						<td>
-							<input id="employeeId" type="text" th:value="${employee.id}" disabled/>
-						</td>
-					</tr>
-					<tr>
-						<td class="label">First Name:</td>
-						<td>
-							<input id="firstName" type="text" th:text="${employee.firstName}"/>
-						</td>
-                    </tr>
-                    <tr>
-                        <td class="label">Last Name:</td>
-                        <td>
-                            <input id="lastName" type="text" th:text="${employee.lastName}"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="label">Password:</td>
-                        <td>
-                            <input id="password" type="text" th:text="${employee.password}"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="label">Confirm Password:</td>
-                        <td>
-                            <input id="confirm" type="text" th:text="${employee.password}"/>
-                        </td>
-                    </tr>
-                    <select id = "employeeType">
-                        <option value = "Cashier">Cashier</option>
-                        <option value = "Shift Manager">Shift Manager</option>
-                        <option value = "General Manager">General Manager</option>
-                    </select>
-                </tbody>
+                    <tbody>
+                        <tr class="hidden">
+                            <td>ID:</td>
+                            <td>
+                                <input id="employeeRecordId" type="hidden" th:text="${!employee.isEmpty} ? ${employee.managerId} : ''" />
+                            </td>
+                        </tr>
+                        <tr id="employeeIdRow" class="hidden">
+                            <td class="label">Employee ID</td>
+                            <td>
+                                <input id="employeeId" type="text" th:value="${!employee.isEmpty} ? ${employee.id} : ''" disabled/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label">First Name:</td>
+                            <td>
+                                <input id="firstName" type="text" th:text="${!employee.isEmpty} ? ${employee.firstName} : ''"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label">Last Name:</td>
+                            <td>
+                                <input id="lastName" type="text" th:text="${!employee.isEmpty} ? ${employee.lastName} : ''"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label">Password:</td>
+                            <td>
+                                <input id="password" type="text" th:text="${employee.password}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label">Confirm Password:</td>
+                            <td>
+                                <input id="confirm" type="text" th:text="${employee.password}"/>
+                            </td>
+                        </tr>
+                        <select id = "employeeType">
+                            <option value = "Cashier">Cashier</option>
+                            <option value = "Shift Manager">Shift Manager</option>
+                            <option value = "General Manager">General Manager</option>
+                        </select>
+                    </tbody>
                 </table>
             </div>
         </form>
