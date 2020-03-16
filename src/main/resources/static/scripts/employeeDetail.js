@@ -1,17 +1,6 @@
 let hideEmployeeSavedAlertTimer = undefined;
 document.addEventListener("DOMContentLoaded", () => {
     getSaveButtonElement().addEventListener("click", saveActionClick);
-    //detect if there is an active user or not
-    /*
-    const getUserUrl = ("../../../java/edu/uark/registerapp/commands/employees")
-    if(user is active){
-        get data of active user
-        activeUser = true;
-    }
-    else{
-        activeUser = false;
-    }
-    */
 });
 
 //save the active user
@@ -76,6 +65,7 @@ function saveActionClick(event){
             }
         });
     }
+    
 
     
 }
