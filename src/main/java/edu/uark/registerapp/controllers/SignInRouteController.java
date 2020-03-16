@@ -17,11 +17,12 @@ import edu.uark.registerapp.commands.employees.ActiveEmployeeExistsQuery;
 import edu.uark.registerapp.commands.employees.EmployeeSignInCommand;
 import edu.uark.registerapp.commands.exceptions.NotFoundException;
 import edu.uark.registerapp.commands.exceptions.UnprocessableEntityException;
+import edu.uark.registerapp.controllers.enums.QueryParameterNames;
 import edu.uark.registerapp.controllers.enums.ViewModelNames;
 import edu.uark.registerapp.models.api.EmployeeSignIn;
 
 @Controller
-@RequestMapping(value = "/signIn")
+@RequestMapping(value = "/")
 public class SignInRouteController extends BaseRouteController {
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView start(@RequestParam final Map<String, String> queryParameters) {
@@ -29,16 +30,24 @@ public class SignInRouteController extends BaseRouteController {
 		try {
 			activeEmployeeExistsQuery.execute();
 			modelAndView = new ModelAndView(ViewNames.SIGN_IN.getViewName());
+
+			if (queryParameters.containsKey(QueryParameterNames.EMPLOYEE_ID.getValue())) {
+				modelAndView.addObject(
+					ViewModelNames.EMPLOYEE_ID.getValue(),
+					queryParameters.get(QueryParameterNames.EMPLOYEE_ID.getValue()));
+			}
+			
 		} catch (NotFoundException e) {
-			modelAndView = new ModelAndView(ViewNames.EMPLOYEE_DETAIL.getViewName());
+			modelAndView = new ModelAndView(REDIRECT_PREPEND.concat(ViewNames.EMPLOYEE_DETAIL.getRoute()));
 		}
+
 		return modelAndView;
 	}
 
 	@RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
 	public ModelAndView performSignIn(
-			final EmployeeSignIn apiEmployeeSignIn,
-			final HttpServletRequest request
+			EmployeeSignIn apiEmployeeSignIn,
+			HttpServletRequest request
 	) {
 		ModelAndView modelAndView;
 		try {
@@ -47,6 +56,7 @@ public class SignInRouteController extends BaseRouteController {
 		} catch (UnprocessableEntityException e) {
 			modelAndView = new ModelAndView(ViewNames.SIGN_IN.getViewName());
 			modelAndView.addObject(ViewModelNames.ERROR_MESSAGE.getValue(), "Sign in was unsuccessful.");
+			modelAndView.addObject(ViewModelNames.EMPLOYEE_ID.getValue(), apiEmployeeSignIn.getEmployeeId());
 		}
 		return modelAndView;
 	}

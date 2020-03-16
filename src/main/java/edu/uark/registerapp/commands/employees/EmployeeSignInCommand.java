@@ -22,7 +22,7 @@ import edu.uark.registerapp.models.repositories.ActiveUserRepository;
 public class EmployeeSignInCommand implements ResultCommandInterface<EmployeeSignIn>{
     @Override
     public EmployeeSignIn execute() {
-        String employeeId = this.apiEmployeeSignIn.getEmployeeID();
+        String employeeId = this.apiEmployeeSignIn.getEmployeeId();
         String password = this.apiEmployeeSignIn.getPassword();
         this.validateEmployeeId(employeeId);
         this.validatePassword(password);
@@ -69,7 +69,7 @@ public class EmployeeSignInCommand implements ResultCommandInterface<EmployeeSig
         Optional<EmployeeEntity> employee, String employeeId) {
         final Optional<ActiveUserEntity> queriedActiveUserEntity = 
             this.activeUserRepository
-                .findByEmployeeId(UUID.fromString(this.apiEmployeeSignIn.getEmployeeID()));
+                .findByEmployeeId(UUID.fromString(this.apiEmployeeSignIn.getEmployeeId()));
         if (queriedActiveUserEntity.isPresent()) {
             queriedActiveUserEntity.get().setSessionKey(this.sessionKey);
             activeUserRepository.save(queriedActiveUserEntity.get());
@@ -78,7 +78,7 @@ public class EmployeeSignInCommand implements ResultCommandInterface<EmployeeSig
             ActiveUserEntity newActiveUserEntity = new ActiveUserEntity();
             newActiveUserEntity.setSessionKey(this.sessionKey);
             newActiveUserEntity.setEmployeeId(
-                UUID.fromString(this.apiEmployeeSignIn.getEmployeeID()));
+                UUID.fromString(this.apiEmployeeSignIn.getEmployeeId()));
             newActiveUserEntity.setClassification(employee.get().getClassification());
             newActiveUserEntity.setName(
                 employee.get().getFirstName() + " " + employee.get().getLastName());
