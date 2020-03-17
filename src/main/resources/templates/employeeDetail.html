@@ -34,31 +34,31 @@
                         <tr id="employeeIdRow" class="hidden">
                             <td class="label">Employee ID</td>
                             <td>
-                                <input id="employeeId" type="text" th:value="${!employee.isEmpty} ? ${employee.id} : ''" disabled/>
+                                <input id="employeeId" type="text" th:value="${!employee.isEmpty} ? ${employee.id} : ''" class="update" disabled/>
                             </td>
                         </tr>
                         <tr>
                             <td class="label">First Name:</td>
                             <td>
-                                <input id="firstName" type="text" th:text="${!employee.isEmpty} ? ${employee.firstName} : ''"/>
+                                <input id="firstName" type="text" th:text="${!employee.isEmpty} ? ${employee.firstName} : ''" class="update"/>
                             </td>
                         </tr>
                         <tr>
                             <td class="label">Last Name:</td>
                             <td>
-                                <input id="lastName" type="text" th:text="${!employee.isEmpty} ? ${employee.lastName} : ''"/>
+                                <input id="lastName" type="text" th:text="${!employee.isEmpty} ? ${employee.lastName} : ''" class="update"/>
                             </td>
                         </tr>
                         <tr>
                             <td class="label">Password:</td>
                             <td>
-                                <input id="password" type="text" th:text="${employee.password}"/>
+                                <input id="password" type="text" th:text="${employee.password}" class="update"/>
                             </td>
                         </tr>
                         <tr>
                             <td class="label">Confirm Password:</td>
                             <td>
-                                <input id="confirm" type="text" th:text="${employee.password}"/>
+                                <input id="confirm" type="text" th:text="${employee.password}" class="update"/>
                             </td>
                         </tr>
                         <tr id = "employeeTypeWrapper" th:class="${employee.isInitialEmployee} ? hidden : ''">
