@@ -22,14 +22,15 @@ function saveActionClick(event){
     //PATCH method if employee exists in database, ie is active user
     
     if(getEmployeeIdElement().value.trim() !== ""){
-        const saveActionUrl = ("api/employee/");
+        const saveActionUrl = ("api/employee/" + getEmployeeIdElement().value);
         const saveEmployeeRequest = {
-            id: "",
+            id: getEmployeeIdElement().value,
             firstName: getFirstNameElement().value,
             lastName: getLastNameElement().value,
             password: getPasswordElement().value,
             active: true,
             classification: getEmployeeTypeElement().value
+        
         }
         ajaxPatch(saveActionUrl, saveEmployeeRequest, (callbackResponse) => {
             saveActionElement.disabled = false;
@@ -43,7 +44,7 @@ function saveActionClick(event){
     //POST method if employee is new, ie no active user
     
     else{
-        saveActionUrl = ("api/employee/" + getEmployeeIdElement().value);
+        const saveActionUrl = ("api/employee/");
         const saveEmployeeRequest = {
             id: getEmployeeIdElement().value,
             firstName: getFirstNameElement().value,
