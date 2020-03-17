@@ -61,7 +61,7 @@
                                 <input id="confirm" type="text" th:text="${employee.password}"/>
                             </td>
                         </tr>
-                        <tr th:class="${employee.isInitialEmployee} ? hidden : ''">
+                        <tr id = "employeeTypeWrapper" th:class="${employee.isInitialEmployee} ? hidden : ''">
                             <td class="label">Employee Type:</td>
                             <td>
                                 <select id="employeeType" class="select">

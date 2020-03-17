@@ -87,7 +87,7 @@ function validateSave(){
         valid = false;
     }
     else if(employeeType.value <= 0){
-        if(!employeeType.closest("tr").classList.contains("hidden")){
+        if(!document.getElementById("employeeTypeWrapper").classList.contains("hidden")){
             displayError("Employee Type Error.");
             valid = false;
         }
