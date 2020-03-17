@@ -17,14 +17,7 @@ function saveActionClick(event){
     lastName = getLastNameElement();
     password = getPasswordElement();
     employeeType = getEmployeeTypeElement();
-    //Testing the set methods
-    displayEmployeeIdRecord(69);
-    setFirstNameElement("Steve");
-    setLastNameElement("Johnson");
-    setPasswordElement("password");
-    setConfirmElement("password");
-    setEmployeeTypeElement("Shift Manager");
-    //TODO: finish code for saving here
+
     //Use Ajax methods to save the values
     //POST method if employee is new, ie no active user
     
@@ -65,8 +58,6 @@ function saveActionClick(event){
             }
         });
     }
-    
-
     
 }
 
