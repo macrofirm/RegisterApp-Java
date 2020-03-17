@@ -53,7 +53,7 @@ function saveActionClick(event){
     }
         ajaxPost(saveActionUrl, saveEmployeeRequest, (callbackResponse) => {
             saveActionElement.disabled = false;
-            if(isSuccessResponses(callbackResponse)){
+            if(isSuccessResponse(callbackResponse)){
                 displayEmployeeSavedAlertModal();
             }
         });
