@@ -202,7 +202,7 @@ function getEmployeeIdElement(){
     return document.getElementById("employeeId");
 }
 
-function employeeManagerId(){
+function getEmployeeManagerId(){
     return document.getElementById("employeeManagerId");
 }
 
