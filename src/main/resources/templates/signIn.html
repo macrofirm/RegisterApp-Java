@@ -22,7 +22,7 @@
 			<h4 id="errorMessage" class="error-message" th:text="${errorMessage}"></h4>
 		</div>
 
-		<form action="/" method="POST" onsubmit="return validateSignIn();" class="inputContent"></form>
+		<form action="/" method="POST" onsubmit="return validateSignIn();" class="inputContent">
 			<div class="signInCredentialsWrapper">
 				<table id="signInCredentials">
 					<tbody>
@@ -43,7 +43,7 @@
 			</div>
 			<div>
 				<br />
-				<input id="signInButton" type="submit" class="submit" value="Sign In" onclick=validateSignIn();></input>
+				<input id="signInButton" type="submit" class="submit" value="Sign In"></input>
 			</div>
 		</form>
 
