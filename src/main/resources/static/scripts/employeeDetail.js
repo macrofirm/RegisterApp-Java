@@ -25,10 +25,10 @@ function saveActionClick(event){
         const saveActionUrl = ("api/employee/" + getEmployeeIdElement().value);
         const saveEmployeeRequest = {
             id: getEmployeeIdElement().value,
-            firstName: getFirstNameElement().value,
+            managerId: getEmployeeManagerId().value,
             lastName: getLastNameElement().value,
             password: getPasswordElement().value,
-            active: true,
+            firstName: getFirstNameElement().value,
             classification: getEmployeeTypeElement().value
         
         }
@@ -47,10 +47,10 @@ function saveActionClick(event){
         const saveActionUrl = ("api/employee/");
         const saveEmployeeRequest = {
             id: getEmployeeIdElement().value,
-            firstName: getFirstNameElement().value,
+            managerId: getEmployeeManagerId().value,
             lastName: getLastNameElement().value,
             password: getPasswordElement().value,
-            active: true,
+            firstName: getFirstNameElement().value,
             classification: getEmployeeTypeElement().value
         }
         ajaxPost(saveActionUrl, saveEmployeeRequest, (callbackResponse) => {
@@ -171,6 +171,11 @@ function setEmployeeTypeElement(employeeType){
     employeeTypeElement.value = employeeType;
 }
 
+function setEmployeeManagerId(managerId){
+    const employeeManagerId = getEmployeeManagerId();
+    employeeManagerId.value = managerId;
+}
+
 //Getters
 function getFirstNameElement() {
 	return document.getElementById("firstName");
@@ -198,6 +203,10 @@ function getEmployeeIdRowElement(){
 
 function getEmployeeIdElement(){
     return document.getElementById("employeeId");
+}
+
+function employeeManagerId(){
+    return document.getElementById("employeeManagerId");
 }
 
 function getSaveButtonElement(){
