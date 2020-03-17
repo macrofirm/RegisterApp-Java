@@ -16,7 +16,6 @@ import edu.uark.registerapp.controllers.enums.ViewNames;
 import edu.uark.registerapp.commands.employees.ActiveEmployeeExistsQuery;
 import edu.uark.registerapp.commands.employees.EmployeeSignInCommand;
 import edu.uark.registerapp.commands.exceptions.NotFoundException;
-import edu.uark.registerapp.commands.exceptions.UnprocessableEntityException;
 import edu.uark.registerapp.controllers.enums.QueryParameterNames;
 import edu.uark.registerapp.controllers.enums.ViewModelNames;
 import edu.uark.registerapp.models.api.EmployeeSignIn;
@@ -52,7 +51,7 @@ public class SignInRouteController extends BaseRouteController {
 		ModelAndView modelAndView;
 		try {
 			this.employeeSignInCommand.setApiEmployeeSignIn(apiEmployeeSignIn).setSessionKey(request.getSession().getId()).execute();
-			modelAndView = new ModelAndView(REDIRECT_PREPEND.concat(ViewNames.MAIN_MENU.getRoute()));
+			modelAndView = new ModelAndView(ViewNames.MAIN_MENU.getRoute());
 		} catch (Exception e) {
 			modelAndView = new ModelAndView(ViewNames.SIGN_IN.getViewName());
 			modelAndView.addObject(ViewModelNames.ERROR_MESSAGE.getValue(), "Sign in was unsuccessful.");
