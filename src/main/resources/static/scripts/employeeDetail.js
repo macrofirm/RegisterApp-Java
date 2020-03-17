@@ -121,7 +121,7 @@ function displayEmployeeSavedAlertModal(){
     savedAlertModalElement.style.display = "none";
     savedAlertModalElement.style.display = "block";
 
-    hideEmployeeSavedAlertTimer(hideEmployeeSavedAlertModal, 1200);
+    hideEmployeeSavedAlertTimer = setTimeout(hideEmployeeSavedAlertModal, 1200);
 }
 
 function hideEmployeeSavedAlertModal(){
