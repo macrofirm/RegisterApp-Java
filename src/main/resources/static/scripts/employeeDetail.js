@@ -50,7 +50,7 @@ function saveActionClick(event){
             lastName: getLastNameElement().value,
             password: getPasswordElement().value,
             active: true,
-            classification: getEmployeeTypeElement().value,
+            classification: getEmployeeTypeElement().value
         }
         ajaxPost(saveActionUrl, saveEmployeeRequest, (callbackResponse) => {
             saveActionElement.disabled = false;
