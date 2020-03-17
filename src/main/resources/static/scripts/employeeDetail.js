@@ -34,6 +34,7 @@ function saveActionClick(event){
         ajaxPatch(saveActionUrl, saveEmployeeRequest, (callbackResponse) => {
             saveActionElement.disabled = false;
             if(isSuccessResponses(callbackResponse)) {
+                completeSaveAction(callbackResponse);
                 displayEmployeeSavedAlertModal();
             }
         });
@@ -54,6 +55,7 @@ function saveActionClick(event){
         ajaxPost(saveActionUrl, saveEmployeeRequest, (callbackResponse) => {
             saveActionElement.disabled = false;
             if(isSuccessResponse(callbackResponse)){
+                completeSaveAction(callbackResponse);
                 displayEmployeeSavedAlertModal();
             }
         });
@@ -97,6 +99,19 @@ function validateSave(){
         valid = true;
     }
     return valid;
+}
+
+function completeSaveAction(callbackResponse) {
+	if (callbackResponse.data == null) {
+		return;
+	}
+
+	if ((callbackResponse.data.redirectUrl != null)
+		&& (callbackResponse.data.redirectUrl !== "")) {
+
+		window.location.replace(callbackResponse.data.redirectUrl);
+		return;
+	}
 }
 
 function displayEmployeeSavedAlertModal(){
