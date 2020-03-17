@@ -28,7 +28,7 @@ public class SignInRouteController extends BaseRouteController {
 	public ModelAndView start(@RequestParam final Map<String, String> queryParameters) {
 		ModelAndView modelAndView;
 		try {
-			activeEmployeeExistsQuery.execute();
+			this.activeEmployeeExistsQuery.execute();
 			modelAndView = new ModelAndView(ViewNames.SIGN_IN.getViewName());
 
 			if (queryParameters.containsKey(QueryParameterNames.EMPLOYEE_ID.getValue())) {
@@ -51,9 +51,9 @@ public class SignInRouteController extends BaseRouteController {
 	) {
 		ModelAndView modelAndView;
 		try {
-			employeeSignInCommand.setApiEmployeeSignIn(apiEmployeeSignIn).setSessionKey(request.getSession().getId()).execute();
+			this.employeeSignInCommand.setApiEmployeeSignIn(apiEmployeeSignIn).setSessionKey(request.getSession().getId()).execute();
 			modelAndView = new ModelAndView(REDIRECT_PREPEND.concat(ViewNames.MAIN_MENU.getRoute()));
-		} catch (UnprocessableEntityException e) {
+		} catch (Exception e) {
 			modelAndView = new ModelAndView(ViewNames.SIGN_IN.getViewName());
 			modelAndView.addObject(ViewModelNames.ERROR_MESSAGE.getValue(), "Sign in was unsuccessful.");
 			modelAndView.addObject(ViewModelNames.EMPLOYEE_ID.getValue(), apiEmployeeSignIn.getEmployeeId());
