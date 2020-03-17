@@ -9,14 +9,9 @@ function saveActionClick(event){
         return;
     }
 
-    const saveActionElement = getSaveButtonElement();
+    const saveActionElement = event.target;
     saveActionElement.disabled = true;
     console.log("Save function called. ");
-
-    firstName = getFirstNameElement();
-    lastName = getLastNameElement();
-    password = getPasswordElement();
-    employeeType = getEmployeeTypeElement();
 
     //Use Ajax methods to save the values
     //PATCH method if employee exists in database, ie is active user
@@ -65,11 +60,11 @@ function saveActionClick(event){
 }
 
 function validateSave(){
-    firstName = getFirstNameElement();
-    lastName = getLastNameElement();
-    password = getPasswordElement();
-    confirmation = getConfirmElement();
-    employeeType = getEmployeeTypeElement();
+    const firstName = getFirstNameElement();
+    const lastName = getLastNameElement();
+    const password = getPasswordElement();
+    const confirmation = getConfirmElement();
+    const employeeType = getEmployeeTypeElement();
     valid = true;
     if(firstName.value == ""){
         displayError("First Name field is blank.");
@@ -91,7 +86,7 @@ function validateSave(){
         displayError("Passwords must match.");
         valid = false;
     }
-    else if(employeeType.value != "Cashier" && employeeType.value != "Shift Manager" && employeeType.value != "General Manager"){
+    else if(employeeType.value <= 0){
         if(!employeeType.closest("tr").classList.contains("hidden")){
             displayError("Employee Type Error.");
             valid = false;
