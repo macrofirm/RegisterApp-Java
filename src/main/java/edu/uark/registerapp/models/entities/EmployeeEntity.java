@@ -167,7 +167,6 @@ public class EmployeeEntity {
 			
 	public EmployeeEntity(final Employee apiEmployee) {
 		this.id = new UUID(0, 0);
-		this.employeeId = Integer.parseInt(apiEmployee.getEmployeeId());
 		this.firstName = apiEmployee.getFirstName();
 		this.lastName = apiEmployee.getLastName();
 		this.password = EmployeeHelper.hashPassword(new String(apiEmployee.getPassword()));

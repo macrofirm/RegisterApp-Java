@@ -48,7 +48,6 @@ function saveActionClick(event){
             firstName: getFirstNameElement().value,
             classification: getEmployeeTypeElement().value
         }
-        console.log("Class: " + getEmployeeTypeElement().value)
         ajaxPost(saveActionUrl, saveEmployeeRequest, (callbackResponse) => {
             saveActionElement.disabled = false;
             if(isSuccessResponse(callbackResponse)){
