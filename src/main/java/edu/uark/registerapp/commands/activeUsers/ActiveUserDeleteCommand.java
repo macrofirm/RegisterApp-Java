@@ -15,17 +15,11 @@ public class ActiveUserDeleteCommand implements VoidCommandInterface{
     @Override
     @Transactional
     public void execute() {
-        this.validateEmployeeRequest();
         Optional<ActiveUserEntity> activeUserEntity = 
-            activeUserRepository.findBySessionKey(sessionKey);
+            activeUserRepository.findBySessionKey(this.sessionKey);
         if(activeUserEntity.isPresent()) {
             activeUserRepository.delete(activeUserEntity.get());
         }
-    }
-
-    // Helper Methods
-    private void validateEmployeeRequest() {
-        // TODO talk to Prof. Phillips about why this should be
     }
 
     // Properties
