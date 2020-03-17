@@ -92,9 +92,10 @@ function validateSave(){
         valid = false;
     }
     else if(employeeType.value != "Cashier" && employeeType.value != "Shift Manager" && employeeType.value != "General Manager"){
-        console.log("EmployeeType: " + employeeType.value);
-        displayError("Employee Type Error.");
-        valid = false;
+        if(!employeeType.closest("tr").classList.contains("hidden")){
+            displayError("Employee Type Error.");
+            valid = false;
+        }
     }
     else{
         clearError();
