@@ -93,6 +93,7 @@ function validateSave(){
     }
     else if(employeeType.value != "Cashier" && employeeType.value != "Shift Manager" && employeeType.value != "General Manager"){
         displayError("Employee Type Error.");
+        console.log(employeeType.value);
         valid = false;
     }
     else{
