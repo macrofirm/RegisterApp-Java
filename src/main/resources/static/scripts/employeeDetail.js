@@ -21,7 +21,7 @@ function saveActionClick(event){
     //Use Ajax methods to save the values
     //POST method if employee is new, ie no active user
     
-    if(employeeIdElement.trim() !== ""){
+    if(getEmployeeIdElement().value.trim() !== ""){
         const saveActionUrl = ("api/Employee/");
         const saveEmployeeRequest = {
             id: "",
