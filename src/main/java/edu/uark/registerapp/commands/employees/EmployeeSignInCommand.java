@@ -23,6 +23,7 @@ public class EmployeeSignInCommand implements ResultCommandInterface<EmployeeSig
     public EmployeeSignIn execute() {
         String employeeId = this.apiEmployeeSignIn.getEmployeeId();
         String password = this.apiEmployeeSignIn.getPassword();
+        System.out.println(employeeId);
         this.validateEmployeeId(employeeId);
         this.validatePassword(password);
         Optional<EmployeeEntity> employee = 
