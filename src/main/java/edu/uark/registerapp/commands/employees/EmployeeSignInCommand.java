@@ -73,7 +73,7 @@ public class EmployeeSignInCommand implements ResultCommandInterface<EmployeeSig
                 .findByEmployeeId(employee.get().getId());
         if (queriedActiveUserEntity.isPresent()) {
             queriedActiveUserEntity.get().setSessionKey(this.sessionKey);
-            activeUserRepository.save(queriedActiveUserEntity.get());
+            this.activeUserRepository.save(queriedActiveUserEntity.get());
             return queriedActiveUserEntity.get();
         } else {
             ActiveUserEntity newActiveUserEntity = new ActiveUserEntity();
@@ -82,7 +82,7 @@ public class EmployeeSignInCommand implements ResultCommandInterface<EmployeeSig
             newActiveUserEntity.setClassification(employee.get().getClassification());
             newActiveUserEntity.setName(
                 employee.get().getFirstName().concat(" ").concat(employee.get().getLastName()));
-            activeUserRepository.save(newActiveUserEntity);
+            this.activeUserRepository.save(newActiveUserEntity);
             return newActiveUserEntity;
         }
     }
