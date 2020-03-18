@@ -16,14 +16,13 @@ function getSignInActionElement() {
 function validateSignIn() {
 	employeeID = getEmployeeIdElement();
 	password = getEmployeePasswordElement();
-	invalid = false;
 	if(Number.isInteger(employeeID) || employeeID.value == "") {
 		displayError("Invalid ID.");
-		invalid = true;
+		return false;
 	}
-	else if(password.value == "") {
+	if(password.value == "") {
 		displayError("Invalid Password.")
-		invalid = true;
+		return false;
 	}
-	return invalid;
+	return true;
 }
