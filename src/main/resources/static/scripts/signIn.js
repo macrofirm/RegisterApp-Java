@@ -2,20 +2,16 @@ document.addEventListener("DOMContentLoaded", function(event){
 });
 
 function getEmployeeIdElement() {
-	return document.getElementById("employeeID");
+	return document.getElementById("employeeId");
 }
 
 function getEmployeePasswordElement() {
 	return document.getElementById("password");
 }
 
-function getSignInActionElement() {
-	return document.getElementById("signInButton");
-}
-
 function validateSignIn() {
-	employeeId = getEmployeeIdElement();
-	password = getEmployeePasswordElement();
+	const employeeId = getEmployeeIdElement();
+	const password = getEmployeePasswordElement();
 	if(isNaN(Number(employeeId.value)) || (Number(employeeId.value) <= 0)) {
 		displayError("Invalid ID.");
 		return false;
