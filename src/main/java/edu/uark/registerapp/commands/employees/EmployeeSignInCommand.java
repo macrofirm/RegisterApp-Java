@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.uark.registerapp.commands.ResultCommandInterface;
+import edu.uark.registerapp.commands.employees.helpers.EmployeeHelper;
 import edu.uark.registerapp.commands.exceptions.UnauthorizedException;
 import edu.uark.registerapp.models.api.EmployeeSignIn;
 import edu.uark.registerapp.models.entities.EmployeeEntity;
@@ -29,7 +30,7 @@ public class EmployeeSignInCommand implements ResultCommandInterface<EmployeeSig
         Optional<EmployeeEntity> employee = 
             employeeRepository.findByEmployeeId(Integer.parseInt(employeeId));
         this.verifyEmployeeExists(employee);
-        this.verifyCorrectPassword(employee, password.getBytes());
+        this.verifyCorrectPassword(employee, EmployeeHelper.hashPassword(password));
         this.createActiveUserEntity(employee, employeeId);
 
         return this.apiEmployeeSignIn;
