@@ -2,7 +2,6 @@ package edu.uark.registerapp.commands.employees;
 
 import java.util.Optional;
 import java.util.Arrays;
-import java.util.UUID;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.transaction.Transactional;
