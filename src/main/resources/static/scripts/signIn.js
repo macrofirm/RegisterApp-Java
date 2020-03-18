@@ -14,13 +14,13 @@ function getSignInActionElement() {
 }
 
 function validateSignIn() {
-	employeeID = getEmployeeIdElement();
+	employeeId = getEmployeeIdElement();
 	password = getEmployeePasswordElement();
-	if(Number.isInteger(employeeID) || employeeID.value == "") {
+	if(isNaN(Number(employeeId.value)) || (Number(employeeId.value) <= 0)) {
 		displayError("Invalid ID.");
 		return false;
 	}
-	if(password.value == "") {
+	if((password.value == null) || (password.value.trim() === "")) {
 		displayError("Invalid Password.")
 		return false;
 	}
