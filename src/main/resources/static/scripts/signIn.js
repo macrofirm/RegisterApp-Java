@@ -20,5 +20,6 @@ function validateSignIn() {
 		displayError("Invalid Password.")
 		return false;
 	}
+	
 	return true;
 }
