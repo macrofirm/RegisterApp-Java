@@ -51,10 +51,10 @@ public class SignInRouteController extends BaseRouteController {
 		ModelAndView modelAndView;
 		try {
 			this.employeeSignInCommand.setApiEmployeeSignIn(apiEmployeeSignIn).setSessionKey(request.getSession().getId()).execute();
-			modelAndView = new ModelAndView(ViewNames.MAIN_MENU.getViewName());
+			modelAndView = new ModelAndView(REDIRECT_PREPEND.concat(ViewNames.MAIN_MENU.getRoute()));
 		} catch (Exception e) {
 			modelAndView = new ModelAndView(ViewNames.SIGN_IN.getViewName());
-			modelAndView.addObject(ViewModelNames.ERROR_MESSAGE.getValue(), "Sign in was unsuccessful.");
+			modelAndView.addObject(ViewModelNames.ERROR_MESSAGE.getValue(), e.getMessage());
 			modelAndView.addObject(ViewModelNames.EMPLOYEE_ID.getValue(), apiEmployeeSignIn.getEmployeeId());
 		}
 		return modelAndView;
