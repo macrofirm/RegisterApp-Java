@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.uark.registerapp.commands.ResultCommandInterface;
-import edu.uark.registerapp.commands.exceptions.UnprocessableEntityException;
+import edu.uark.registerapp.commands.exceptions.UnauthorizedException;
 import edu.uark.registerapp.models.api.EmployeeSignIn;
 import edu.uark.registerapp.models.entities.EmployeeEntity;
 import edu.uark.registerapp.models.entities.ActiveUserEntity;
@@ -40,19 +40,19 @@ public class EmployeeSignInCommand implements ResultCommandInterface<EmployeeSig
         try {
             Integer.parseInt(employeeId);
         } catch(NumberFormatException e) {
-            throw new UnprocessableEntityException("EmployeeID");
+            throw new UnauthorizedException();
         }
     }
 
     private void validatePassword(String password) {
         if (StringUtils.isBlank(password)) {
-            throw new UnprocessableEntityException("Password");
+            throw new UnauthorizedException();
         }
     }
 
     private void verifyEmployeeExists(Optional<EmployeeEntity> employee) {
         if (!(employee.isPresent())) {
-            throw new UnprocessableEntityException("EmployeeID");
+            throw new UnauthorizedException();
         }
     }
 
@@ -60,7 +60,7 @@ public class EmployeeSignInCommand implements ResultCommandInterface<EmployeeSig
         Optional<EmployeeEntity> employee, byte[] password) {
         if (!(Arrays.equals(employee.get().getPassword(), password)))
         {
-            throw new UnprocessableEntityException("Password");
+            throw new UnauthorizedException();
         }
     }
 
@@ -69,7 +69,7 @@ public class EmployeeSignInCommand implements ResultCommandInterface<EmployeeSig
         Optional<EmployeeEntity> employee, String employeeId) {
         final Optional<ActiveUserEntity> queriedActiveUserEntity = 
             this.activeUserRepository
-                .findByEmployeeId(UUID.fromString(this.apiEmployeeSignIn.getEmployeeId()));
+                .findByEmployeeId(employee.get().getId());
         if (queriedActiveUserEntity.isPresent()) {
             queriedActiveUserEntity.get().setSessionKey(this.sessionKey);
             activeUserRepository.save(queriedActiveUserEntity.get());
@@ -77,11 +77,10 @@ public class EmployeeSignInCommand implements ResultCommandInterface<EmployeeSig
         } else {
             ActiveUserEntity newActiveUserEntity = new ActiveUserEntity();
             newActiveUserEntity.setSessionKey(this.sessionKey);
-            newActiveUserEntity.setEmployeeId(
-                UUID.fromString(this.apiEmployeeSignIn.getEmployeeId()));
+            newActiveUserEntity.setEmployeeId(employee.get().getId());
             newActiveUserEntity.setClassification(employee.get().getClassification());
             newActiveUserEntity.setName(
-                employee.get().getFirstName() + " " + employee.get().getLastName());
+                employee.get().getFirstName().concat(" ").concat(employee.get().getLastName()));
             activeUserRepository.save(newActiveUserEntity);
             return newActiveUserEntity;
         }
