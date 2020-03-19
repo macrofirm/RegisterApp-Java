@@ -12,7 +12,7 @@ function getEmployeePasswordElement() {
 function validateSignIn() {
 	const employeeId = getEmployeeIdElement();
 	const password = getEmployeePasswordElement();
-	if(isNaN(Number(employeeId.value)) || (Number(employeeId.value) <= 0)) {
+	if(isNaN(Number(employeeId.value)) || (Number(employeeId.value) < 0)) {
 		displayError("Invalid ID.");
 		return false;
 	}
