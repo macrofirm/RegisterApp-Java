@@ -21,12 +21,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //events
 function viewProductsClick(event) {
-    location.assign("productListing.html");
+    location.assign("/productListing");
     return;
 }
 
 function createEmployeeClick(event) {
-    location.assign("employeeDetail.html");
+    location.assign("/employeeDetail");
     return;
 }
 
