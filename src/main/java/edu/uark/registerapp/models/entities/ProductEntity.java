@@ -22,43 +22,55 @@ public class ProductEntity {
     @Id
     @Column(name="id", updatable = false)
     @GeneratedValue(strategy=GenerationType.AUTO)
-    	private final UUID id;
+    private final UUID id;
 
-			public UUID getId() {
-				return this.id;
-			}
+	public UUID getId() {
+		return this.id;
+	}
 
 	@Column(name = "lookupcode")
-		private String lookupCode;
+	private String lookupCode;
 
-			public String getLookupCode() {
-				return this.lookupCode;
-			}
-		
-			public ProductEntity setLookupCode(final String lookupCode) {
-				this.lookupCode = lookupCode;
-				return this;
-			}
+	public String getLookupCode() {
+		return this.lookupCode;
+	}
+
+	public ProductEntity setLookupCode(final String lookupCode) {
+		this.lookupCode = lookupCode;
+		return this;
+	}
 
 	@Column(name = "count")
-		private int count;
-	
-			public int getCount() {
-				return this.count;
-			}
-		
-			public ProductEntity setCount(final int count) {
-				this.count = count;
-				return this;
-			}
+	private int count;
+
+	public int getCount() {
+		return this.count;
+	}
+
+	public ProductEntity setCount(final int count) {
+		this.count = count;
+		return this;
+	}
+
+    @Column(name="price")
+    private long price;
+
+	public long getPrice() {
+		return this.price;
+	}
+
+	public ProductEntity setPrice(final long price) {
+		this.price = price;
+		return this;
+	}
 
 	@Column(name = "createdon", insertable = false, updatable = false)
 	@Generated(GenerationTime.INSERT)
-		private LocalDateTime createdOn;
-	
-			public LocalDateTime getCreatedOn() {
-				return this.createdOn;
-			}
+	private LocalDateTime createdOn;
+
+	public LocalDateTime getCreatedOn() {
+		return this.createdOn;
+	}
 
 	public Product synchronize(final Product apiProduct) {
 		this.setCount(apiProduct.getCount());
@@ -72,18 +84,21 @@ public class ProductEntity {
 
 	public ProductEntity() {
 		this.count = -1;
+		this.price = 0L;
 		this.id = new UUID(0, 0);
 		this.lookupCode = StringUtils.EMPTY;
 	}
 
-	public ProductEntity(final String lookupCode, final int count) {
+	public ProductEntity(final String lookupCode, final int count, final long price) {
 		this.count = count;
+		this.price = price;
 		this.id = new UUID(0, 0);
 		this.lookupCode = lookupCode;
 	}
 
 	public ProductEntity(final Product apiProduct) {
-    	this.id = new UUID(0, 0);
+		this.price = 0L;
+		this.id = new UUID(0, 0);
 		this.count = apiProduct.getCount();
 		this.lookupCode = apiProduct.getLookupCode();
 	}
