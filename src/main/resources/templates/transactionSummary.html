@@ -7,6 +7,40 @@
 
 	<script type="text/javascript" src="/scripts/master.js" defer></script>
 	<script type="text/javascript" src="/scripts/transactionSummary.js" defer></script>
+
+	<script>
+
+		function incrementValue(){
+
+    		var value = parseInt(document.getElementById('number').value, 10);
+   		 	value = isNaN(value) ? 0 : value;
+    		value++;
+			document.getElementById('number').value = value;
+			
+		}
+
+		function decrementValue(){
+
+			var value = parseInt(document.getElementById('number').value, 10);
+			value = isNaN(value) ? 0 : value;
+			if(value > 0)
+				value--;
+			else
+				value = 0;
+			document.getElementById('number').value = value;
+
+		}
+		/* This function will display the total price of all of the products. 
+		//number of products times a random number to display 
+		function totalPrice(){
+
+			
+
+		} 
+		*/
+	</script>
+
+
 </head>
 
 <body>
@@ -23,10 +57,15 @@
 		<form method="post" actions="">
 			<div>
 				<label for="name"> Product </label>
-				<input type="text" name="product" id="product" value = "1">
+				
+				<input type="button" onclick="decrementValue()" value="-" />
+				<input type="text" id="number" value="1" maxlength="1" size="1" style="text-align: center;" />
+   				<input type="button" onclick="incrementValue()" value="+" />
 			</div>
 			
 			<div>
+				<label for="name">________________________________________________</label>
+				<br/> <br/>
 				<label for="name"> Total Price: </label>
 			<div>
 			

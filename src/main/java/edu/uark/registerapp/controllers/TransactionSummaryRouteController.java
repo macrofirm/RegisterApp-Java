@@ -25,6 +25,6 @@ import edu.uark.registerapp.models.enums.EmployeeClassification;
 @RequestMapping(value = "/")
 public class TransactionSummaryRouteController extends BaseRouteController{
 
-    @RequestMapping
+    
 
 }
