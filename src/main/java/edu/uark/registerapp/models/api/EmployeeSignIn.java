@@ -2,12 +2,12 @@ package edu.uark.registerapp.models.api;
 
 public class EmployeeSignIn {
 
-    private String employeeID;
+    private String employeeId;
     public String getEmployeeId() {
-        return employeeID;
+        return employeeId;
     }
-    public EmployeeSignIn setEmployeeId(String employeeID) {
-        this.employeeID = employeeID;
+    public EmployeeSignIn setEmployeeId(String employeeId) {
+        this.employeeId = employeeId;
         return this;
     }
 

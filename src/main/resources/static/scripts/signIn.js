@@ -2,28 +2,24 @@ document.addEventListener("DOMContentLoaded", function(event){
 });
 
 function getEmployeeIdElement() {
-	return document.getElementById("employeeID");
+	return document.getElementById("employeeId");
 }
 
 function getEmployeePasswordElement() {
 	return document.getElementById("password");
 }
 
-function getSignInActionElement() {
-	return document.getElementById("signInButton");
-}
-
 function validateSignIn() {
-	employeeID = getEmployeeIdElement();
-	password = getEmployeePasswordElement();
-	invalid = false;
-	if(Number.isInteger(employeeID) || employeeID.value == "") {
+	const employeeId = getEmployeeIdElement();
+	const password = getEmployeePasswordElement();
+	if(isNaN(Number(employeeId.value)) || (Number(employeeId.value) < 0)) {
 		displayError("Invalid ID.");
-		invalid = true;
+		return false;
 	}
-	else if(password.value == "") {
+	if((password.value == null) || (password.value.trim() === "")) {
 		displayError("Invalid Password.")
-		invalid = true;
+		return false;
 	}
-	return invalid;
+	
+	return true;
 }

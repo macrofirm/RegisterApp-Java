@@ -23,27 +23,16 @@
 		</div>
 
 		<form action="/" method="POST" onsubmit="return validateSignIn();" class="inputContent">
-			<div class="signInCredentialsWrapper">
-				<table id="signInCredentials">
-					<tbody>
-						<tr>
-							<td class="label">Employee ID:</td>
-							<td>
-								<input id="employeeID" type="number" class="update" th:value="${employeeId}"/>
-							</td>
-						</tr>
-						<tr>
-							<td class="label">Password:</td>
-							<td>
-								<input id="password" type="password" class="update" />
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
 			<div>
-				<br />
-				<input id="signInButton" type="submit" class="submit" value="Sign In"></input>
+				<input id="employeeId" type="number" name="employeeId" placeholder="Employee ID" class="update" th:value="${employeeId}" />
+			</div>
+			<br />
+			<div>
+				<input id="password" type="password" name="password" placeholder="Password" class="update" />
+			</div>
+			<br /><br />
+			<div>
+				<input type="submit" value="Sign In" class="submit" />
 			</div>
 		</form>
 
