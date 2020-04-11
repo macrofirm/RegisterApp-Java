@@ -2,6 +2,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if(getCheckoutButtonElement() != null) {
         getCheckoutButtonElement().addEventListener("click", checkout);
     }
+    if(getContinueShoppingButtonElement() != null) {
+        getContinueShoppingButtonElement().addEventListener("click", continueShopping);
+    }
 });
 
 function checkout() {
@@ -23,6 +26,7 @@ function removeItem(itemID) {
 
 function continueShopping() {
     location.assign("/productListing");
+    return;
 }
 
 function getCheckoutButtonElement() {
