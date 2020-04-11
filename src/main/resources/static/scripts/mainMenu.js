@@ -19,9 +19,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-//events
+//event
 function startTransactionClick(event) {
-    location.assign("/productListing");
+    location.assign("/shoppingCart");
     return;
 }
 
