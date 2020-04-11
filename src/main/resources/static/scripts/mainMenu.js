@@ -26,7 +26,7 @@ function startTransactionClick(event) {
 }
 
 function viewProductsClick(event) {
-    location.assign("/employeeDetail");
+    location.assign("/productListing");
     return;
 }
 
