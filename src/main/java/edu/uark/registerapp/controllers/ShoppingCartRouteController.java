@@ -11,7 +11,7 @@ import edu.uark.registerapp.controllers.enums.ViewNames;
 @Controller
 @RequestMapping(value = "/shoppingCart")
 public class ShoppingCartRouteController {
-    @RequestMapping(method RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public ModelAndView showShoppingCart() {
         ModelAndView modelAndView =
             new ModelAndView(ViewNames.SHOPPING_CART.getViewName());
