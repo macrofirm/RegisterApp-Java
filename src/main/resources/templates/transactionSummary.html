@@ -1,0 +1,83 @@
+<head>
+	<title>Transaction Summary</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+	<link rel="stylesheet" type="text/css" href="/styles/master.css">
+	<link rel="stylesheet" type="text/css" href="/styles/transactionSummary.css">
+
+	<script type="text/javascript" src="/scripts/master.js" defer></script>
+	<script type="text/javascript" src="/scripts/transactionSummary.js" defer></script>
+
+	<script>
+
+		function incrementValue(){
+
+    		var value = parseInt(document.getElementById('number').value, 10);
+   		 	value = isNaN(value) ? 0 : value;
+    		value++;
+			document.getElementById('number').value = value;
+			
+		}
+
+		function decrementValue(){
+
+			var value = parseInt(document.getElementById('number').value, 10);
+			value = isNaN(value) ? 0 : value;
+			if(value > 0)
+				value--;
+			else
+				value = 0;
+			document.getElementById('number').value = value;
+
+		}
+		/* This function will display the total price of all of the products. 
+		//number of products times a random number to display 
+		function totalPrice(){
+
+			
+
+		} 
+		*/
+	</script>
+
+
+</head>
+
+<body>
+
+	<div class="header">
+		<h1 class="primary-message">Transaction Summary</h1>
+	</div>
+
+	<div id="main" class="main">
+		<div id="error" th:class="${#strings.isEmpty(errorMessage)} ? hidden : ''">
+			<h4 id="errorMessage" class="error-message" th:text="${errorMessage}"></h4>
+		</div>
+
+		<form method="post" actions="">
+			<div>
+				<label for="name"> Product </label>
+				
+				<input type="button" onclick="decrementValue()" value="-" />
+				<input type="text" id="number" value="1" maxlength="1" size="1" style="text-align: center;" />
+   				<input type="button" onclick="incrementValue()" value="+" />
+			</div>
+			
+			<div>
+				<label for="name">________________________________________________</label>
+				<br/> <br/>
+				<label for="name"> Total Price: </label>
+			<div>
+			
+		</form>
+		
+
+	</div>
+	
+	<div class="footer">
+		<button id="okayButton" type="button" class="action">Okay</button>
+	</div>
+		
+</body>
+
+</html>
