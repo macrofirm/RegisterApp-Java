@@ -21,12 +21,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //event
 function startTransactionClick(event) {
-    location.assign("/shoppingCart");
+    location.assign("/productListing");
     return;
 }
 
 function viewProductsClick(event) {
-    location.assign("/shoppingCart");
+    location.assign("/productListing");
     return;
 }
 
