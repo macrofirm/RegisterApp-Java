@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
 	const productListElements = document.getElementById("productsListing").children;
 	if(getReturnToCartButtonElement() != null){
-		getReturnToCartButton().addEventListener("click", cartRedirect);
+		getReturnToCartButtonElement().addEventListener("click", cartRedirect);
 	}
 	for (let i = 0; i < productListElements.length; i++) {
 		productListElements[i].addEventListener("click", productClick);
