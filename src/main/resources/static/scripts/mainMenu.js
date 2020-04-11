@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     if(getTransactionButtonElement() != null) {
-        getTransactionButtonElement().addEventListener("click", tempDisplayError);
+        getTransactionButtonElement().addEventListener("click", startTransactionClick);
     }
     if(getViewProductsButtonElement() != null) {
         getViewProductsButtonElement().addEventListener("click", viewProductsClick);
@@ -19,9 +19,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-//events
+//event
+function startTransactionClick(event) {
+    location.assign("/shoppingCart");
+    return;
+}
+
 function viewProductsClick(event) {
-    location.assign("/productListing");
+    location.assign("/shoppingCart");
     return;
 }
 
