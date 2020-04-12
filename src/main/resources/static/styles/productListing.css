@@ -1,3 +1,8 @@
+.primary-message{
+	display: inline;
+	text-align: center;
+}
+
 .productsWrapper {
 	display: inline-block;
 }
@@ -27,4 +32,38 @@
 
 a.button {
 	text-decoration: none;
+}
+
+.buttonWrapper{
+	padding-top: 0px;
+}
+
+#returnToCartButton{
+	float: right;
+}
+
+#returnToCartButton:hover {
+	cursor: pointer;
+    color: #ffffff;
+    background-color: #000000;
+}
+
+#addToCartButton:hover {
+	cursor: pointer;
+    color: #ffffff;
+    background-color: #000000;
+}
+
+#numberOfItems{
+	width: 25px;
+}
+
+.productNameDisplay,
+.productPriceDisplay{
+	visibility: hidden;
+}
+
+.productCountDisplay,
+.productCreatedOnDisplay{
+	visibility: visible;
 }

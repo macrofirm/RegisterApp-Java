@@ -1,7 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
 	const productListElements = document.getElementById("productsListing").children;
 	if(getReturnToCartButtonElement() != null){
-		getReturnToCartButton().addEventListener("click", cartRedirect);
+		getReturnToCartButtonElement().addEventListener("click", returnToCart);
+	}
+	if(getAddToCartButtonElement() != null){
+		getAddToCartButtonElement().addEventListener("click", addToCart);
 	}
 	for (let i = 0; i < productListElements.length; i++) {
 		productListElements[i].addEventListener("click", productClick);
@@ -35,11 +38,11 @@ function productClick(event) {
 		+ listItem.querySelector("input[name='productId'][type='hidden']").value);
 }
 
-function cartRedirect(){
-	alert("Functionality is not yet implemented.  Will redirect to the shopping cart.");
+function returnToCart(event){
+	window.location.assign("shoppingCart.html");
 }
 
-function addToCart (){
+function addToCart(event){
 	if(!validateNumber()){
 		return;
 	}
@@ -47,13 +50,13 @@ function addToCart (){
 }
 
 function validateNumber(){
-	const number = getAddToCartButtonElement();
+	const num = getNumberOfItemsElement().value;
 	valid = true;
-	if(number == ""){
+	if(num== ""){
 		alert("Must enter number of items");
 		valid = false;
 	}
-	else if(number.value() <= 0){
+	else if(num <= 0){
 		alert("Number of items must be greater than 0");
 		valid = false;
 	}
@@ -69,4 +72,8 @@ function getAddToCartButtonElement(){
 
 function getReturnToCartButtonElement(){
 	return document.getElementById("returnToCartButton");
+}
+
+function getNumberOfItemsElement(){
+	return document.getElementById("numberOfItems");
 }
