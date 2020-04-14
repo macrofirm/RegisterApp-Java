@@ -36,6 +36,7 @@ function productCountKeypress(event) {
 // Save
 function saveActionClick(event) {
 	if (!validateSave()) {
+		console.log("Here");
 		return;
 	}
 
