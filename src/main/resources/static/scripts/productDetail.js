@@ -83,7 +83,7 @@ function saveActionClick(event) {
 
 function validateSave() {
 	if(document.getElementById("saveButton").getAttribute('style') == 'none'){
-		console.log("sup");
+		displayError("User not Authoized.");
 		return false;
 	}
 	
