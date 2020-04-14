@@ -87,10 +87,12 @@ function validateSave() {
 		displayError("User not Authoized.");
 		return false;
 	}
-	
 	const lookupCode = getProductLookupCode();
-	const price = getPrice();
 	const count = getProductCount();
+	const price = getPrice();
+	console.log(lookupCode);
+	console.log("\n" + count);
+	console.log("\n" + price);
 	if ((lookupCode == null) || (lookupCode.trim() === "")) {
 		displayError("Please provide a valid product lookup code.");
 		return false;
