@@ -51,7 +51,7 @@ function saveActionClick(event) {
 		lookupCode: getProductLookupCode(),
 		price: getPrice()
 	};
-
+	console.log(saveProductRequest);
 	if (productIdIsDefined) {
 		ajaxPut(saveActionUrl, saveProductRequest, (callbackResponse) => {
 			saveActionElement.disabled = false;
