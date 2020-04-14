@@ -39,7 +39,7 @@ function saveActionClick(event) {
 		console.log("Here");
 		return;
 	}
-
+	console.log("HERE");
 	const saveActionElement = event.target;
 	saveActionElement.disabled = true;
 
