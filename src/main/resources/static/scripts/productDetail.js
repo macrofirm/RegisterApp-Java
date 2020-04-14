@@ -36,10 +36,8 @@ function productCountKeypress(event) {
 // Save
 function saveActionClick(event) {
 	if (!validateSave()) {
-		console.log("Here");
 		return;
 	}
-	console.log("HERE");
 	const saveActionElement = event.target;
 	saveActionElement.disabled = true;
 
