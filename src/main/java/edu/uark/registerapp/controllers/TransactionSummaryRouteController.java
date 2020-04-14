@@ -12,7 +12,6 @@ import edu.uark.registerapp.commands.products.ProductsQuery;
 import edu.uark.registerapp.models.api.Product;
 
 
-//The 'Okay' button is going to route to 'Main Menu'
 @Controller
 @RequestMapping(value = "/transactionSummary")
 public class TransactionSummaryRouteController extends BaseRouteController{
