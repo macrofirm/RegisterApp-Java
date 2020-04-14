@@ -10,34 +10,37 @@
 
 	<script>
 
+		var quantity;
+
 		function incrementValue(){
 
-    		var value = parseInt(document.getElementById('number').value, 10);
-   		 	value = isNaN(value) ? 0 : value;
-    		value++;
-			document.getElementById('number').value = value;
+    		quantity = parseInt(document.getElementById('number').value, 10);
+   		 	quantity = isNaN(quantity) ? 0 : quantity;
+    		quantity++;
+			document.getElementById('number').value = quantity;
 			
 		}
 
 		function decrementValue(){
 
-			var value = parseInt(document.getElementById('number').value, 10);
-			value = isNaN(value) ? 0 : value;
-			if(value > 0)
-				value--;
+			quantity = parseInt(document.getElementById('number').value, 10);
+			quantity = isNaN(quantity) ? 0 : quantity;
+			if(quantity > 0)
+				quantity--;
 			else
-				value = 0;
-			document.getElementById('number').value = value;
+				quantity = 0;
+			document.getElementById('number').value = quantity;
 
 		}
-		/* This function will display the total price of all of the products. 
-		//number of products times a random number to display 
+		
 		function totalPrice(){
-
-			
+			quantity = parstInt(document.getElementById('total').value, 10);
+			quantity = isNaN(quantity) ? 0 : quantity;
+			quantity = quantity * 4;
+			document.getElementById('total').value = quantity;
 
 		} 
-		*/
+		
 	</script>
 
 
@@ -67,6 +70,14 @@
 				<label for="name">________________________________________________</label>
 				<br/> <br/>
 				<label for="name"> Total Price: </label>
+
+
+				
+				<br/>
+				
+				<p type="text" id="total" value="0" maxlength="1" size="1" style="text-align: left;" />
+				<input type="button" onclick="document.getElementById('total').innerHTML=quantity;" value="Get Total Price" />
+
 			<div>
 			
 		</form>
