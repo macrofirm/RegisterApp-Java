@@ -11,7 +11,7 @@
 	<script>
 
 		var quantity;
-
+		
 		function incrementValue(){
 
     		quantity = parseInt(document.getElementById('number').value, 10);
@@ -39,6 +39,12 @@
 			quantity = quantity * 4;
 			document.getElementById('total').value = quantity;
 
+		} 
+
+		function okay() {
+
+			location.assign("/mainMenu");
+			return;
 		} 
 		
 	</script>

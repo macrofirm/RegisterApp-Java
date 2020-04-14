@@ -12,7 +12,6 @@ import edu.uark.registerapp.commands.products.ProductsQuery;
 import edu.uark.registerapp.models.api.Product;
 
 
-//The 'Okay' button is going to route to 'Main Menu'
 @Controller
 @RequestMapping(value = "/transactionSummary")
 public class TransactionSummaryRouteController extends BaseRouteController{
@@ -21,21 +20,8 @@ public class TransactionSummaryRouteController extends BaseRouteController{
         ModelAndView modelAndView =
             new ModelAndView(ViewNames.TRANSACTION_SUMMARY.getViewName());
         
-            try {
-                modelAndView.addObject(
-                    ViewModelNames.PRODUCTS.getValue(),
-                    this.productsQuery.execute());
-            } catch (final Excepeiton e) {
-                modelAndView.addObject(
-                    viewModelNames.ERROR_MESSAGE.getValue(),
-                    e.getMessage());
-                modelAndView.addObject(
-                    ViewModelNames.PRODUCTS.getValue(),
-                    (new Product[0]));
-            }
+
+
         return modelAndView;
     }
-
-    @Autowired
-    private ProductsQuery productsQuery;
 }
