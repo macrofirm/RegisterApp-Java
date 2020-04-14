@@ -6,11 +6,13 @@ document.addEventListener("DOMContentLoaded", () => {
 	for (let i = 0; i < productListElements.length; i++) {
 		productListElements[i].addEventListener("click", productClick);
 	}
-	for (let i = 0; i < productListElements.length; i++) {
+	// TODO: Check this code against products with a count of 0
+	// EDIT: Does not work
+	/*for (let i = 0; i < productListElements.length; i++) {
 		if(document.getElementsByClassName("productCountDisplay")[i] == "0") {
 			productListElements[i].productCountDisplay = "Out of Stock";
 		}
-	}
+	}*/
 });
 
 function findClickedListItemElement(clickedTarget) {
