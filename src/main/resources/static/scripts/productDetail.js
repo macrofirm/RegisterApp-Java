@@ -35,7 +35,7 @@ function productCountKeypress(event) {
 
 // Save
 function saveActionClick(event) {
-	if (!validateSave()) {
+	if (validateSave()) {
 		return;
 	}
 
