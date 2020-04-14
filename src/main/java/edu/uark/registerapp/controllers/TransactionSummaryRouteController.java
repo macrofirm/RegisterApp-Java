@@ -31,7 +31,7 @@ public class TransactionSummaryRouteController extends BaseRouteController{
                     e.getMessage());
                 modelAndView.addObject(
                     ViewModelNames.PRODUCTS.getValue(),
-                    new Product[0]));
+                    (new Product[0]));
             }
         return modelAndView;
     }

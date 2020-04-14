@@ -5,6 +5,12 @@ document.addEventListener("DOMContentLoaded", () => {
 	}
 });
 
+function okay() {
+
+		location.assign("/mainMenu");
+		return;
+}
+
 
 //getters
 function getOkayButtonElement() {
