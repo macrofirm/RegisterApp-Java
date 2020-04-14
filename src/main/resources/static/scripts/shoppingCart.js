@@ -7,17 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-var request = new XMLHttpRequest();
-request.open("GET", "/scripts/cart.json");
-request.addEventListener('load', readJSON);
-request.send();
-
-function readJSON(event) {
-    var json = this.responseText;
-    var obj = JSON.parse(json);
-    console.log(obj);
-}
-
 function checkout() {
     location.assign("/transactionSummary");
     return;
