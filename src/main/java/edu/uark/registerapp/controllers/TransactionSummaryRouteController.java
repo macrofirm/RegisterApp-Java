@@ -27,7 +27,7 @@ public class TransactionSummaryRouteController extends BaseRouteController{
                     this.productsQuery.execute());
             } catch (final Exception e) {
                 modelAndView.addObject(
-                    viewModelNames.ERROR_MESSAGE.getValue(),
+                    ViewModelNames.ERROR_MESSAGE.getValue(),
                     e.getMessage());
                 modelAndView.addObject(
                     ViewModelNames.PRODUCTS.getValue(),
