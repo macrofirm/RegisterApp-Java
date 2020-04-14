@@ -88,21 +88,21 @@ function validateSave() {
 	}
 	
 	const lookupCode = getProductLookupCode();
+	const price = getPrice();
+	const count = getProductCount();
 	if ((lookupCode == null) || (lookupCode.trim() === "")) {
 		displayError("Please provide a valid product lookup code.");
 		return false;
 	}
-
-	const count = getProductCount();
-	if ((count == null) || isNaN(count)) {
+	else if ((count == null) || isNaN(count)) {
 		displayError("Please provide a valid product count.");
 		return false;
-	} else if (count < 0) {
+	}
+	else if (count < 0) {
 		displayError("Product count may not be negative.");
 		return false;
 	}
-	const price = getPrice();
-	if((price == null) || isNaN(price)) {
+	else if((price == null) || isNaN(price)) {
 		displayError("Please provide a valid price.");
 		return false;
 	}
