@@ -83,6 +83,7 @@ function saveActionClick(event) {
 
 function validateSave() {
 	if(document.getElementById("saveButton").getAttribute('style') == 'none'){
+		console.log("sup");
 		return false;
 	}
 	
