@@ -43,5 +43,5 @@ function okayButtonClickHandler() {
 
 //getters
 function getOkayButtonElement() {
-    return document.getElementById("startOkayButton");
+    return document.getElementById("okayButton");
 }
