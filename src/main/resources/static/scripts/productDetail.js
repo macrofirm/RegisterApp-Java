@@ -207,13 +207,13 @@ function getProductLookupCodeElement() {
 }
 
 function getProductCount() {
-	return Number(getProductCountElement().value);
+	return getProductCountElement().value;
 }
 function getProductCountElement() {
 	return document.getElementById("productCount");
 }
 function getPrice() {
-	return Number(getPriceElement().value);
+	return getPriceElement().value;
 function getPriceElement() {
 	return document.getElementById("price");
 }
