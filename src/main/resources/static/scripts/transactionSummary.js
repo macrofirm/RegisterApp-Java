@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-	const okayButtonElement = getokayButtonElement();
-	if (okayButtonElement != null) {
-		okayButtonElement.addEventListener("click", okayButtonClickHandler);
+	
+	if (getOkayButtonElement() != null) {
+		getOkayButtonElement().addEventListener("click", okayButtonClickHandler);
 	}
 });
 
