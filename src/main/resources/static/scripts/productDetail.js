@@ -36,7 +36,6 @@ function productCountKeypress(event) {
 // Save
 function saveActionClick(event) {
 	if (!validateSave()) {
-		location.assign("/productListing/");
 		return;
 	}
 
