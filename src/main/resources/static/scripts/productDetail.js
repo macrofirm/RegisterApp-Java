@@ -49,7 +49,7 @@ function saveActionClick(event) {
 		id: productId,
 		count: getProductCount(),
 		lookupCode: getProductLookupCode(),
-		price: getProductIdElement()
+		price: getProductId()
 	};
 
 	if (productIdIsDefined) {
