@@ -94,7 +94,7 @@ function validateSave() {
 		displayError("Please provide a valid product lookup code.");
 		return false;
 	}
-	else if(count.length() == 0){
+	else if(count.length == 0){
 		displayError("Please provide a valid product count.");
 		return false;
 	}
@@ -106,7 +106,7 @@ function validateSave() {
 		displayError("Product count may not be negative.");
 		return false;
 	}
-	else if(price.length() == 0){
+	else if(price.length == 0){
 		displayError("Please provide a valid price.");
 		return false;
 	}
