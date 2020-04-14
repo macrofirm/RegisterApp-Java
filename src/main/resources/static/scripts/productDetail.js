@@ -94,11 +94,7 @@ function validateSave() {
 		displayError("Please provide a valid product lookup code.");
 		return false;
 	}
-	else if(count.value.length() == 0){
-		displayError("Please provide a valid product count.");
-		return false;
-	}
-	else if ((count== null) || isNaN(count)) {
+	else if ((count === null) || isNaN(count)) {
 		displayError("Please provide a valid product count.");
 		return false;
 	}
@@ -110,7 +106,7 @@ function validateSave() {
 		displayError("Please provide a valid price.");
 		return false;
 	}
-	else if((price == null) || isNaN(price)) {
+	else if((price === null) || isNaN(price)) {
 		displayError("Please provide a valid price.");
 		return false;
 	}
