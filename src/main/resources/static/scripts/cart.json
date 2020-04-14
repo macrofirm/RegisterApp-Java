@@ -1,8 +1,10 @@
 {
     "1":
-    {
-        "Lookup ID": "item",
-        "Count": 12,
-        "Price": 12.00
-    }
+    [
+        {
+            "Lookup ID": "item",
+            "Count": 12,
+            "Price": 12.00
+        }
+    ]
 }
