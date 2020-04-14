@@ -35,7 +35,7 @@ function productCountKeypress(event) {
 
 // Save
 function saveActionClick(event) {
-	if (validateSave()) {
+	if (!validateSave()) {
 		return;
 	}
 
@@ -110,8 +110,10 @@ function validateSave() {
 		displayError("Price may not be negative.");
 		return false;
 	}
-
-	return true;
+	else{
+		clearError();
+		return true;
+	}
 }
 
 function displayProductSavedAlertModal() {
