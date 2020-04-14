@@ -36,10 +36,8 @@ function productCountKeypress(event) {
 // Save
 function saveActionClick(event) {
 	if (!validateSave()) {
-		location.assign("/productListing/");
 		return;
 	}
-
 	const saveActionElement = event.target;
 	saveActionElement.disabled = true;
 
@@ -87,23 +85,30 @@ function validateSave() {
 		displayError("User not Authoized.");
 		return false;
 	}
-	
 	const lookupCode = getProductLookupCode();
+	const count = getProductCount();
+	const price = getPrice();
 	if ((lookupCode == null) || (lookupCode.trim() === "")) {
 		displayError("Please provide a valid product lookup code.");
 		return false;
 	}
-
-	const count = getProductCount();
-	if ((count == null) || isNaN(count)) {
+	else if(count.length == 0){
 		displayError("Please provide a valid product count.");
 		return false;
-	} else if (count < 0) {
+	}
+	else if ((count === null) || isNaN(count)) {
+		displayError("Please provide a valid product count.");
+		return false;
+	}
+	else if (count < 0) {
 		displayError("Product count may not be negative.");
 		return false;
 	}
-	const price = getPrice();
-	if((price == null) || isNaN(price)) {
+	else if(price.length == 0){
+		displayError("Please provide a valid price.");
+		return false;
+	}
+	else if((price === null) || isNaN(price)) {
 		displayError("Please provide a valid price.");
 		return false;
 	}
@@ -111,8 +116,10 @@ function validateSave() {
 		displayError("Price may not be negative.");
 		return false;
 	}
-
-	return true;
+	else{
+		clearError();
+		return true;
+	}
 }
 
 function displayProductSavedAlertModal() {
@@ -198,15 +205,15 @@ function getProductLookupCodeElement() {
 }
 
 function getProductCount() {
-	return Number(getProductCountElement().value);
+	return getProductCountElement().value;
 }
 function getProductCountElement() {
 	return document.getElementById("productCount");
 }
+function getPrice() {
+	return getPriceElement().value;
 function getPriceElement() {
 	return document.getElementById("price");
 }
-function getPrice() {
-	return Number(getPriceElement().value);
 }
 // End getters and setters
