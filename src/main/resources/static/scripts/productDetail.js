@@ -90,19 +90,24 @@ function validateSave() {
 	const lookupCode = getProductLookupCode();
 	const count = getProductCount();
 	const price = getPrice();
-	console.log(lookupCode);
-	console.log("\n" + count);
-	console.log("\n" + price);
 	if ((lookupCode == null) || (lookupCode.trim() === "")) {
 		displayError("Please provide a valid product lookup code.");
 		return false;
 	}
-	else if ((count == null) || isNaN(count)) {
+	else if(count.trim() === ""){
+		displayError("Please provide a valid product count.");
+		return false;
+	}
+	else if ((count== null) || isNaN(count)) {
 		displayError("Please provide a valid product count.");
 		return false;
 	}
 	else if (count < 0) {
 		displayError("Product count may not be negative.");
+		return false;
+	}
+	else if(price.trim() === ""){
+		displayError("Please provide a valid price.");
 		return false;
 	}
 	else if((price == null) || isNaN(price)) {
@@ -207,10 +212,10 @@ function getProductCount() {
 function getProductCountElement() {
 	return document.getElementById("productCount");
 }
+function getPrice() {
+	return Number(getPriceElement().value);
 function getPriceElement() {
 	return document.getElementById("price");
 }
-function getPrice() {
-	return Number(getPriceElement().value);
 }
 // End getters and setters
