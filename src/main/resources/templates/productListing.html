@@ -17,9 +17,11 @@
 	</div>
 
 
+	<!--
 	<div class="returnToCartButton">
 		<button id="returnToCartButton" th:style="${transactionStarted} ? initial : none">Return to Cart</button>
 	</div>
+	-->
 
 	<div id="main" class="main">
 		<div id="error" th:class="${#strings.isEmpty(errorMessage)} ? hidden : ''">
@@ -43,6 +45,7 @@
 					<br /><span class="productPriceDisplay" th:text="${product.price}">Price</span>-->
 				</li>
 			</ul>
+			<!--
 			<div class="buttonWrapper">
 				<div>
 					<input id="numberOfItems" type="number" th:style="${transactionStarted} ? initial : none">
@@ -51,6 +54,7 @@
 					<button id="addToCartButton" type="submit" th:style="${transactionStarted} ? initial : none">Add To Cart</button>
 				</div>
 			</div>
+			-->
 		</div>
 
 		<div class="hidden">
