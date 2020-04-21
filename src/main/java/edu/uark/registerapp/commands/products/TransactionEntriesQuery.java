@@ -14,14 +14,18 @@ import edu.uark.registerapp.models.entities.TransactionEntryEntity;
 import edu.uark.registerapp.models.repositories.TransactionEntryRepository;
 
 @Service
-public class TransactionEntryQuery implements ResultCommandInterface<List<TransactionEntry>>{
+public class TransactionEntriesQuery implements ResultCommandInterface<List<TransactionEntry>>{
     @Override
     public List<TransactionEntry> execute() {
         final LinkedList<TransactionEntry> transactionEntries = new LinkedList<TransactionEntry>();
 
-        for (final TransactionEntryEntity transactionEntryEntity : transactionEntryRepository.findByTransactionId(this.transactionId)) {
+        for (final TransactionEntryEntity transactionEntryEntity : transactionEntryRepository.findAll()) {
             transactionEntries.addLast(new TransactionEntry(transactionEntryEntity));
         }
+
+        // for (final TransactionEntryEntity transactionEntryEntity : transactionEntryRepository.findByTransactionId(this.transactionId)) {
+        //     transactionEntries.addLast(new TransactionEntry(transactionEntryEntity));
+        // }
 
         return transactionEntries;
     }
@@ -31,7 +35,7 @@ public class TransactionEntryQuery implements ResultCommandInterface<List<Transa
     public UUID getTransactionId() {
         return this.transactionId;
     }
-    public TransactionEntryQuery getTransactionId(final UUID transactionId) {
+    public TransactionEntriesQuery setTransactionId(final UUID transactionId) {
         this.transactionId = transactionId;
         return this;
     }

@@ -8,7 +8,8 @@ public enum ViewModelNames {
 	PRODUCT("product"), // Product detail
 	EMPLOYEE("employee"),//Employee details
 	EMPLOYEE_TYPES("employeeTypes"),
-	EMPLOYEE_ID("employeeId");
+	EMPLOYEE_ID("employeeId"),
+	TRANSACTION_ENTRIES("transactionEntries");
 	
 	public String getValue() {
 		return value;
