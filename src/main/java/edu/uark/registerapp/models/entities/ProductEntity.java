@@ -53,13 +53,13 @@ public class ProductEntity {
 	}
 
     @Column(name="price")
-    private float price;
+    private double price;
 
-	public float getPrice() {
+	public double getPrice() {
 		return this.price;
 	}
 
-	public ProductEntity setPrice(final float price) {
+	public ProductEntity setPrice(final double price) {
 		this.price = price;
 		return this;
 	}
@@ -89,7 +89,7 @@ public class ProductEntity {
 		this.lookupCode = StringUtils.EMPTY;
 	}
 
-	public ProductEntity(final String lookupCode, final int count, final float price) {
+	public ProductEntity(final String lookupCode, final int count, final double price) {
 		this.count = count;
 		this.price = price;
 		this.id = new UUID(0, 0);
