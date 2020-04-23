@@ -51,7 +51,6 @@ function saveActionClick(event) {
 		lookupCode: getProductLookupCode(),
 		price: getPrice()
 	};
-	console.log(saveProductRequest);
 	
 	if (productIdIsDefined) {
 		ajaxPut(saveActionUrl, saveProductRequest, (callbackResponse) => {
@@ -59,6 +58,7 @@ function saveActionClick(event) {
 
 			if (isSuccessResponse(callbackResponse)) {
 				displayProductSavedAlertModal();
+				//Might want a delayed redirect to product listing page or a back button other than the back arrow
 			}
 		});
 	} else {
