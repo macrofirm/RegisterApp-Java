@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import edu.uark.registerapp.controllers.enums.ViewNames;
 
 
-
 @Controller
 @RequestMapping(value = "/transactionSummary")
 public class TransactionSummaryRouteController extends BaseRouteController{
