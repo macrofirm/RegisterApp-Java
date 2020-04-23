@@ -58,13 +58,13 @@ public class Product extends ApiResponse {
 		return this;
 	}
 
-	private long price;
+	private float price;
 
-	public long getPrice() {
+	public float getPrice() {
 		return this.price;
 	}
 
-	public Product setPrice(final long price) {
+	public Product setPrice(final float price) {
 		this.price = price;
 		return this;
 	}
