@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		productLookupCodeElement.focus();
 		productLookupCodeElement.select();
 	}
+	setDecimalPlace();
 });
 
 function productLookupCodeKeypress(event) {
@@ -173,6 +174,10 @@ function deleteActionClick(event) {
 	}
 };
 // End delete
+
+function setDecimalPlace(){
+	getPriceElement().toFixed(2);
+}
 
 // Getters and setters
 function getSaveActionElement() {
