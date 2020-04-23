@@ -213,8 +213,8 @@ function getProductCountElement() {
 }
 function getPrice() {
 	return getPriceElement().value;
+}
 function getPriceElement() {
 	return document.getElementById("price");
-}
 }
 // End getters and setters
