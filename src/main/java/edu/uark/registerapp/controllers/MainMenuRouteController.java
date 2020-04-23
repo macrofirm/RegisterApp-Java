@@ -39,6 +39,10 @@ public class MainMenuRouteController extends BaseRouteController {
 		modelAndView.addObject(
 			ViewModelNames.IS_ELEVATED_USER.getValue(),
 			this.isElevatedUser(activeUserEntity.get()));
+
+		modelAndView.addObject(
+			ViewModelNames.EMPLOYEE_ID.getValue(),
+			activeUserEntity.get().getEmployeeId());
 		
 		return modelAndView;
 	}

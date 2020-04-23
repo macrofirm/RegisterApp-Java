@@ -1,4 +1,4 @@
-package edu.uark.registerapp.commands.products;
+package edu.uark.registerapp.commands.transactions;
 
 import java.util.Optional;
 

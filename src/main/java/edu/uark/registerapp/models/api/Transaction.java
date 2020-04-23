@@ -40,27 +40,27 @@ public class Transaction extends ApiResponse{
 		return this;
 	}
 	
-	private int transactiontype;
+	// private int transactiontype;
 	
-	public int getTransactionType() {
-		return this.transactiontype;
-	}
+	// public int getTransactionType() {
+	// 	return this.transactiontype;
+	// }
 	
-	public Transaction setTransactionType(final int transactiontype) {
-		this.transactiontype = transactiontype;
-		return this;
-	}
+	// public Transaction setTransactionType(final int transactiontype) {
+	// 	this.transactiontype = transactiontype;
+	// 	return this;
+	// }
 	
-	private UUID transactionreferenceid;
+	// private UUID transactionreferenceid;
 	
-	public UUID getTransactionReferenceId() {
-		return this.transactionreferenceid;
-	}
+	// public UUID getTransactionReferenceId() {
+	// 	return this.transactionreferenceid;
+	// }
 	
-	public Transaction setTransactionReferenceId(final UUID transactionreferenceid) {
-		this.transactionreferenceid = transactionreferenceid;
-		return this;
-	}
+	// public Transaction setTransactionReferenceId(final UUID transactionreferenceid) {
+	// 	this.transactionreferenceid = transactionreferenceid;
+	// 	return this;
+	// }
 	
 	private String createdOn;
 	
@@ -84,8 +84,8 @@ public class Transaction extends ApiResponse{
 		this.id = new UUID(0, 0);
 		this.cashierid = new UUID(0, 0);
 		this.total = -1;
-		this.transactiontype = -1;
-		this.transactionreferenceid = new UUID(0, 0);
+		// this.transactiontype = -1;
+		// this.transactionreferenceid = new UUID(0, 0);
 		this.setCreatedOn(LocalDateTime.now());
 	}
 	
@@ -95,8 +95,8 @@ public class Transaction extends ApiResponse{
 		this.id = transactionEntity.getId();
 		this.cashierid = transactionEntity.getCashierId();
 		this.total = transactionEntity.getTotal();
-		this.transactiontype = transactionEntity.getType();
-		this.transactionreferenceid = transactionEntity.getReferenceId();
+		// this.transactiontype = transactionEntity.getType();
+		// this.transactionreferenceid = transactionEntity.getReferenceId();
 		this.setCreatedOn(transactionEntity.getCreatedOn());
 	}
 	

@@ -21,7 +21,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //event
 function startTransactionClick(event) {
-    location.assign("/productListing");
+    const startTransactionElement = event.target;
+    startTransactionElement.disabled = true;
+    const startTransactionUrl = "/api/transaction/";
+    const startTransactionRequest = {
+        cashierId: getEmployeeIdElement().value,
+    };
+    ajaxPost(startTransactionUrl, startTransactionRequest, (callbackResponse) => {
+        startTransactionElement.disabled = false;
+        if(isSuccessResponse(callbackResponse)) {
+            location.assign("/productListing");
+        }
+    });
     return;
 }
 
@@ -63,4 +74,8 @@ function getCashierReportButtonElement() {
 
 function getSignOutActionElement() {
     return document.getElementById("signOutImage");
+}
+
+function getEmployeeIdElement() {
+    return document.getElementById("employeeId");
 }
