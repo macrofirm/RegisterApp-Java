@@ -58,13 +58,13 @@ public class Product extends ApiResponse {
 		return this;
 	}
 
-	private long price;
+	private double price;
 
-	public long getPrice() {
+	public double getPrice() {
 		return this.price;
 	}
 
-	public Product setPrice(final long price) {
+	public Product setPrice(final double price) {
 		this.price = price;
 		return this;
 	}
@@ -75,7 +75,7 @@ public class Product extends ApiResponse {
 		this.count = -1;
 		this.id = new UUID(0, 0);
 		this.lookupCode = StringUtils.EMPTY;
-		this.price = 0;
+		this.price = 0.00;
 
 		this.setCreatedOn(LocalDateTime.now());
 	}

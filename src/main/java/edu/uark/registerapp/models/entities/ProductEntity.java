@@ -53,13 +53,13 @@ public class ProductEntity {
 	}
 
     @Column(name="price")
-    private long price;
+    private double price;
 
-	public long getPrice() {
+	public double getPrice() {
 		return this.price;
 	}
 
-	public ProductEntity setPrice(final long price) {
+	public ProductEntity setPrice(final double price) {
 		this.price = price;
 		return this;
 	}
@@ -75,6 +75,7 @@ public class ProductEntity {
 	public Product synchronize(final Product apiProduct) {
 		this.setCount(apiProduct.getCount());
 		this.setLookupCode(apiProduct.getLookupCode());
+		this.setPrice(apiProduct.getPrice());
 
 		apiProduct.setId(this.getId());
 		apiProduct.setCreatedOn(this.getCreatedOn());
@@ -84,12 +85,12 @@ public class ProductEntity {
 
 	public ProductEntity() {
 		this.count = -1;
-		this.price = 0L;
+		this.price = 0.00;
 		this.id = new UUID(0, 0);
 		this.lookupCode = StringUtils.EMPTY;
 	}
 
-	public ProductEntity(final String lookupCode, final int count, final long price) {
+	public ProductEntity(final String lookupCode, final int count, final double price) {
 		this.count = count;
 		this.price = price;
 		this.id = new UUID(0, 0);
@@ -97,9 +98,9 @@ public class ProductEntity {
 	}
 
 	public ProductEntity(final Product apiProduct) {
-		this.price = 0L;
 		this.id = new UUID(0, 0);
 		this.count = apiProduct.getCount();
 		this.lookupCode = apiProduct.getLookupCode();
+		this.price = apiProduct.getPrice();
 	}
 }

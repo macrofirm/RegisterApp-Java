@@ -48,7 +48,8 @@ function saveActionClick(event) {
 	const saveProductRequest = {
 		id: productId,
 		count: getProductCount(),
-		lookupCode: getProductLookupCode()
+		lookupCode: getProductLookupCode(),
+		price: getPrice()
 	};
 	
 	if (productIdIsDefined) {
@@ -57,6 +58,7 @@ function saveActionClick(event) {
 
 			if (isSuccessResponse(callbackResponse)) {
 				displayProductSavedAlertModal();
+				//Might want a delayed redirect to product listing page or a back button other than the back arrow
 			}
 		});
 	} else {
@@ -211,8 +213,8 @@ function getProductCountElement() {
 }
 function getPrice() {
 	return getPriceElement().value;
+}
 function getPriceElement() {
 	return document.getElementById("price");
-}
 }
 // End getters and setters
