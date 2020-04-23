@@ -13,6 +13,8 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.GenerationTime;
 
+import edu.uark.registerapp.models.api.TransactionEntry;
+
 @Entity
 @Table(name="transactionentry")
 public class TransactionEntryEntity {
@@ -101,5 +103,13 @@ public class TransactionEntryEntity {
 		this.quantity = quantity;
 		this.productId = productId;
 		this.transactionId = transactionId;
+	}
+
+	public TransactionEntryEntity(TransactionEntry transactionEntry) {
+		this.price = transactionEntry.getPrice();
+		this.id = new UUID(0, 0);
+		this.quantity = transactionEntry.getQuantity();
+		this.productId = transactionEntry.getProductId();
+		this.transactionId = transactionEntry.getTransactionId();
 	}
 }
