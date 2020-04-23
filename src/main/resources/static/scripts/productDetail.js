@@ -50,7 +50,6 @@ function saveActionClick(event) {
 		count: getProductCount(),
 		lookupCode: getProductLookupCode()
 	};
-	console.log(saveProductRequest);
 	
 	if (productIdIsDefined) {
 		ajaxPut(saveActionUrl, saveProductRequest, (callbackResponse) => {
@@ -212,8 +211,8 @@ function getProductCountElement() {
 }
 function getPrice() {
 	return getPriceElement().value;
-}
 function getPriceElement() {
 	return document.getElementById("price");
+}
 }
 // End getters and setters
