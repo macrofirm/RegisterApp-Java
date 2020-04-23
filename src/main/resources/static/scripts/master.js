@@ -47,6 +47,7 @@ function ajax(resourceRelativeUri, verb, data, callback) {
 	if (data != null) {
 		httpRequest.setRequestHeader('Content-Type', 'application/json');
 		httpRequest.send(JSON.stringify(data));
+		console.log(JSON.stringify(data));
 	} else {
 		httpRequest.send();
 	}
