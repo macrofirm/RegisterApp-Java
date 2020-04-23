@@ -48,7 +48,8 @@ function saveActionClick(event) {
 	const saveProductRequest = {
 		id: productId,
 		count: getProductCount(),
-		lookupCode: getProductLookupCode()
+		lookupCode: getProductLookupCode(),
+		price: getPrice()
 	};
 	
 	if (productIdIsDefined) {
