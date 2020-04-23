@@ -98,9 +98,9 @@ public class ProductEntity {
 	}
 
 	public ProductEntity(final Product apiProduct) {
-		this.price = getPrice();
 		this.id = new UUID(0, 0);
 		this.count = apiProduct.getCount();
 		this.lookupCode = apiProduct.getLookupCode();
+		this.price = apiProduct.getPrice();
 	}
 }
