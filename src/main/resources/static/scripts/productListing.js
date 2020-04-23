@@ -44,7 +44,6 @@ function productClick(event) {
 
 function cartRedirect(){
 	location.assign("/shoppingCart");
-	//alert("Functionality is not yet implemented.  Will redirect to the shopping cart.");
 }
 
 function addToCart(event){
