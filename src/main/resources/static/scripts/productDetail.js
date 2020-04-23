@@ -13,7 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
 		productLookupCodeElement.focus();
 		productLookupCodeElement.select();
 	}
-	setDecimalPlace();
 });
 
 function productLookupCodeKeypress(event) {
