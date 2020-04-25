@@ -26,11 +26,13 @@ function startTransactionClick(event) {
     const startTransactionUrl = "/api/transaction/";
     const startTransactionRequest = {
         cashierId: getEmployeeIdElement().value,
+        total: 0
     };
     ajaxPost(startTransactionUrl, startTransactionRequest, (callbackResponse) => {
         startTransactionElement.disabled = false;
         if(isSuccessResponse(callbackResponse)) {
             location.assign("/productListing");
+            window.location.replace(callbackResponse.data.redirectUrl);
         }
     });
     return;
