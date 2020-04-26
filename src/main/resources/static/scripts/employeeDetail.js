@@ -106,7 +106,7 @@ function completeSaveAction(callbackResponse) {
 
 	if ((callbackResponse.data.redirectUrl != null)
 		&& (callbackResponse.data.redirectUrl !== "")) {
-
+        console.log(callbackResponse.data);
 		window.location.replace(callbackResponse.data.redirectUrl);
 		return;
 	}
