@@ -36,7 +36,7 @@ function findClickedListItemElement(clickedTarget) {
 
 function productClick(event) {
 	let listItem = findClickedListItemElement(event.target);
-
+	console.log(getTransactionId(new URLSearchParams(window.location.search)));
 	window.location.assign(
 		"/productDetail/"
 		+ listItem.querySelector("input[name='productId'][type='hidden']").value);
@@ -82,4 +82,8 @@ function getReturnToCartButtonElement(){
 
 function getNumberOfItemsElement(){
 	return document.getElementById("numberOfItems");
+}
+
+function getTransactionId(urlParams){
+	return urlParams.get('transactionId');
 }
