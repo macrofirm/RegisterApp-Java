@@ -39,15 +39,37 @@ public class TransactionEntry extends ApiResponse{
 		this.productid = productid;
 		return this;
 	}
+
+	private String lookupCode;
+
+	public String getLookupCode() {
+		return this.lookupCode;
+	}
+
+	public TransactionEntry setLookupCode(final String lookupCode) {
+		this.lookupCode = lookupCode;
+		return this;
+	}
 	
-	private double quantity;
+	private int quantity;
 	
-	public double getQuantity() {
+	public int getQuantity() {
 		return this.quantity;
 	}
 	
-	public TransactionEntry setQuantity(final double quantity) {
+	public TransactionEntry setQuantity(final int quantity) {
 		this.quantity = quantity;
+		return this;
+	}
+
+    private int stock;
+
+	public int getStock() {
+		return this.stock;
+	}
+
+	public TransactionEntry setStock(final int stock) {
+		this.stock = stock;
 		return this;
 	}
 	
@@ -80,22 +102,24 @@ public class TransactionEntry extends ApiResponse{
 	
 	public TransactionEntry() {
 		super();
-		
+		this.lookupCode = "";
 		this.id = new UUID(0, 0);
 		this.transactionid = new UUID(0, 0);
 		this.productid = new UUID(0, 0);
-		this.quantity = 0D;
+		this.quantity = 0;
+		this.stock = 0;
 		this.price = 0L;
 		this.setCreatedOn(LocalDateTime.now());
 	}
 	
 	public TransactionEntry(final TransactionEntryEntity transactionEntryEntity) {
 		super(false);
-		
+		this.lookupCode = transactionEntryEntity.getLookupCode();
 		this.id = transactionEntryEntity.getId();
 		this.transactionid = transactionEntryEntity.getTransactionId();
 		this.productid = transactionEntryEntity.getProductId();
 		this.quantity = transactionEntryEntity.getQuantity();
+		this.stock = transactionEntryEntity.getStock();
 		this.price = transactionEntryEntity.getPrice();
 		this.setCreatedOn(transactionEntryEntity.getCreatedOn());
 	}

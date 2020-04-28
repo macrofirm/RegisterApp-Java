@@ -51,15 +51,34 @@ public class TransactionEntryEntity {
 		return this;
 	}
 
-    @Column(name="quantity")
-    private double quantity;
+	@Column(name = "lookupcode")
+	private String lookupCode;
 
-	public double getQuantity() {
+	public String getLookupCode() {
+		return this.lookupCode;
+	}
+
+    @Column(name="quantity")
+    private int quantity;
+
+	public int getQuantity() {
 		return this.quantity;
 	}
 
-	public TransactionEntryEntity setQuantity(final double quantity) {
+	public TransactionEntryEntity setQuantity(final int quantity) {
 		this.quantity = quantity;
+		return this;
+	}
+
+	@Column(name="stock")
+    private int stock;
+
+	public int getStock() {
+		return this.stock;
+	}
+
+	public TransactionEntryEntity setStock(final int stock) {
+		this.stock = stock;
 		return this;
 	}
 
@@ -84,31 +103,37 @@ public class TransactionEntryEntity {
 	}
 
 	public TransactionEntryEntity() {
+		this.lookupCode = "";
 		this.price = 0L;
-		this.quantity = 0D;
+		this.quantity = 0;
 		this.id = new UUID(0, 0);
 		this.productId = new UUID(0, 0);
 		this.transactionId = new UUID(0, 0);
 	}
 
 	public TransactionEntryEntity(
+		final String lookupCode,
 		final UUID transactionId,
 		final UUID productId,
-		final double quantity,
+		final int quantity,
+		final int stock,
 		final long price
 	) {
-
+		this.lookupCode = lookupCode;
 		this.price = price;
 		this.id = new UUID(0, 0);
 		this.quantity = quantity;
+		this.stock = stock;
 		this.productId = productId;
 		this.transactionId = transactionId;
 	}
 
 	public TransactionEntryEntity(TransactionEntry transactionEntry) {
+		this.lookupCode = transactionEntry.getLookupCode();
 		this.price = transactionEntry.getPrice();
 		this.id = new UUID(0, 0);
 		this.quantity = transactionEntry.getQuantity();
+		this.stock = transactionEntry.getStock();
 		this.productId = transactionEntry.getProductId();
 		this.transactionId = transactionEntry.getTransactionId();
 	}

@@ -47,7 +47,9 @@ function productClick(event) {
 		const addtoCartRequest = {
 			transactionId: getTransactionId(),
 			productId: listItem.querySelector("input[name='productId'][type='hidden']").value,
-			quantity: 0,
+			lookupCode: listItem.querySelector("span[class='productLookupCodeDisplay']").value,
+			quantity: 1,
+			stock: listItem.querySelector("span[class='productCountDisplay']").value,
 			price: listItem.querySelector("span[class='productPriceDisplay']").value,
 			createdOn: listItem.querySelector("span[class='productCreatedOnDisplay']").value
 		};
