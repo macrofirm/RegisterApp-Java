@@ -65,7 +65,7 @@ public class TransactionEntity {
 
 	public TransactionEntity(
 		final UUID cashierId,
-		final long total
+		final double total
 	) {
 
 		this.total = total;
