@@ -25,16 +25,25 @@ function removeItem(itemID) {
 }
 
 function continueShopping() {
-    location.assign("/productListing");
+    location.assign("/productListing?transactionId=" + getTransactionId());
     return;
 }
+
+// Getters
 
 function getCheckoutButtonElement() {
     return document.getElementById("checkoutButton");
 }
+
 function getClearCartButtonElement() {
     return document.getElementById("clearCartButton");
 }
+
 function getContinueShoppingButtonElement() {
     return document.getElementById("continueShoppingButton");
+}
+
+function getTransactionId(){
+	urlParams = new URLSearchParams(window.location.search);
+	return urlParams.get('transactionId');
 }

@@ -10,7 +10,8 @@ public enum ViewModelNames {
 	EMPLOYEE_TYPES("employeeTypes"),
 	EMPLOYEE_ID("employeeId"),
 	TRANSACTION_ENTRIES("transactionEntries"),
-	TRANSACTION_ID("transactionId");
+	TRANSACTION_ID("transactionId"),
+	TRANSACTION_STARTED("transactionStarted");
 	
 	public String getValue() {
 		return value;

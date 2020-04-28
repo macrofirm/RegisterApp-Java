@@ -36,14 +36,13 @@ function findClickedListItemElement(clickedTarget) {
 
 function productClick(event) {
 	let listItem = findClickedListItemElement(event.target);
-	console.log(getTransactionId(new URLSearchParams(window.location.search)));
 	window.location.assign(
 		"/productDetail/"
 		+ listItem.querySelector("input[name='productId'][type='hidden']").value);
 }
 
 function cartRedirect(){
-	location.assign("/shoppingCart");
+	location.assign("/shoppingCart/" + getTransactionId());
 	//alert("Functionality is not yet implemented.  Will redirect to the shopping cart.");
 }
 
@@ -84,6 +83,6 @@ function getNumberOfItemsElement(){
 	return document.getElementById("numberOfItems");
 }
 
-function getTransactionId(urlParams){
-	return urlParams.get('transactionId');
+function getTransactionId(){
+	return document.getElementById("transactionId").value;
 }

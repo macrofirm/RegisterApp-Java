@@ -17,11 +17,12 @@
 	</div>
 
 
-	<!--
+	
 	<div class="returnToCartButton">
-		<button id="returnToCartButton" th:style="${transactionStarted} ? initial : none">Return to Cart</button>
+		<button id="returnToCartButton" th:style="${transactionId} ? initial : none">Return to Cart</button>
 	</div>
-	-->
+	<input id="transactionId" class = "hidden" th:value="${transactionId}"></div>
+	
 
 	<div id="main" class="main">
 		<div id="error" th:class="${#strings.isEmpty(errorMessage)} ? hidden : ''">
