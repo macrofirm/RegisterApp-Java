@@ -32,8 +32,8 @@
 
 			<ul id="productsListing" class="products">
 				<li th:each="transactionEntry : ${transactionEntries}">
-					<!-- <input type="hidden" name="productId" th:value="${transactionEntry.productid}" /> -->
-					<!-- <span class="productLookupCodeDisplay" th:text="${transactionEntries.lookupCode}">lookupCode</span> -->
+					<input type="hidden" name="productId" th:value="${transactionEntry.productId}" />
+					<span class="productLookupCodeDisplay" th:text="${transactionEntry.lookupCode}">lookupCode</span>
 					<br /><span class="productCountDisplay" th:text="${transactionEntry.quantity}">0</span>
 					<br /><span class="productCreatedOnDisplay" th:text="${transactionEntry.createdOn}">12/31/1999</span>
 					<br /><span class="productPriceDisplay" th:text="${transactionEntry.price}">Price</span>

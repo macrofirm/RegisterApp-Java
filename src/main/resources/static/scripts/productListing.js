@@ -69,7 +69,6 @@ function cartRedirect(){
 
 function addToCartClick(){
 	addToCartButtonPressed = true;
-	alert("Functionality is not yet implemented.  Will add product to cart.");
 }
 
 // getters
