@@ -15,6 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
 	}*/
 });
 
+addToCartButtonPressed = false;
+
 function findClickedListItemElement(clickedTarget) {
 	if (clickedTarget.tagName.toLowerCase() === "li") {
 		return clickedTarget;
@@ -36,38 +38,40 @@ function findClickedListItemElement(clickedTarget) {
 
 function productClick(event) {
 	let listItem = findClickedListItemElement(event.target);
-
-	window.location.assign(
-		"/productDetail/"
-		+ listItem.querySelector("input[name='productId'][type='hidden']").value);
+	if(!addToCartButtonPressed) {
+		window.location.assign(
+			"/productDetail/"
+			+ listItem.querySelector("input[name='productId'][type='hidden']").value);
+	} else {
+		const addToCartUrl = "/api/transactionEntry/";
+		const addtoCartRequest = {
+			transactionId: getTransactionId(),
+			productId: listItem.querySelector("input[name='productId'][type='hidden']").value,
+			quantity: 0,
+			price: listItem.querySelector("span[class='productPriceDisplay']").value,
+			createdOn: listItem.querySelector("span[class='productCreatedOnDisplay']").value
+		};
+		ajaxPost(addToCartUrl, addtoCartRequest, (callbackResponse) => {
+			if(isSuccessResponse(callbackResponse)) {
+				location.assign("/productListing");
+				window.location.replace(callbackResponse.data.redirectUrl);
+			}
+		});
+		addToCartButtonPressed = false;
+	}
 }
 
 function cartRedirect(){
+<<<<<<< HEAD
 	location.assign("/shoppingCart");
+=======
+	location.assign("/shoppingCart/" + getTransactionId());
+>>>>>>> fd227fa010549701e87bc7778628837cc43c299a
 }
 
-function addToCart(event){
-	if(!validateNumber()){
-		return;
-	}
+function addToCartClick(){
+	addToCartButtonPressed = true;
 	alert("Functionality is not yet implemented.  Will add product to cart.");
-}
-
-function validateNumber(){
-	const num = getNumberOfItemsElement().value;
-	valid = true;
-	if(num== ""){
-		alert("Must enter number of items");
-		valid = false;
-	}
-	else if(num <= 0){
-		alert("Number of items must be greater than 0");
-		valid = false;
-	}
-	else{
-		valid = true;
-	}
-	return valid;
 }
 
 // getters
@@ -79,6 +83,6 @@ function getReturnToCartButtonElement(){
 	return document.getElementById("returnToCartButton");
 }
 
-function getNumberOfItemsElement(){
-	return document.getElementById("numberOfItems");
+function getTransactionId(){
+	return document.getElementById("transactionId").value;
 }

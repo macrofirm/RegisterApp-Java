@@ -1,7 +1,10 @@
 package edu.uark.registerapp.controllers;
 
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -32,6 +35,26 @@ public class ProductListingRouteController {
 				(new Product[0]));
 		}
 		
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/{transactionId}", method = RequestMethod.GET)
+	public ModelAndView startTransaction(@PathVariable final UUID transactionId) {
+		ModelAndView modelAndView = showProductListing();
+
+		try{
+			modelAndView.addObject(
+				ViewModelNames.TRANSACTION_ID.getValue(),
+				transactionId);
+			modelAndView.addObject(
+				ViewModelNames.TRANSACTION_STARTED.getValue(),
+				true);
+		} catch (final Exception e) {
+			modelAndView.addObject(
+				ViewModelNames.ERROR_MESSAGE.getValue(),
+				e.getMessage());
+		}
+
 		return modelAndView;
 	}
 

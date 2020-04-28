@@ -41,10 +41,10 @@ public class AddToCartCommand implements ResultCommandInterface<TransactionEntry
 
     // Properties
     private TransactionEntry apiTransactionEntry;
-    public TransactionEntry getTransactionEntry() {
+    public TransactionEntry getApiTransactionEntry() {
         return this.apiTransactionEntry;
     }
-    public AddToCartCommand setTransactionEntry(final TransactionEntry apiTransactionEntry) {
+    public AddToCartCommand setApiTransactionEntry(final TransactionEntry apiTransactionEntry) {
         this.apiTransactionEntry = apiTransactionEntry;
         return this;
     }

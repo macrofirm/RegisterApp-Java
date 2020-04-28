@@ -16,6 +16,8 @@
 	<div class="header">
 		<h1 class="primary-message">Shopping Cart</h1>
 	</div>
+
+	<input id="transactionId" class = "hidden" th:value="${transactionId}"></div>
 		
 	<div id="main" class="main">
 		<div id="error" th:class="${#strings.isEmpty(errorMessage)} ? hidden : ''">

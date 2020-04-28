@@ -17,9 +17,18 @@
 	</div>
 
 
+<<<<<<< HEAD
 	<div class="returnToCartButton">
 		<button id="returnToCartButton">Return to Cart</button>
 	</div>
+=======
+	
+	<div class="returnToCartButton">
+		<button id="returnToCartButton" th:style="${transactionId} ? initial : none">Return to Cart</button>
+	</div>
+	<input id="transactionId" class = "hidden" th:value="${transactionId}"></div>
+	
+>>>>>>> fd227fa010549701e87bc7778628837cc43c299a
 
 	<div id="main" class="main">
 		<div id="error" th:class="${#strings.isEmpty(errorMessage)} ? hidden : ''">
@@ -40,6 +49,7 @@
 					<br /><span class="productCountDisplay" id="productCountDisplay" th:text="${product.count}">0</span>
 					<br /><span class="productCreatedOnDisplay" th:text="${product.createdOn}">12/31/1999</span>
 					<br /><span class="productPriceDisplay" th:text="${product.price}">Price</span>
+<<<<<<< HEAD
 					<div class="buttonWrapper">
 						<div>
 							<input id="numberOfItems" type="number">
@@ -52,6 +62,17 @@
 			</ul>
 			<!--
 			
+=======
+					<button id="addToCartButton" type="submit" onclick="addToCartClick()" th:style="${transactionStarted} ? initial : none">Add To Cart</button>
+				</li>
+			</ul>
+			<!--
+			<div class="buttonWrapper">
+				<div>
+					<button id="addToCartButton" type="submit" th:style="${transactionStarted} ? initial : none">Add To Cart</button>
+				</div>
+			</div>
+>>>>>>> fd227fa010549701e87bc7778628837cc43c299a
 			-->
 		</div>
 

@@ -19,13 +19,9 @@ public class TransactionEntriesQuery implements ResultCommandInterface<List<Tran
     public List<TransactionEntry> execute() {
         final LinkedList<TransactionEntry> transactionEntries = new LinkedList<TransactionEntry>();
 
-        for (final TransactionEntryEntity transactionEntryEntity : transactionEntryRepository.findAll()) {
+        for (final TransactionEntryEntity transactionEntryEntity : transactionEntryRepository.findByTransactionId(this.transactionId)) {
             transactionEntries.addLast(new TransactionEntry(transactionEntryEntity));
         }
-
-        // for (final TransactionEntryEntity transactionEntryEntity : transactionEntryRepository.findByTransactionId(this.transactionId)) {
-        //     transactionEntries.addLast(new TransactionEntry(transactionEntryEntity));
-        // }
 
         return transactionEntries;
     }
