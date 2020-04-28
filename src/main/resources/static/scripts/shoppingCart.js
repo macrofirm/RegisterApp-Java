@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function checkout() {
-    location.assign("/transactionSummary");
+    location.assign("/transactionSummary" + getTransactionId());
     return;
 }
 

@@ -29,38 +29,16 @@ public class Transaction extends ApiResponse{
 		return this;
 	}
 	
-	private long total;
+	private double total;
 	
-	public long getTotal() {
+	public double getTotal() {
 		return this.total;
 	}
 	
-	public Transaction setTotal(final long total) {
+	public Transaction setTotal(final double total) {
 		this.total = total;
 		return this;
 	}
-	
-	// private int transactiontype;
-	
-	// public int getTransactionType() {
-	// 	return this.transactiontype;
-	// }
-	
-	// public Transaction setTransactionType(final int transactiontype) {
-	// 	this.transactiontype = transactiontype;
-	// 	return this;
-	// }
-	
-	// private UUID transactionreferenceid;
-	
-	// public UUID getTransactionReferenceId() {
-	// 	return this.transactionreferenceid;
-	// }
-	
-	// public Transaction setTransactionReferenceId(final UUID transactionreferenceid) {
-	// 	this.transactionreferenceid = transactionreferenceid;
-	// 	return this;
-	// }
 	
 	private String createdOn;
 	
@@ -84,8 +62,6 @@ public class Transaction extends ApiResponse{
 		this.id = new UUID(0, 0);
 		this.cashierid = new UUID(0, 0);
 		this.total = -1;
-		// this.transactiontype = -1;
-		// this.transactionreferenceid = new UUID(0, 0);
 		this.setCreatedOn(LocalDateTime.now());
 	}
 	
@@ -95,8 +71,6 @@ public class Transaction extends ApiResponse{
 		this.id = transactionEntity.getId();
 		this.cashierid = transactionEntity.getCashierId();
 		this.total = transactionEntity.getTotal();
-		// this.transactiontype = transactionEntity.getType();
-		// this.transactionreferenceid = transactionEntity.getReferenceId();
 		this.setCreatedOn(transactionEntity.getCreatedOn());
 	}
 	

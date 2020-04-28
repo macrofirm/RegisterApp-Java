@@ -43,10 +43,6 @@ function productClick(event) {
 			"/productDetail/"
 			+ listItem.querySelector("input[name='productId'][type='hidden']").value);
 	} else {
-		console.log(listItem.querySelector("span[class='productLookupCodeDisplay']").textContent);
-		console.log(listItem.querySelector("span[class='productCountDisplay']").textContent);
-		console.log(listItem.querySelector("span[class='productPriceDisplay']").textContent);
-		console.log(listItem.querySelector("span[class='productCreatedOnDisplay']").textContent);
 		const addToCartUrl = "/api/transactionEntry/";
 		const addtoCartRequest = {
 			transactionId: getTransactionId(),

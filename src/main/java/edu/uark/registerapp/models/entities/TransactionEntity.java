@@ -38,40 +38,16 @@ public class TransactionEntity {
 	}
 
     @Column(name="total")
-    private long total;
+    private double total;
 
-	public long getTotal() {
+	public double getTotal() {
 		return this.total;
 	}
 
-	public TransactionEntity setTotal(final long total) {
+	public TransactionEntity setTotal(final double total) {
 		this.total = total;
 		return this;
 	}
-
-	// @Column(name = "transactiontype")
-	// private int type; // TODO: The idea is to map this to different types of transactions: Sale, Return, etc.
-
-	// public int getType() {
-	// 	return this.type;
-	// }
-
-	// public TransactionEntity setType(final int type) {
-	// 	this.type = type;
-	// 	return this;
-	// }
-
-    // @Column(name="transactionreferenceid")
-    // private UUID referenceId;
-
-	// public UUID getReferenceId() {
-	// 	return this.referenceId;
-	// }
-
-	// public TransactionEntity setReferenceId(final UUID referenceId) {
-	// 	this.referenceId = referenceId;
-	// 	return this;
-	// }
 
 	@Column(name = "createdon", insertable = false, updatable = false)
 	@Generated(GenerationTime.INSERT)
@@ -82,37 +58,18 @@ public class TransactionEntity {
 	}
 
 	public TransactionEntity() {
-		// this.type = -1;
 		this.total = 0L;
 		this.id = new UUID(0, 0);
 		this.cashierId = new UUID(0, 0);
-		// this.referenceId = new UUID(0, 0);
 	}
 
 	public TransactionEntity(
 		final UUID cashierId,
-		final long total//,
-		// final int type
+		final long total
 	) {
 
-		// this.type = type;
 		this.total = total;
 		this.id = new UUID(0, 0);
 		this.cashierId = cashierId;
-		// this.referenceId = new UUID(0, 0);
 	}
-
-	// public TransactionEntity(
-	// 	final UUID cashierId,
-	// 	final long total,
-	// 	final int type,
-	// 	final UUID referenceId
-	// ) {
-
-	// 	this.type = type;
-	// 	this.total = total;
-	// 	this.id = new UUID(0, 0);
-	// 	this.cashierId = cashierId;
-	// 	this.referenceId = referenceId;
-	// }
 }
