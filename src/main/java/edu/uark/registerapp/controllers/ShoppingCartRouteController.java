@@ -27,6 +27,9 @@ public class ShoppingCartRouteController {
                 modelAndView.addObject(
                     ViewModelNames.TRANSACTION_ENTRIES.getValue(),
                     this.transactionEntriesQuery.setTransactionId(transactionId).execute());
+                modelAndView.addObject(
+                    ViewModelNames.TRANSACTION_ID.getValue(),
+                    transactionId);
             } catch (final Exception e) {
                 modelAndView.addObject(
                     ViewModelNames.ERROR_MESSAGE.getValue(),

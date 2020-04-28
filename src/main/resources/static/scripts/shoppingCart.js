@@ -25,7 +25,7 @@ function removeItem(itemID) {
 }
 
 function continueShopping() {
-    location.assign("/productListing?transactionId=" + getTransactionId());
+    location.assign("/productListing/" + getTransactionId());
     return;
 }
 
@@ -44,6 +44,5 @@ function getContinueShoppingButtonElement() {
 }
 
 function getTransactionId(){
-	urlParams = new URLSearchParams(window.location.search);
-	return urlParams.get('transactionId');
+	return document.getElementById("transactionId").value;
 }
