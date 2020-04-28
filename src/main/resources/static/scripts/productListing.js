@@ -6,14 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	for (let i = 0; i < productListElements.length; i++) {
 		productListElements[i].addEventListener("click", productClick);
 	}
-	console.log(window.location.href + '\n');
-	console.log(window.location.search + '\n');
-	console.log(window.location.pathname + '\n');
-	console.log(window.location.host + '\n');
-	console.log(window.location.hostname + '\n');
-	console.log(window.location.origin +'\n');
-	console.log(window.location.toString);
-	console.log("Here");
 	// TODO: Check this code against products with a count of 0
 	// EDIT: Does not work
 	/*for (let i = 0; i < productListElements.length; i++) {
