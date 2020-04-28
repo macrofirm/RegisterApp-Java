@@ -43,15 +43,19 @@ function productClick(event) {
 			"/productDetail/"
 			+ listItem.querySelector("input[name='productId'][type='hidden']").value);
 	} else {
+		console.log(listItem.querySelector("span[class='productLookupCodeDisplay']").textContent);
+		console.log(listItem.querySelector("span[class='productCountDisplay']").textContent);
+		console.log(listItem.querySelector("span[class='productPriceDisplay']").textContent);
+		console.log(listItem.querySelector("span[class='productCreatedOnDisplay']").textContent);
 		const addToCartUrl = "/api/transactionEntry/";
 		const addtoCartRequest = {
 			transactionId: getTransactionId(),
 			productId: listItem.querySelector("input[name='productId'][type='hidden']").value,
-			lookupCode: listItem.querySelector("span[class='productLookupCodeDisplay']").value,
+			lookupCode: listItem.querySelector("span[class='productLookupCodeDisplay']").textContent,
 			quantity: 1,
-			stock: listItem.querySelector("span[class='productCountDisplay']").value,
-			price: listItem.querySelector("span[class='productPriceDisplay']").value,
-			createdOn: listItem.querySelector("span[class='productCreatedOnDisplay']").value
+			stock: listItem.querySelector("span[class='productCountDisplay']").textContent,
+			price: listItem.querySelector("span[class='productPriceDisplay']").textContent,
+			createdOn: listItem.querySelector("span[class='productCreatedOnDisplay']").textContent
 		};
 		ajaxPost(addToCartUrl, addtoCartRequest, (callbackResponse) => {
 			if(isSuccessResponse(callbackResponse)) {
