@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	console.log(window.location.hostname + '\n');
 	console.log(window.location.origin +'\n');
 	console.log(window.location.toString);
+	console.log("Here");
 	// TODO: Check this code against products with a count of 0
 	// EDIT: Does not work
 	/*for (let i = 0; i < productListElements.length; i++) {
