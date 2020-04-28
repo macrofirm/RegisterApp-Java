@@ -64,11 +64,7 @@ function productClick(event) {
 }
 
 function cartRedirect(){
-<<<<<<< HEAD
-	location.assign("/shoppingCart");
-=======
 	location.assign("/shoppingCart/" + getTransactionId());
->>>>>>> fd227fa010549701e87bc7778628837cc43c299a
 }
 
 function addToCartClick(){
