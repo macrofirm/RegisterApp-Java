@@ -43,9 +43,34 @@
 					<br /><span class="productCountDisplay" id="productCountDisplay" th:text="${product.count}">0</span>
 					<br /><span class="productCreatedOnDisplay" th:text="${product.createdOn}">12/31/1999</span>
 					<br /><span class="productPriceDisplay" th:text="${product.price}">Price</span>
+<<<<<<< HEAD
+					<div class="buttonWrapper">
+						<div>
+							<input id="numberOfItems" type="number">
+						</div>
+						<div>
+							<button id="addToCartButton" type="submit">Add To Cart</button>
+						</div>
+					</div>
+				</li>
+			</ul>
+			<!--
+			
+=======
 					<button id="addToCartButton" type="submit" onclick="addToCartClick()" th:style="${transactionStarted} ? initial : none">Add To Cart</button>
 				</li>
 			</ul>
+<<<<<<< HEAD
+=======
+			<!--
+			<div class="buttonWrapper">
+				<div>
+					<button id="addToCartButton" type="submit" th:style="${transactionStarted} ? initial : none">Add To Cart</button>
+				</div>
+			</div>
+>>>>>>> fd227fa010549701e87bc7778628837cc43c299a
+			-->
+>>>>>>> abe209f6e2127e38e91d111dbe39451d3a1ea409
 		</div>
 
 		<div class="hidden">
