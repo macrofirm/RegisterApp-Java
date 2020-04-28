@@ -37,20 +37,35 @@ function findClickedListItemElement(clickedTarget) {
 }
 
 function productClick(event) {
+	let listItem = findClickedListItemElement(event.target);
 	if(!addToCartButtonPressed) {
-		let listItem = findClickedListItemElement(event.target);
 		window.location.assign(
 			"/productDetail/"
 			+ listItem.querySelector("input[name='productId'][type='hidden']").value);
+	} else {
+		const addToCartUrl = "/api/transactionEntry/";
+		const addtoCartRequest = {
+			transactionId: getTransactionId(),
+			productId: listItem.querySelector("input[name='productId'][type='hidden']").value,
+			quantity: 0,
+			price: listItem.querySelector("span[class='productPriceDisplay']").value,
+			createdOn: listItem.querySelector("span[class='productCreatedOnDisplay']").value
+		};
+		ajaxPost(addToCartUrl, addtoCartRequest, (callbackResponse) => {
+			if(isSuccessResponse(callbackResponse)) {
+				location.assign("/productListing");
+				window.location.replace(callbackResponse.data.redirectUrl);
+			}
+		});
+		addToCartButtonPressed = false;
 	}
-	addToCartButtonPressed = false;
 }
 
 function cartRedirect(){
 	location.assign("/shoppingCart/" + getTransactionId());
 }
 
-function addToCart(){
+function addToCartClick(){
 	addToCartButtonPressed = true;
 	alert("Functionality is not yet implemented.  Will add product to cart.");
 }
