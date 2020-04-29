@@ -48,6 +48,14 @@ function getTransactionId(){
 }
 
 function updateQuantity() {
-    alert("Button pushed");
+    const updateQuantityUrl = "/api/transactionEntry/";
+    const data =  {
+        quantity: listItem.querySelector("input[name='quantitySelect'][type='number']").value
+    };
+    ajaxPut(updateQuantityUrl, data, (callbackResponse) => {
+        if (isSuccessResponse(callbackResponse)) {
+            window.location.replace(callbackResponse.data.redirectUrl);
+        }
+    });
     return;
 }
