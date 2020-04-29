@@ -10,9 +10,10 @@ document.addEventListener("DOMContentLoaded", () => {
 	if(pathnameString == "/productListing"){
 		getReturnToCartButtonElement().hidden = true;
 		getReturnToCartButtonElement().disabled = true;
-		for(i = 0; i<productListElements.length; i++) {
-			productListElements[i].getAddToCartButtonElement().hidden = true;
-			productListElements[i].getAddToCartButtonELement().disabled = true;
+		var list = document.getElementsByClassName("cartButton");
+		for(let i = 0; i < list.length; i++) {
+			list[i].hidden = true;
+			list[i].disabled = true;
 		}
 	}
 	// TODO: Check this code against products with a count of 0
