@@ -32,8 +32,10 @@
 
 		<div class="productsWrapper">
 			<div>
-				<a href="/productDetail" id="createButton" class="button" th:style="${isElevatedUser} ? initial : none">Create New</a>
+				<a href="/productDetail" class="button" th:style="${isElevatedUser} ? initial : none">Create New</a>
 			</div>
+
+			<br /><br />
 
 			<ul id="productsListing" class="products">
 				<li th:each="product : ${products}">
@@ -42,7 +44,8 @@
 					<br /><span class="productCountDisplay" id="productCountDisplay" th:text="${product.count}">0</span>
 					<br /><span class="productCreatedOnDisplay" th:text="${product.createdOn}">12/31/1999</span>
 					<br /><span class="productPriceDisplay" th:text="${product.price}">Price</span>
-					<button id="addToCartButton" onclick = "addToCartClick()" type="submit" class="cartButton">Add To Cart</button>
+					<br /><input type="number" class="productQuantitySelection" id="productQuantitySelection" value="1" max="${product.count}" />
+					<br /><button id="addToCartButton" onclick = "addToCartClick()" type="submit" class="cartButton">Add To Cart</button>
 				</li>
 			</ul>
 		</div>
