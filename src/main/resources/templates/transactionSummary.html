@@ -28,12 +28,12 @@
 						<input type="hidden" name="productId" th:value="${transactionEntry.productId}" />
 						<b for="name">Product: </b><span class="productLookupCodeDisplay" th:text="${transactionEntry.lookupCode}">lookupCode</span><br/>
 						<b for="name">Quantity: </b><span class="productCountDisplay" th:text="${transactionEntry.quantity}">0</span><br/>
-						<b for="name">Price: </b><span class="productPriceDisplay" th:text="${transactionEntry.price}">Price</span><br/><br/>
+						<b for="name">Price: $</b><span class="productPriceDisplay" th:text="${transactionEntry.price}">Price</span><br/><br/>
 						
 					</div>
 				</div>
 
-				<b for="name" style=>Total Price: </b><br/><span class="totalPrice" th:text="${TotalPrice}">0</span><br/>
+				<b for="name" style=>Total Price: $</b><br/><span class="totalPrice" th:text="${TotalPrice}">0</span><br/>
 				<b for="name" style=>Number of Products: </b><br/><span class="productNum" th:text="${ProductNum}">0</span><br/>
 
 			<div>
