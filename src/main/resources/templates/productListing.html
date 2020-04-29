@@ -32,10 +32,8 @@
 
 		<div class="productsWrapper">
 			<div>
-				<a href="/productDetail" class="button" th:style="${isElevatedUser} ? initial : none">Create New</a>
+				<a href="/productDetail" id="createButton" class="button" th:style="${isElevatedUser} ? initial : none">Create New</a>
 			</div>
-
-			<br /><br />
 
 			<ul id="productsListing" class="products">
 				<li th:each="product : ${products}">
