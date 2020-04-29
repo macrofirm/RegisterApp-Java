@@ -6,6 +6,13 @@ document.addEventListener("DOMContentLoaded", () => {
 	for (let i = 0; i < productListElements.length; i++) {
 		productListElements[i].addEventListener("click", productClick);
 	}
+	const pathnameString = window.location.pathname;
+	if(pathnameString == "/productListing"){
+		getAddToCartButtonElement().hidden = true;
+		getAddToCartButtonElement().disabled = true;
+		getReturnToCartButtonElement().hidden = true;
+		getReturnToCartButtonElement().disabled = true;
+	}
 	// TODO: Check this code against products with a count of 0
 	// EDIT: Does not work
 	/*for (let i = 0; i < productListElements.length; i++) {
