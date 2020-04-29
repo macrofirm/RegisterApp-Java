@@ -46,3 +46,8 @@ function getContinueShoppingButtonElement() {
 function getTransactionId(){
 	return document.getElementById("transactionId").value;
 }
+
+function updateQuantity() {
+    alert("Button pushed");
+    return;
+}
