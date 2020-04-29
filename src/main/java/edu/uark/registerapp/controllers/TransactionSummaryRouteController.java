@@ -14,8 +14,6 @@ import edu.uark.registerapp.controllers.enums.ViewNames;
 import edu.uark.registerapp.controllers.enums.ViewModelNames;
 import edu.uark.registerapp.commands.transactions.TransactionEntriesQuery;
 import edu.uark.registerapp.models.api.TransactionEntry;
-import edu.uark.registerapp.models.entities.TransactionEntryEntity;
-import edu.uark.registerapp.models.repositories.TransactionEntryRepository;
 
 
 @Controller
