@@ -11,8 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
 		getReturnToCartButtonElement().hidden = true;
 		getReturnToCartButtonElement().disabled = true;
 		for(i = 0; i<productListElements.length; i++) {
-			productListElements.children.getAddToCartButtonElement().hidden = true;
-			productListElements.children.getAddToCartButtonELement().disabled = true;
+			productListElements[i].getAddToCartButtonElement().hidden = true;
+			productListElements[i].getAddToCartButtonELement().disabled = true;
 		}
 	}
 	// TODO: Check this code against products with a count of 0
