@@ -39,6 +39,7 @@
 					<br /><span class="productPriceDisplay" th:text="${transactionEntry.price}">Price</span>
 					<br /><input type="number" name="quantitySelect" th:value="${transactionEntry.quantity}" max="${transactionEntry.stock}" />
 					<br /><input type="button" onclick="updateQuantity()" value="Update Quantity" />
+					<input id="transactionEntryId" class="hidden" th:value="${transactionEntry.id}">
 				</li>
 			</ul>
 
