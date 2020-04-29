@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
         getContinueShoppingButtonElement().addEventListener("click", continueShopping);
     }
     if(getCancelTransaction() != null) {
-        getCancelTransactionElement().addEventListener("click", cancelTransaction);
+        getCancelTransactionButtonElement().addEventListener("click", cancelTransaction);
     }
 
     var list = document.getElementsByClassName("productPriceDisplay");
@@ -110,7 +110,7 @@ function getContinueShoppingButtonElement() {
     return document.getElementById("continueShoppingButton");
 }
 
-function getCancelTransaction() {
+function getCancelTransactionButtonElement() {
     return document.getElementById("cancelTransaction");
 }
 
