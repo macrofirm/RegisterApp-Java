@@ -24,9 +24,6 @@
 		<form method="post" actions="">
 
 				<b for="name">Product</b><br/>
-				<b for="name" style="margin-left: 10px">Quantity</b><br/>
-				<b for="name" style="margin-left: 10px">Price</b><br/>
-				<b for="name" style="margin-left: 10px">Total Price</b>
 				<br/><br/>
 
 
@@ -34,8 +31,9 @@
 					<div th:each="transactionEntry : ${transactionEntries}">
 						<input type="hidden" name="productId" th:value="${transactionEntry.productId}" />
 						<span class="productLookupCodeDisplay" th:text="${transactionEntry.lookupCode}">lookupCode</span>
-						<br /><span class="productCountDisplay" th:text="${transactionEntry.quantity}">0</span>
-						<br /><span class="productPriceDisplay" th:text="${transactionEntry.price}">Price</span>
+						<b for="name" style="margin-left: 10px">Quantity</b><span class="productCountDisplay" th:text="${transactionEntry.quantity}">0</span><br/>
+						<b for="name" style="margin-left: 10px">Price</b><span class="productPriceDisplay" th:text="${transactionEntry.price}">Price</span><br/>
+						<b for="name" style="margin-left: 10px">Total Price</b><br/>
 					</div>
 				</ul>
 
