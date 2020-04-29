@@ -37,7 +37,7 @@ public class TransactionSummaryRouteController extends BaseRouteController{
             }
         return modelAndView;
     }
-}
+
 
     // Properties
 	@Autowired
