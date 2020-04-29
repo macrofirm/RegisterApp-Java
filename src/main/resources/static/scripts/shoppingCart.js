@@ -9,9 +9,9 @@ document.addEventListener("DOMContentLoaded", () => {
         getContinueShoppingButtonElement().addEventListener("click", continueShopping);
     }
     if(getCancelTransaction() != null) {
-        getContinueShoppingButtonElement().addEventListener("click", cancelTransaction);
+        getCancelTransactionElement().addEventListener("click", cancelTransaction);
     }
-    
+
     var list = document.getElementsByClassName("productPriceDisplay");
 	for(let i = 0; i<list.length; i++){
 		var x = list[i].innerHTML;
