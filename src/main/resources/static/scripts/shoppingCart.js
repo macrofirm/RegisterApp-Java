@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if(getContinueShoppingButtonElement() != null) {
         getContinueShoppingButtonElement().addEventListener("click", continueShopping);
     }
-    if(getCancelTransaction() != null) {
+    if(getCancelTransactionButtonElement() != null) {
         getCancelTransactionButtonElement().addEventListener("click", cancelTransaction);
     }
 
