@@ -4,6 +4,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import edu.uark.registerapp.commands.ResultCommandInterface;
@@ -12,6 +13,7 @@ import edu.uark.registerapp.models.api.TransactionEntry;
 import edu.uark.registerapp.models.entities.TransactionEntryEntity;
 import edu.uark.registerapp.models.repositories.TransactionEntryRepository;
 
+@Service
 public class UpdateCartCommand implements ResultCommandInterface<TransactionEntry>{
     @Transactional
     @Override
