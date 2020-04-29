@@ -1,3 +1,4 @@
+var noTransaction = true;
 document.addEventListener("DOMContentLoaded", () => {
 	const productListElements = document.getElementById("productsListing").children;
 	if(getReturnToCartButtonElement() != null){
@@ -6,8 +7,9 @@ document.addEventListener("DOMContentLoaded", () => {
 	for (let i = 0; i < productListElements.length; i++) {
 		productListElements[i].addEventListener("click", productClick);
 	}
-	const pathnameString = window.location.pathname;
-	if(pathnameString == "/productListing"){
+	//Hides the addToCart and returnToCart Buttons when no transaction is occuring
+	noTransaction = window.location.pathname == "/productListing";
+	if(noTransaction){
 		getReturnToCartButtonElement().hidden = true;
 		getReturnToCartButtonElement().disabled = true;
 		var list = document.getElementsByClassName("cartButton");
@@ -16,13 +18,34 @@ document.addEventListener("DOMContentLoaded", () => {
 			list[i].disabled = true;
 		}
 	}
-	// TODO: Check this code against products with a count of 0
-	// EDIT: Does not work
-	/*for (let i = 0; i < productListElements.length; i++) {
-		if(document.getElementsByClassName("productCountDisplay")[i] == "0") {
-			productListElements[i].productCountDisplay = "Out of Stock";
+	else{
+		getCreateButtonElement().hidden = true;
+		getCreateButtonElement().disabled = true;
+	}
+	//Implemented Out of Stock Display
+	var list = document.getElementsByClassName("productCountDisplay");
+	for(let i = 0; i < list.length; i++){
+		if(list[i].innerHTML == "0"){
+			list[i].innerHTML = "Out of Stock";
 		}
-	}*/
+	}
+	//Formats the prices to currency
+	var list = document.getElementsByClassName("productPriceDisplay");
+	for(let i = 0; i<list.length; i++){
+		var x = list[i].innerHTML;
+		var len = x.length;
+		var pos = x.indexOf(".");
+		if(pos == -1){
+			x += ".";
+			pos = x.indexOf(".");
+		}
+		var diff = len - pos;
+		var newText = "$" + x;
+		for(let j = diff; j<3; j++){
+			newText += "0"
+		}
+		list[i].innerHTML = newText;
+	}
 });
 
 addToCartButtonPressed = false;
@@ -48,19 +71,34 @@ function findClickedListItemElement(clickedTarget) {
 
 function productClick(event) {
 	let listItem = findClickedListItemElement(event.target);
-	if(!addToCartButtonPressed) {
+	if(!addToCartButtonPressed && noTransaction) {
 		window.location.assign(
 			"/productDetail/"
 			+ listItem.querySelector("input[name='productId'][type='hidden']").value);
 	} else {
+		var str = listItem.querySelector("span[class='productPriceDisplay']").textContent;
+		var newStr = "";
+		for(let i = 0; i < str.length; i++){
+			if(str[i] != '$' && str[i] != ','){
+				newStr += str[i];
+			}
+		}
+		var num = Number(newStr);
+		var stockStr;
+		if(listItem.querySelector("span[class='productCountDisplay']").textContent == "Out of Stock"){
+			stockStr = 0;
+		}
+		else{
+			stockStr = listItem.querySelector("span[class='productCountDisplay']").textContent;
+		}
 		const addToCartUrl = "/api/transactionEntry/";
 		const addtoCartRequest = {
 			transactionId: getTransactionId(),
 			productId: listItem.querySelector("input[name='productId'][type='hidden']").value,
 			lookupCode: listItem.querySelector("span[class='productLookupCodeDisplay']").textContent,
 			quantity: 1,
-			stock: listItem.querySelector("span[class='productCountDisplay']").textContent,
-			price: listItem.querySelector("span[class='productPriceDisplay']").textContent,
+			stock: stockStr,
+			price: num,
 			createdOn: listItem.querySelector("span[class='productCreatedOnDisplay']").textContent
 		};
 		ajaxPost(addToCartUrl, addtoCartRequest, (callbackResponse) => {
@@ -92,4 +130,8 @@ function getReturnToCartButtonElement(){
 
 function getTransactionId(){
 	return document.getElementById("transactionId").value;
+}
+
+function getCreateButtonElement(){
+	return document.getElementById("createButton");
 }
