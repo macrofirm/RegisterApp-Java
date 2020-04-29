@@ -83,13 +83,13 @@ public class TransactionEntryEntity {
 	}
 
     @Column(name="price")
-    private long price;
+    private double price;
 
-	public long getPrice() {
+	public double getPrice() {
 		return this.price;
 	}
 
-	public TransactionEntryEntity setPrice(final long price) {
+	public TransactionEntryEntity setPrice(final double price) {
 		this.price = price;
 		return this;
 	}
@@ -104,7 +104,7 @@ public class TransactionEntryEntity {
 
 	public TransactionEntryEntity() {
 		this.lookupCode = "";
-		this.price = 0L;
+		this.price = 0.00;
 		this.quantity = 0;
 		this.id = new UUID(0, 0);
 		this.productId = new UUID(0, 0);
@@ -117,7 +117,7 @@ public class TransactionEntryEntity {
 		final UUID productId,
 		final int quantity,
 		final int stock,
-		final long price
+		final double price
 	) {
 		this.lookupCode = lookupCode;
 		this.price = price;

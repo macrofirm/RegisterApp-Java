@@ -19,8 +19,8 @@ public class AddToCartCommand implements ResultCommandInterface<TransactionEntry
     public TransactionEntry execute() {
         final TransactionEntryEntity createdTransactionEntryEntity = this.createTransactionEntryEntity();
 
-        this.apiTransactionEntry.setId(createdTransactionEntryEntity.getId());
-        this.apiTransactionEntry.setCreatedOn(createdTransactionEntryEntity.getCreatedOn());
+        // this.apiTransactionEntry.setId(createdTransactionEntryEntity.getId());
+        // this.apiTransactionEntry.setCreatedOn(createdTransactionEntryEntity.getCreatedOn());
 
         return this.apiTransactionEntry;
     }

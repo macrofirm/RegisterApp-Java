@@ -73,13 +73,13 @@ public class TransactionEntry extends ApiResponse{
 		return this;
 	}
 	
-	private long price;
+	private double price;
 	
-	public long getPrice() {
+	public double getPrice() {
 		return this.price;
 	}
 	
-	public TransactionEntry setPrice(final long price) {
+	public TransactionEntry setPrice(final double price) {
 		this.price = price;
 		return this;
 	}
@@ -108,7 +108,7 @@ public class TransactionEntry extends ApiResponse{
 		this.productid = new UUID(0, 0);
 		this.quantity = 0;
 		this.stock = 0;
-		this.price = 0L;
+		this.price = 0.00;
 		this.setCreatedOn(LocalDateTime.now());
 	}
 	
