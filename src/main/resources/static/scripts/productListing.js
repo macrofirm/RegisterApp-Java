@@ -8,10 +8,10 @@ document.addEventListener("DOMContentLoaded", () => {
 	}
 	const pathnameString = window.location.pathname;
 	if(pathnameString == "/productListing"){
-		getReturnToCartButtonElement().display = none;
+		getReturnToCartButtonElement().hidden = true;
 		getReturnToCartButtonElement().disabled = true;
 		for(i = 0; i<productListElements.length; i++) {
-			productListElements.children.getAddToCartButtonElement().display = none;
+			productListElements.children.getAddToCartButtonElement().hidden = true;
 			productListElements.children.getAddToCartButtonELement().disabled = true;
 		}
 	}
