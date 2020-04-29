@@ -29,9 +29,11 @@ public class TransactionSummaryRouteController extends BaseRouteController{
             try {
                 List<TransactionEntry> transactionEntries = this.transactionEntriesQuery.setTransactionId(transactionId).execute();
                 double totalPrice = 0;
+                int productNum = 0;
                 for(int i = 0; i < transactionEntries.size(); i++)
                 {
                     totalPrice += transactionEntries.get(i).getPrice() * transactionEntries.get(i).getQuantity();
+                    productNum += transactionEntries.get(i).getQuantity();
                 }
                 modelAndView.addObject(
                     ViewModelNames.TRANSACTION_ENTRIES.getValue(),
@@ -40,7 +42,11 @@ public class TransactionSummaryRouteController extends BaseRouteController{
                     ViewModelNames.TRANSACTION_ID.getValue(),
                     transactionId);
                 modelAndView.addObject(
-                    "TotalPrice", totalPrice);
+                    "TotalPrice", 
+                    totalPrice);
+                modelAndView.addObject(
+                    "ProductNum",
+                    productNum);  
             } catch (final Exception e) {
                 modelAndView.addObject(
                     ViewModelNames.ERROR_MESSAGE.getValue(),
