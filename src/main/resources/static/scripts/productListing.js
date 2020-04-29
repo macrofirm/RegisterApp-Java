@@ -1,5 +1,6 @@
 var noTransaction = true;
 document.addEventListener("DOMContentLoaded", () => {
+	getSearchButtonElement().addEventListener("click", searchProduct);
 	const productListElements = document.getElementById("productsListing").children;
 	if(getReturnToCartButtonElement() != null){
 		getReturnToCartButtonElement().addEventListener("click", cartRedirect);
@@ -119,6 +120,30 @@ function addToCartClick(){
 	addToCartButtonPressed = true;
 }
 
+function searchProduct(){
+	console.log('nice');
+	var searchParam = getSearchBarElement().value;
+	var searchLen = searchParam.length
+	var lookupCodes = getProductList().getElementsByTagName("li")
+	if(searchLen == 0) {
+		console.log('empty')
+		for(let i=0;i<lookupCodes.length;i++) {
+			lookupCodes[i].hidden = false;
+		}
+	} else {
+		for(let i=0;i<lookupCodes.length;i++){
+			console.log('loop')
+			var lookupCode = lookupCodes[i].querySelector("span[class='productLookupCodeDisplay']").textContent;
+			console.log(lookupCode);
+			if(lookupCode.length < searchLen || lookupCode.substring(0,searchLen) != searchParam) {
+				lookupCodes[i].hidden = true;
+			} else {
+				lookupCodes[i].hidden = false;
+			}
+		}
+	}
+}
+
 // getters
 function getAddToCartButtonElement(){
 	return document.getElementById("addToCartButton");
@@ -134,4 +159,16 @@ function getTransactionId(){
 
 function getCreateButtonElement(){
 	return document.getElementById("createButton");
+}
+
+function getSearchBarElement(){
+	return document.getElementById("searchBar");
+}
+
+function getSearchButtonElement(){
+	return document.getElementById("searchButton");
+}
+
+function getProductList(){
+	return document.getElementById("productsListing");
 }
