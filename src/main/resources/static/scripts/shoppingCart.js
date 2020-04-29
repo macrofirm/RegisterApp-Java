@@ -8,6 +8,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if(getContinueShoppingButtonElement() != null) {
         getContinueShoppingButtonElement().addEventListener("click", continueShopping);
     }
+    if(getCancelTransaction() != null) {
+        getContinueShoppingButtonElement().addEventListener("click", cancelTransaction);
+    }
+    
     var list = document.getElementsByClassName("productPriceDisplay");
 	for(let i = 0; i<list.length; i++){
 		var x = list[i].innerHTML;
@@ -46,6 +50,11 @@ function removeItem(itemID) {
 
 function continueShopping() {
     location.assign("/productListing/" + getTransactionId());
+    return;
+}
+
+function cancelTransaction(){
+    location.assign("/mainMenu");
     return;
 }
 
@@ -99,6 +108,10 @@ function getClearCartButtonElement() {
 
 function getContinueShoppingButtonElement() {
     return document.getElementById("continueShoppingButton");
+}
+
+function getCancelTransaction() {
+    return document.getElementById("cancelTransaction");
 }
 
 function getTransactionId(){
