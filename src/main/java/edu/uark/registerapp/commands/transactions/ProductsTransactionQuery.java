@@ -3,7 +3,7 @@ package edu.uark.registerapp.commands.transactions;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
-import java.util.Optional; //Ignore the warning, it is used when "isEmpty()" is called in line 25
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import edu.uark.registerapp.commands.ResultCommandInterface;
 import edu.uark.registerapp.models.api.Product;
 import edu.uark.registerapp.models.entities.ProductEntity;
+import edu.uark.registerapp.models.entities.TransactionEntryEntity;
 import edu.uark.registerapp.models.repositories.ProductRepository;
 import edu.uark.registerapp.models.repositories.TransactionEntryRepository;
 
@@ -22,7 +23,8 @@ public class ProductsTransactionQuery implements ResultCommandInterface<List<Pro
 		final LinkedList<Product> products = new LinkedList<Product>();
 
 		for (final ProductEntity productEntity : productRepository.findAll()) {
-            if(transactionEntryRepository.findByTransactionIdAndProductId(transactionId, productEntity.getId()).isEmpty()) {
+            Optional<TransactionEntryEntity> queriedTransactionEntryEntity = transactionEntryRepository.findByTransactionIdAndProductId(transactionId, productEntity.getId());
+            if(queriedTransactionEntryEntity.isEmpty()) {
                 products.addLast(new Product(productEntity));
             }
 		}
