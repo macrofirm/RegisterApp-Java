@@ -5,6 +5,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if(getCheckoutButtonElement() != null) {
         getCheckoutButtonElement().addEventListener("click", checkout);
     }
+    if(getClearCartButtonElement() != null) {
+        getClearCartButtonElement().addEventListener("click",clearCart);
+    }
     if(getContinueShoppingButtonElement() != null) {
         getContinueShoppingButtonElement().addEventListener("click", continueShopping);
     }
@@ -37,15 +40,45 @@ function checkout() {
 }
 
 function clearCart() {
-// TODO add details when shopping cart storage is worked out.
+    var clearCartUrl = "/api/transactionEntry//" + getTransactionId();
+    ajaxDelete(clearCartUrl, (callbackResponse) => {
+        if (isSuccessResponse(callbackResponse)) {
+            window.location.replace("/shoppingCart/" + getTransactionId());
+        }
+    });
 }
 
 function getNumUnits() {
 // TODO add details when shopping cart storage is worked out.
 }
 
-function removeItem(itemID) {
+function removeItem(listItem) {
+    var removeItemUrl = "/api/transactionEntry/" + listItem.querySelector("input[name='transactionEntryId']").value;
 
+    ajaxDelete(removeItemUrl, (callbackResponse) => {
+        if (isSuccessResponse(callbackResponse)) {
+            window.location.replace("/shoppingCart/" + getTransactionId());
+        }
+    });
+}
+
+function findClickedListItemElement(clickedTarget) {
+	if (clickedTarget.tagName.toLowerCase() === "li") {
+		return clickedTarget;
+	} else {
+		let ancestorIsListItem = false;
+		let ancestorElement = clickedTarget.parentElement;
+
+		while (!ancestorIsListItem && (ancestorElement != null)) {
+			ancestorIsListItem = (ancestorElement.tagName.toLowerCase() === "li");
+
+			if (!ancestorIsListItem) {
+				ancestorElement = ancestorElement.parentElement;
+			}
+		}
+
+		return (ancestorIsListItem ? ancestorElement : null);
+	}
 }
 
 function continueShopping() {
@@ -85,9 +118,6 @@ function calculateTotal(){
         len = num.length;
     }
     var diff = len - pos;
-    console.log(len);
-    console.log(pos);
-    console.log(diff);
     var newText = "$" + num;
     for(let j = diff; j<3; j++){
         newText += "0"
@@ -132,4 +162,8 @@ function updateQuantity() {
 }
 function getTotalDisplayElement(){
     return document.getElementById("totalDisplay");
+}
+
+function getProductList(){
+	return document.getElementById("productsListing");
 }
