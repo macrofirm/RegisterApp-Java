@@ -11,6 +11,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if(getContinueShoppingButtonElement() != null) {
         getContinueShoppingButtonElement().addEventListener("click", continueShopping);
     }
+    if(getCancelTransactionButtonElement() != null) {
+        getCancelTransactionButtonElement().addEventListener("click", cancelTransaction);
+    }
+
     var list = document.getElementsByClassName("productPriceDisplay");
 	for(let i = 0; i<list.length; i++){
 		var x = list[i].innerHTML;
@@ -86,6 +90,11 @@ function continueShopping() {
     return;
 }
 
+function cancelTransaction(){
+    location.assign("/mainMenu");
+    return;
+}
+
 function calculateTotal(){
     var quantityList = document.getElementsByClassName("productCountDisplay");
     var priceList = document.getElementsByClassName("productPriceDisplay");
@@ -133,6 +142,10 @@ function getClearCartButtonElement() {
 
 function getContinueShoppingButtonElement() {
     return document.getElementById("continueShoppingButton");
+}
+
+function getCancelTransactionButtonElement() {
+    return document.getElementById("cancelTransaction");
 }
 
 function getTransactionId(){
