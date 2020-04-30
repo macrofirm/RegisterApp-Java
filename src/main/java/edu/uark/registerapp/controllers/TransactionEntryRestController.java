@@ -45,22 +45,11 @@ public class TransactionEntryRestController {
     public @ResponseBody ApiResponse removeFromCart(
         @PathVariable final UUID transactionEntryId
     ) {
-
+        System.out.println("yee2");
         this.removeFromCartCommand
             .setTransactionEntryId(transactionEntryId)
             .execute();
 
-        return new ApiResponse();
-    }
-
-    @RequestMapping(value = "//{transactionId}", method = RequestMethod.DELETE)
-    public @ResponseBody ApiResponse clearCart(
-        @PathVariable final UUID transactionId
-    ) {
-        this.clearCartCommand
-            .setTransactionId(transactionId)
-            .execute();
-        
         return new ApiResponse();
     }
 
@@ -73,7 +62,4 @@ public class TransactionEntryRestController {
 
     @Autowired
     private RemoveFromCartCommand removeFromCartCommand;
-
-    @Autowired
-    private ClearCartCommand clearCartCommand;
 }
