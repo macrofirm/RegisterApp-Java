@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.uark.registerapp.commands.transactions.AddToCartCommand;
-import edu.uark.registerapp.commands.transactions.ClearCartCommand;
 import edu.uark.registerapp.commands.transactions.RemoveFromCartCommand;
 import edu.uark.registerapp.commands.transactions.UpdateCartCommand;
 import edu.uark.registerapp.models.api.ApiResponse;
