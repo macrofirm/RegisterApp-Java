@@ -47,23 +47,14 @@ a.button {
 }
 
 #returnToCartButton{
-	float: right;
+	position: absolute;
+	right: 20px;
 }
 
 #returnToCartButton:hover {
 	cursor: pointer;
     color: #ffffff;
     background-color: #000000;
-}
-
-#addToCartButton:hover {
-	cursor: pointer;
-    color: #ffffff;
-    background-color: #000000;
-}
-
-#numberOfItems{
-	width: 25px;
 }
 
 .productPriceDisplay{
