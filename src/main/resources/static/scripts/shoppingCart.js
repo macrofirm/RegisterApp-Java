@@ -1,7 +1,9 @@
-var productListElements;
 var total = 0;
 document.addEventListener("DOMContentLoaded", () => {
-    productListElements = document.getElementById("productsListing").children;
+    var addToCartButtons = document.getElementsByClassName("updateButton");
+    for(let i = 0; i < addToCartButtons.length; i++){
+        addToCartButtons[i].addEventListener("click", updateButtonClick);
+    }
     if(getCheckoutButtonElement() != null) {
         getCheckoutButtonElement().addEventListener("click", checkout);
     }
@@ -83,7 +85,7 @@ function continueShopping() {
 }
 
 function calculateTotal(){
-    var quantityList = document.getElementsByClassName("productCountDisplay");
+    var quantityList = document.getElementsByClassName("quantitySelect");
     var priceList = document.getElementsByClassName("productPriceDisplay");
     var num = 0;
     for(let i = 0; i<priceList.length; i++){
@@ -94,7 +96,7 @@ function calculateTotal(){
 				newStr += str[i];
 			}
         }
-        var num1 = Number(quantityList[i].innerHTML);
+        var num1 = Number(quantityList[i].value);
         var num2 = Number(newStr);
         var newNum = num1 * num2;
         num += newNum;
@@ -135,22 +137,24 @@ function getTransactionId(){
 	return document.getElementById("transactionId").value;
 }
 
-function updateQuantity() {
-    const updateQuantityUrl = "/api/transactionEntry/";
-    const data =  {
-        quantity: listItem.querySelector("input[name='quantitySelect'][type='number']").value
+function updateButtonClick(event) {
+    let listItem = findClickedListItemElement(event.target);
+    const updateQuantityUrl = "/api/transactionEntry/" + listItem.querySelector("input[name='transactionEntryId']").value;
+    var str = listItem.querySelector("input[name='quantitySelect']").value;
+    var num = parseInt(str);
+    console.log(updateQuantityUrl);
+    console.log(num);
+    const updateCartRequest = {
+        quantity: num
     };
-    ajaxPut(updateQuantityUrl, data, (callbackResponse) => {
+    ajaxPut(updateQuantityUrl, updateCartRequest, (callbackResponse) => {
         if (isSuccessResponse(callbackResponse)) {
-            window.location.replace(callbackResponse.data.redirectUrl);
+            window.location.replace("/shoppingCart/" + getTransactionId());
         }
     });
-    return;
-}
-function getTotalDisplayElement(){
-    return document.getElementById("totalDisplay");
+    calculateTotal();
 }
 
-function getProductList(){
-	return document.getElementById("productsListing");
+function getTotalDisplayElement(){
+    return document.getElementById("totalDisplay");
 }
