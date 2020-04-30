@@ -3,6 +3,7 @@ package edu.uark.registerapp.commands.transactions;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
+import java.util.Optional; //Ignore the warning, it is used when "isEmpty()" is called in line 25
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
