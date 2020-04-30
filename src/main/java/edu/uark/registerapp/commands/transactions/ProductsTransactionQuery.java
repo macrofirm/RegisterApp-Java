@@ -24,7 +24,7 @@ public class ProductsTransactionQuery implements ResultCommandInterface<List<Pro
 
 		for (final ProductEntity productEntity : productRepository.findAll()) {
             Optional<TransactionEntryEntity> queriedTransactionEntryEntity = transactionEntryRepository.findByTransactionIdAndProductId(transactionId, productEntity.getId());
-            if(queriedTransactionEntryEntity.isEmpty()) {
+            if(!queriedTransactionEntryEntity.isPresent()) {
                 products.addLast(new Product(productEntity));
             }
 		}
