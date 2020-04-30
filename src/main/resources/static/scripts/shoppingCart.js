@@ -31,8 +31,12 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function checkout() {
-    location.assign("/transactionSummary/" + getTransactionId());
-    return;
+    var checkoutUrl = "/api/transaction/" + getTransactionId();
+    ajaxPut(checkoutUrl, null, (callbackResponse) => {
+        if (isSuccessResponse(callbackResponse)) {
+            window.location.assign("/transactionSummary/" + getTransactionId());
+        }
+    });
 }
 
 function clearCart() {
