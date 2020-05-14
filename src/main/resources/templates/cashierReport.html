@@ -1,0 +1,66 @@
+<html xmlns:th="https://www.thymeleaf.org">
+
+    <head>
+        <title>Cashier Report</title>
+        <meta name = "viewport" content="width=device-witdh, inital-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="/styles/master.css">
+        <link rel="stylesheet" type="text/css" href="/styles/cashierReport.css">
+
+        <script type="text/javascript" src="/scripts/master.js" defer></script>
+        <script type="text/javascript" src="/scripts/cashierReport.js" defer></script>
+
+    </head>
+
+    <body>
+        <div class="header">
+            <h1 class="primary-message">Sales Report</h1>
+        </div>
+
+        <div id="main" class="main">
+            <div id="error" th:class="${#strings.isEmpty(errorMessage)} ? hidden : ''">
+                <h4 id="errorMessage" class="error-message" th:text="${errorMessage}"></h4>
+            </div>
+
+            <div class = "optionsWrapper">
+                <select id="sort" class="sort">
+                    <option id="descending">Descending</option>
+                    <option id="ascending">Ascending</option>
+                </select>
+                <select id="column" class="column">
+                    <option id="quantitySold">Quantity Sold</option>
+                    <option id="productSales">Product Sales</option>
+                </select>
+                <button class="button" id="selectButton">Select</button>
+
+            </div>
+
+            <div class="reportWrapper">
+                <ul id="employeesListing" class="employees">
+                    <li th:each="employee : ${employees}">
+                        <span class="employeeId" th:text="${employee.employeeId}">Employee Id</span>
+                        <br /><span class="employeeFirstName" th:text="${employee.firstName}">First Name</span>
+                        <span class="employeeLastName" th:text="${employee.lastName}">Last Name</span>
+                        <br /><span class="employeeQuantitySold" th:text="${employee.quantitySold}">Quantity Sold</span>
+                        <br /><span class="productPriceDisplay" th:text="${employee.employeeSales}">Employee Sales</span>
+                    </li>
+                </ul>
+            </div>
+    
+            <div class="hidden">
+                <input type="checkbox" id="isRefreshed" class="hidden">
+                <script type="text/javascript">
+                    window.onunload = function() {
+                        const isRefreshedElement = document.getElementById("isRefreshed");
+    
+                        if(!isRefreshedElement.checked) {
+                            isRefreshedElement.checked = true;
+                        } else {
+                            isRefreshedElement.checked = false;
+                            location.reload();
+                        }
+                    }
+                </script>
+            </div>
+    </body>
+</html>

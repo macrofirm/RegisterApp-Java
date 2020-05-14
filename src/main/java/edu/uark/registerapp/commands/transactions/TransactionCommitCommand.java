@@ -14,6 +14,10 @@ import edu.uark.registerapp.models.entities.ProductEntity;
 import edu.uark.registerapp.models.entities.TransactionEntryEntity;
 import edu.uark.registerapp.models.repositories.ProductRepository;
 import edu.uark.registerapp.models.repositories.TransactionEntryRepository;
+import edu.uark.registerapp.models.repositories.TransactionRepository;
+import edu.uark.registerapp.models.entities.TransactionEntity;
+import edu.uark.registerapp.models.repositories.EmployeeRepository;
+import edu.uark.registerapp.models.entities.EmployeeEntity;
 
 @Service
 public class TransactionCommitCommand implements VoidCommandInterface{
@@ -22,15 +26,29 @@ public class TransactionCommitCommand implements VoidCommandInterface{
     public void execute() {
         final List<TransactionEntryEntity> queriedTransactionEntryEntities =
             this.transactionEntryRepository.findByTransactionId(transactionId);
+        double total = 0;
+        int totalNumSold = 0;
         for (TransactionEntryEntity transactionEntryEntity : queriedTransactionEntryEntities) {
             Optional<ProductEntity> productEntity = productRepository.findById(transactionEntryEntity.getProductId());
             if (!productEntity.isPresent()) {
                 throw new NotFoundException("Product");
             }
+            productEntity.get().setQuantitySold(productEntity.get().getQuantitySold() + transactionEntryEntity.getQuantity());
             productEntity.get().setCount(productEntity.get().getCount() - transactionEntryEntity.getQuantity());
+
+            double num = transactionEntryEntity.getPrice() * transactionEntryEntity.getQuantity();
+            total += num;
+            totalNumSold += transactionEntryEntity.getQuantity();
+            
+            productEntity.get().setProductSales(productEntity.get().getProductSales() + num);
 
             this.productRepository.save(productEntity.get());
         }
+        final Optional<TransactionEntity> updateTotal = this.transactionRepository.findById(transactionId);
+        updateTotal.get().setTotal(total);
+        final Optional<EmployeeEntity> updateEmployee = this.employeeRepository.findById(this.transactionRepository.findById(transactionId).get().getCashierId());
+        updateEmployee.get().setEmployeeSales(total);
+        updateEmployee.get().setQuantitySold(totalNumSold);
     }
 
     // Properites
@@ -48,4 +66,10 @@ public class TransactionCommitCommand implements VoidCommandInterface{
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    private TransactionRepository transactionRepository;
+
+    @Autowired
+    private EmployeeRepository employeeRepository;
 }
